@@ -1,0 +1,2502 @@
+[
+  {
+    "path_id": 694,
+    "offset": 28,
+    "text": "FacebookSettings"
+  },
+  {
+    "path_id": 695,
+    "offset": 28,
+    "text": "PlayFabSharedSettings"
+  },
+  {
+    "path_id": 695,
+    "offset": 56,
+    "text": "B8C"
+  },
+  {
+    "path_id": 696,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Intro text)"
+  },
+  {
+    "path_id": 696,
+    "offset": 196,
+    "text": "website_aptitudetest_intro"
+  },
+  {
+    "path_id": 697,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Task 1)"
+  },
+  {
+    "path_id": 697,
+    "offset": 176,
+    "text": "website_aptitudetest_task1"
+  },
+  {
+    "path_id": 698,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Task 4)"
+  },
+  {
+    "path_id": 698,
+    "offset": 200,
+    "text": "website_aptitudetest_task4"
+  },
+  {
+    "path_id": 699,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Task 7 Insufficient)"
+  },
+  {
+    "path_id": 699,
+    "offset": 204,
+    "text": "website_aptitudetest_task7insufficient"
+  },
+  {
+    "path_id": 700,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Task 7 Lie)"
+  },
+  {
+    "path_id": 700,
+    "offset": 184,
+    "text": "website_aptitudetest_task7lie"
+  },
+  {
+    "path_id": 701,
+    "offset": 28,
+    "text": "EmptyState (AND) 1"
+  },
+  {
+    "path_id": 701,
+    "offset": 60,
+    "text": "AND"
+  },
+  {
+    "path_id": 702,
+    "offset": 28,
+    "text": "EmptyState (AND) 2"
+  },
+  {
+    "path_id": 702,
+    "offset": 60,
+    "text": "AND"
+  },
+  {
+    "path_id": 703,
+    "offset": 28,
+    "text": "EmptyState (AND)"
+  },
+  {
+    "path_id": 703,
+    "offset": 56,
+    "text": "AND"
+  },
+  {
+    "path_id": 704,
+    "offset": 28,
+    "text": "EmptyState (Flag Aptitude Imported Profile)"
+  },
+  {
+    "path_id": 705,
+    "offset": 28,
+    "text": "EmptyState (Flag MALL SAVED Aptitude)"
+  },
+  {
+    "path_id": 706,
+    "offset": 28,
+    "text": "EmptyState (Flag NINA ARRESTED Aptitude)"
+  },
+  {
+    "path_id": 707,
+    "offset": 28,
+    "text": "EmptyState (Flag NINA DEAD Aptitude)"
+  },
+  {
+    "path_id": 708,
+    "offset": 28,
+    "text": "EmptyState (Flag Party hacked Aptitude)"
+  },
+  {
+    "path_id": 709,
+    "offset": 28,
+    "text": "EmptyState (Flag Sufficient dating)"
+  },
+  {
+    "path_id": 710,
+    "offset": 28,
+    "text": "EmptyState (Flag Sufficient medical)"
+  },
+  {
+    "path_id": 711,
+    "offset": 28,
+    "text": "EmptyState (Flag Watergate investigated Aptitude)"
+  },
+  {
+    "path_id": 712,
+    "offset": 28,
+    "text": "EmptyState (empty) 1"
+  },
+  {
+    "path_id": 712,
+    "offset": 60,
+    "text": "empty"
+  },
+  {
+    "path_id": 713,
+    "offset": 28,
+    "text": "EmptyState (empty)"
+  },
+  {
+    "path_id": 713,
+    "offset": 60,
+    "text": "empty"
+  },
+  {
+    "path_id": 714,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 1 Bass OUT)"
+  },
+  {
+    "path_id": 715,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 1 Bass)"
+  },
+  {
+    "path_id": 716,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 1)"
+  },
+  {
+    "path_id": 717,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 2 3 4 Bass)"
+  },
+  {
+    "path_id": 718,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 2)"
+  },
+  {
+    "path_id": 719,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 3)"
+  },
+  {
+    "path_id": 720,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 4)"
+  },
+  {
+    "path_id": 721,
+    "offset": 28,
+    "text": "IfElseState (If-Else Day 1 completed)"
+  },
+  {
+    "path_id": 721,
+    "offset": 80,
+    "text": "IfElseState (If-Else Day 1 completed)"
+  },
+  {
+    "path_id": 722,
+    "offset": 28,
+    "text": "IfElseState (If-Else Day 1 started)"
+  },
+  {
+    "path_id": 722,
+    "offset": 76,
+    "text": "IfElseState (If-Else Day 1 started)"
+  },
+  {
+    "path_id": 723,
+    "offset": 28,
+    "text": "IfElseState (If-Else Mall not saved)"
+  },
+  {
+    "path_id": 723,
+    "offset": 76,
+    "text": "IfElseState (If-Else Mall not saved)"
+  },
+  {
+    "path_id": 724,
+    "offset": 28,
+    "text": "IfElseState (If-Else Mall saved)"
+  },
+  {
+    "path_id": 724,
+    "offset": 72,
+    "text": "IfElseState (If-Else Mall saved)"
+  },
+  {
+    "path_id": 725,
+    "offset": 28,
+    "text": "IfElseState (If-Else Nina caught)"
+  },
+  {
+    "path_id": 725,
+    "offset": 76,
+    "text": "IfElseState (If-Else Nina caught)"
+  },
+  {
+    "path_id": 726,
+    "offset": 28,
+    "text": "IfElseState (If-Else Nina escaped)"
+  },
+  {
+    "path_id": 726,
+    "offset": 76,
+    "text": "IfElseState (If-Else Nina escaped)"
+  },
+  {
+    "path_id": 727,
+    "offset": 28,
+    "text": "IfElseState (If-Else Nina killed)"
+  },
+  {
+    "path_id": 727,
+    "offset": 76,
+    "text": "IfElseState (If-Else Nina killed)"
+  },
+  {
+    "path_id": 728,
+    "offset": 28,
+    "text": "IfElseState (If-Else Party hacked)"
+  },
+  {
+    "path_id": 729,
+    "offset": 28,
+    "text": "IfElseState (If-Else Sufficient results (dating))"
+  },
+  {
+    "path_id": 729,
+    "offset": 92,
+    "text": "IfElseState (If-Else Sufficient results (dating))"
+  },
+  {
+    "path_id": 730,
+    "offset": 28,
+    "text": "IfElseState (If-Else Sufficient results (medical))"
+  },
+  {
+    "path_id": 730,
+    "offset": 92,
+    "text": "IfElseState (If-Else Sufficient results (medical))"
+  },
+  {
+    "path_id": 731,
+    "offset": 28,
+    "text": "IfElseState (If-Else Sufficient results (summary))"
+  },
+  {
+    "path_id": 731,
+    "offset": 92,
+    "text": "IfElseState (If-Else Sufficient results (summary))"
+  },
+  {
+    "path_id": 732,
+    "offset": 28,
+    "text": "IfElseState (If-Else Watergate investigated)"
+  },
+  {
+    "path_id": 732,
+    "offset": 84,
+    "text": "IfElseState (If-Else Watergate investigated)"
+  },
+  {
+    "path_id": 733,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Intro text)"
+  },
+  {
+    "path_id": 733,
+    "offset": 164,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 733,
+    "offset": 188,
+    "text": "website_aptitudetest_intro"
+  },
+  {
+    "path_id": 734,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 1)"
+  },
+  {
+    "path_id": 734,
+    "offset": 156,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 734,
+    "offset": 180,
+    "text": "website_aptitudetest_task1"
+  },
+  {
+    "path_id": 735,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 2)"
+  },
+  {
+    "path_id": 735,
+    "offset": 204,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 735,
+    "offset": 228,
+    "text": "website_aptitudetest_task2"
+  },
+  {
+    "path_id": 736,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 3)"
+  },
+  {
+    "path_id": 736,
+    "offset": 216,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 736,
+    "offset": 240,
+    "text": "website_aptitudetest_task3"
+  },
+  {
+    "path_id": 737,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 4)"
+  },
+  {
+    "path_id": 737,
+    "offset": 180,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 737,
+    "offset": 204,
+    "text": "website_aptitudetest_task4"
+  },
+  {
+    "path_id": 738,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 5 Dating)"
+  },
+  {
+    "path_id": 738,
+    "offset": 232,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 738,
+    "offset": 256,
+    "text": "website_aptitudetest_task5dating"
+  },
+  {
+    "path_id": 739,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 5 Medical)"
+  },
+  {
+    "path_id": 739,
+    "offset": 232,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 739,
+    "offset": 256,
+    "text": "website_aptitudetest_task5medical"
+  },
+  {
+    "path_id": 740,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 6)"
+  },
+  {
+    "path_id": 740,
+    "offset": 192,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 740,
+    "offset": 216,
+    "text": "website_aptitudetest_task6"
+  },
+  {
+    "path_id": 741,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 7 Insufficient)"
+  },
+  {
+    "path_id": 741,
+    "offset": 208,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 741,
+    "offset": 232,
+    "text": "website_aptitudetest_task7insufficient"
+  },
+  {
+    "path_id": 742,
+    "offset": 28,
+    "text": "NewBookmarkState (New Bookmark Task 7 Lie)"
+  },
+  {
+    "path_id": 742,
+    "offset": 188,
+    "text": "website_aptitudetest"
+  },
+  {
+    "path_id": 742,
+    "offset": 212,
+    "text": "website_aptitudetest_task7lie"
+  },
+  {
+    "path_id": 743,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Duration Relationship)"
+  },
+  {
+    "path_id": 743,
+    "offset": 188,
+    "text": "data_task_durationrelationship"
+  },
+  {
+    "path_id": 743,
+    "offset": 228,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 743,
+    "offset": 344,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 744,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Absolute Truth)"
+  },
+  {
+    "path_id": 744,
+    "offset": 188,
+    "text": "data_task_absolutetruth"
+  },
+  {
+    "path_id": 744,
+    "offset": 220,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 744,
+    "offset": 336,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 745,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Accept)"
+  },
+  {
+    "path_id": 745,
+    "offset": 184,
+    "text": "data_task_accept"
+  },
+  {
+    "path_id": 745,
+    "offset": 208,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 745,
+    "offset": 232,
+    "text": "data_task_wrongfully"
+  },
+  {
+    "path_id": 745,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 746,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Conditions)"
+  },
+  {
+    "path_id": 746,
+    "offset": 192,
+    "text": "data_task_conditions"
+  },
+  {
+    "path_id": 746,
+    "offset": 220,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 746,
+    "offset": 336,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 747,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Dating Profile)"
+  },
+  {
+    "path_id": 747,
+    "offset": 200,
+    "text": "data_task_datingprofile"
+  },
+  {
+    "path_id": 747,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 747,
+    "offset": 256,
+    "text": "data_task_medicalprofile"
+  },
+  {
+    "path_id": 747,
+    "offset": 376,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 748,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Dickmove)"
+  },
+  {
+    "path_id": 748,
+    "offset": 196,
+    "text": "data_task_dickmove"
+  },
+  {
+    "path_id": 748,
+    "offset": 224,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 748,
+    "offset": 248,
+    "text": "data_task_warnfriend"
+  },
+  {
+    "path_id": 748,
+    "offset": 272,
+    "text": "data_task_ignorance"
+  },
+  {
+    "path_id": 748,
+    "offset": 296,
+    "text": "data_task_nothingtodo"
+  },
+  {
+    "path_id": 748,
+    "offset": 416,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 749,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Favorable)"
+  },
+  {
+    "path_id": 749,
+    "offset": 188,
+    "text": "data_task_favorable"
+  },
+  {
+    "path_id": 749,
+    "offset": 216,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 749,
+    "offset": 240,
+    "text": "data_task_truthfully"
+  },
+  {
+    "path_id": 749,
+    "offset": 356,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 750,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Fitness)"
+  },
+  {
+    "path_id": 750,
+    "offset": 172,
+    "text": "data_task_fitness"
+  },
+  {
+    "path_id": 750,
+    "offset": 200,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 750,
+    "offset": 316,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 751,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Full body)"
+  },
+  {
+    "path_id": 751,
+    "offset": 188,
+    "text": "data_task_fullbody"
+  },
+  {
+    "path_id": 751,
+    "offset": 216,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 751,
+    "offset": 332,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 752,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Government Authority)"
+  },
+  {
+    "path_id": 752,
+    "offset": 208,
+    "text": "data_task_governmentauthority"
+  },
+  {
+    "path_id": 752,
+    "offset": 248,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 752,
+    "offset": 364,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 753,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Ignorance)"
+  },
+  {
+    "path_id": 753,
+    "offset": 188,
+    "text": "data_task_ignorance"
+  },
+  {
+    "path_id": 753,
+    "offset": 216,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 753,
+    "offset": 240,
+    "text": "data_task_dickmove"
+  },
+  {
+    "path_id": 753,
+    "offset": 264,
+    "text": "data_task_warnfriend"
+  },
+  {
+    "path_id": 753,
+    "offset": 288,
+    "text": "data_task_nothingtodo"
+  },
+  {
+    "path_id": 753,
+    "offset": 408,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 754,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Lying)"
+  },
+  {
+    "path_id": 754,
+    "offset": 168,
+    "text": "data_task_lying"
+  },
+  {
+    "path_id": 754,
+    "offset": 192,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 754,
+    "offset": 308,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 755,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Medical Profile)"
+  },
+  {
+    "path_id": 755,
+    "offset": 200,
+    "text": "data_task_medicalprofile"
+  },
+  {
+    "path_id": 755,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 755,
+    "offset": 256,
+    "text": "data_task_datingprofile"
+  },
+  {
+    "path_id": 755,
+    "offset": 376,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 756,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Money Money)"
+  },
+  {
+    "path_id": 756,
+    "offset": 204,
+    "text": "data_task_moneymoney"
+  },
+  {
+    "path_id": 756,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 756,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 757,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Nothing To Do)"
+  },
+  {
+    "path_id": 757,
+    "offset": 196,
+    "text": "data_task_nothingtodo"
+  },
+  {
+    "path_id": 757,
+    "offset": 228,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 757,
+    "offset": 252,
+    "text": "data_task_dickmove"
+  },
+  {
+    "path_id": 757,
+    "offset": 276,
+    "text": "data_task_ignorance"
+  },
+  {
+    "path_id": 757,
+    "offset": 300,
+    "text": "data_task_warnfriend"
+  },
+  {
+    "path_id": 757,
+    "offset": 416,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 758,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Persons Chatted)"
+  },
+  {
+    "path_id": 758,
+    "offset": 200,
+    "text": "data_task_personschatted"
+  },
+  {
+    "path_id": 758,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 758,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 759,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Portrait 1)"
+  },
+  {
+    "path_id": 759,
+    "offset": 204,
+    "text": "data_task_portrait1"
+  },
+  {
+    "path_id": 759,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 759,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 760,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Portrait 2)"
+  },
+  {
+    "path_id": 760,
+    "offset": 204,
+    "text": "data_task_portrait2"
+  },
+  {
+    "path_id": 760,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 760,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 761,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Portrait 3)"
+  },
+  {
+    "path_id": 761,
+    "offset": 204,
+    "text": "data_task_portrait3"
+  },
+  {
+    "path_id": 761,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 761,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 762,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Portrait 4)"
+  },
+  {
+    "path_id": 762,
+    "offset": 204,
+    "text": "data_task_portrait4"
+  },
+  {
+    "path_id": 762,
+    "offset": 232,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 762,
+    "offset": 348,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 763,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Prescriptions)"
+  },
+  {
+    "path_id": 763,
+    "offset": 196,
+    "text": "data_task_prescriptions"
+  },
+  {
+    "path_id": 763,
+    "offset": 228,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 763,
+    "offset": 344,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 764,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Profile pic)"
+  },
+  {
+    "path_id": 764,
+    "offset": 180,
+    "text": "data_task_registration"
+  },
+  {
+    "path_id": 764,
+    "offset": 212,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 764,
+    "offset": 328,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 765,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Protect People)"
+  },
+  {
+    "path_id": 765,
+    "offset": 212,
+    "text": "data_task_protectpeople"
+  },
+  {
+    "path_id": 765,
+    "offset": 244,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 765,
+    "offset": 360,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 766,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Safer Nation)"
+  },
+  {
+    "path_id": 766,
+    "offset": 204,
+    "text": "data_task_safernation"
+  },
+  {
+    "path_id": 766,
+    "offset": 236,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 766,
+    "offset": 352,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 767,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Security Pioneer)"
+  },
+  {
+    "path_id": 767,
+    "offset": 200,
+    "text": "data_task_securitypioneer"
+  },
+  {
+    "path_id": 767,
+    "offset": 236,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 767,
+    "offset": 352,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 768,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Sexual preferences)"
+  },
+  {
+    "path_id": 768,
+    "offset": 208,
+    "text": "data_task_sexualpreferences"
+  },
+  {
+    "path_id": 768,
+    "offset": 244,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 768,
+    "offset": 360,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 769,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Sexual)"
+  },
+  {
+    "path_id": 769,
+    "offset": 184,
+    "text": "data_task_sexual"
+  },
+  {
+    "path_id": 769,
+    "offset": 208,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 769,
+    "offset": 324,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 770,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Size)"
+  },
+  {
+    "path_id": 770,
+    "offset": 164,
+    "text": "data_task_size"
+  },
+  {
+    "path_id": 770,
+    "offset": 188,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 770,
+    "offset": 304,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 771,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Spying People)"
+  },
+  {
+    "path_id": 771,
+    "offset": 208,
+    "text": "data_task_spyingpeople"
+  },
+  {
+    "path_id": 771,
+    "offset": 240,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 771,
+    "offset": 356,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 772,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Truthfully)"
+  },
+  {
+    "path_id": 772,
+    "offset": 192,
+    "text": "data_task_truthfully"
+  },
+  {
+    "path_id": 772,
+    "offset": 220,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 772,
+    "offset": 244,
+    "text": "data_task_favorable"
+  },
+  {
+    "path_id": 772,
+    "offset": 360,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 773,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Understand POV)"
+  },
+  {
+    "path_id": 773,
+    "offset": 188,
+    "text": "data_task_understandpov"
+  },
+  {
+    "path_id": 773,
+    "offset": 220,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 773,
+    "offset": 336,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 774,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Unjust Law)"
+  },
+  {
+    "path_id": 774,
+    "offset": 180,
+    "text": "data_task_unjustlaw"
+  },
+  {
+    "path_id": 774,
+    "offset": 208,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 774,
+    "offset": 324,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 775,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Warn Friend)"
+  },
+  {
+    "path_id": 775,
+    "offset": 192,
+    "text": "data_task_warnfriend"
+  },
+  {
+    "path_id": 775,
+    "offset": 220,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 775,
+    "offset": 244,
+    "text": "data_task_dickmove"
+  },
+  {
+    "path_id": 775,
+    "offset": 268,
+    "text": "data_task_ignorance"
+  },
+  {
+    "path_id": 775,
+    "offset": 292,
+    "text": "data_task_nothingtodo"
+  },
+  {
+    "path_id": 775,
+    "offset": 412,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 776,
+    "offset": 28,
+    "text": "NewDataChunkState (Datachunk Task Wrongfully)"
+  },
+  {
+    "path_id": 776,
+    "offset": 192,
+    "text": "data_task_wrongfully"
+  },
+  {
+    "path_id": 776,
+    "offset": 220,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 776,
+    "offset": 244,
+    "text": "data_task_accept"
+  },
+  {
+    "path_id": 776,
+    "offset": 356,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 777,
+    "offset": 28,
+    "text": "NewTargetPersonState (New target task person)"
+  },
+  {
+    "path_id": 777,
+    "offset": 272,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 778,
+    "offset": 28,
+    "text": "OpenDocumentState (Show Task Person)"
+  },
+  {
+    "path_id": 778,
+    "offset": 152,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 779,
+    "offset": 28,
+    "text": "OrState (AT LEAST 2) 1"
+  },
+  {
+    "path_id": 780,
+    "offset": 28,
+    "text": "OrState (AT LEAST 2) 2"
+  },
+  {
+    "path_id": 781,
+    "offset": 28,
+    "text": "OrState (At least 2)"
+  },
+  {
+    "path_id": 782,
+    "offset": 28,
+    "text": "OrState (OR) 6"
+  },
+  {
+    "path_id": 783,
+    "offset": 28,
+    "text": "OrState (OR) 7"
+  },
+  {
+    "path_id": 784,
+    "offset": 28,
+    "text": "OrState (OR) 8"
+  },
+  {
+    "path_id": 785,
+    "offset": 28,
+    "text": "OrState (OR) 9"
+  },
+  {
+    "path_id": 786,
+    "offset": 28,
+    "text": "OrState (Or) 1"
+  },
+  {
+    "path_id": 787,
+    "offset": 28,
+    "text": "OrState (Or) 2"
+  },
+  {
+    "path_id": 788,
+    "offset": 28,
+    "text": "OrState (Or) 3"
+  },
+  {
+    "path_id": 789,
+    "offset": 28,
+    "text": "OrState (Or) 4"
+  },
+  {
+    "path_id": 790,
+    "offset": 28,
+    "text": "OrState (Or) 5"
+  },
+  {
+    "path_id": 791,
+    "offset": 28,
+    "text": "OrState (Or)"
+  },
+  {
+    "path_id": 792,
+    "offset": 28,
+    "text": "PlayMusicState (Play music Tension)"
+  },
+  {
+    "path_id": 793,
+    "offset": 28,
+    "text": "ToolUnlockedState (Tool unlcoked Profiler)"
+  },
+  {
+    "path_id": 793,
+    "offset": 172,
+    "text": "Profiler"
+  },
+  {
+    "path_id": 794,
+    "offset": 28,
+    "text": "ToolUnlockedState (Tool unlcoked Reader)"
+  },
+  {
+    "path_id": 794,
+    "offset": 144,
+    "text": "Reader"
+  },
+  {
+    "path_id": 795,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Duration Relationship)"
+  },
+  {
+    "path_id": 795,
+    "offset": 176,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 796,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Absolute Truth)"
+  },
+  {
+    "path_id": 796,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 797,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Accept)"
+  },
+  {
+    "path_id": 797,
+    "offset": 152,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 798,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Conditions) 1"
+  },
+  {
+    "path_id": 798,
+    "offset": 164,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 799,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Conditions)"
+  },
+  {
+    "path_id": 799,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 800,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Dating Profile)"
+  },
+  {
+    "path_id": 800,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 801,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Dickmove)"
+  },
+  {
+    "path_id": 801,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 802,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Favorable)"
+  },
+  {
+    "path_id": 802,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 803,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Fitness)"
+  },
+  {
+    "path_id": 803,
+    "offset": 152,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 804,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Government Authority)"
+  },
+  {
+    "path_id": 804,
+    "offset": 184,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 805,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Ignorance)"
+  },
+  {
+    "path_id": 805,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 806,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Lying)"
+  },
+  {
+    "path_id": 806,
+    "offset": 152,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 807,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Medical Profile)"
+  },
+  {
+    "path_id": 807,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 808,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Money Money)"
+  },
+  {
+    "path_id": 808,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 809,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Nothing To Do)"
+  },
+  {
+    "path_id": 809,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 810,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Person 1)"
+  },
+  {
+    "path_id": 810,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 811,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Person 2)"
+  },
+  {
+    "path_id": 811,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 812,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Person 3)"
+  },
+  {
+    "path_id": 812,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 813,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Person 4)"
+  },
+  {
+    "path_id": 813,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 814,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Persons Chatted)"
+  },
+  {
+    "path_id": 814,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 815,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Prescriptions)"
+  },
+  {
+    "path_id": 815,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 815,
+    "offset": 196,
+    "text": "Prescriptions"
+  },
+  {
+    "path_id": 816,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Protect People)"
+  },
+  {
+    "path_id": 816,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 817,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Registration)"
+  },
+  {
+    "path_id": 817,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 818,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Safer Nation)"
+  },
+  {
+    "path_id": 818,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 819,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Security Pioneer)"
+  },
+  {
+    "path_id": 819,
+    "offset": 176,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 820,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Sexual preferences)"
+  },
+  {
+    "path_id": 820,
+    "offset": 176,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 821,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Sexual)"
+  },
+  {
+    "path_id": 821,
+    "offset": 152,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 822,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Size)"
+  },
+  {
+    "path_id": 822,
+    "offset": 152,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 823,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Spying People)"
+  },
+  {
+    "path_id": 823,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 824,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Truthfully)"
+  },
+  {
+    "path_id": 824,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 825,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Understand POV)"
+  },
+  {
+    "path_id": 825,
+    "offset": 168,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 826,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Unjust Law)"
+  },
+  {
+    "path_id": 826,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 827,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Warn Friend)"
+  },
+  {
+    "path_id": 827,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 828,
+    "offset": 28,
+    "text": "UpdateProfileState (Update Task Wrongfully)"
+  },
+  {
+    "path_id": 828,
+    "offset": 160,
+    "text": "CHAR_TASK"
+  },
+  {
+    "path_id": 829,
+    "offset": 28,
+    "text": "AtClockTimeState (After clock time 1138)"
+  },
+  {
+    "path_id": 830,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 1"
+  },
+  {
+    "path_id": 831,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 10"
+  },
+  {
+    "path_id": 832,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 2"
+  },
+  {
+    "path_id": 833,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 3"
+  },
+  {
+    "path_id": 834,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 4"
+  },
+  {
+    "path_id": 835,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 5"
+  },
+  {
+    "path_id": 836,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 6"
+  },
+  {
+    "path_id": 837,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 7"
+  },
+  {
+    "path_id": 838,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 8"
+  },
+  {
+    "path_id": 839,
+    "offset": 28,
+    "text": "AtClockTimeState (After time) 9"
+  },
+  {
+    "path_id": 840,
+    "offset": 28,
+    "text": "AtClockTimeState (After time)"
+  },
+  {
+    "path_id": 841,
+    "offset": 28,
+    "text": "AtClockTimeState (At clock time 1132)"
+  },
+  {
+    "path_id": 842,
+    "offset": 28,
+    "text": "AtClockTimeState (At clock time 1526)"
+  },
+  {
+    "path_id": 843,
+    "offset": 28,
+    "text": "AtClockTimeState (At exactly 10.33)"
+  },
+  {
+    "path_id": 844,
+    "offset": 28,
+    "text": "AtClockTimeState (At exactly 11.13)"
+  },
+  {
+    "path_id": 845,
+    "offset": 28,
+    "text": "AtClockTimeState (At exactly 1349)"
+  },
+  {
+    "path_id": 846,
+    "offset": 28,
+    "text": "AtClockTimeState (At exactly 1500)"
+  },
+  {
+    "path_id": 847,
+    "offset": 28,
+    "text": "AtClockTimeState (At exactly 1523)"
+  },
+  {
+    "path_id": 848,
+    "offset": 28,
+    "text": "AtLeastState (At least Live stream arrest)"
+  },
+  {
+    "path_id": 849,
+    "offset": 28,
+    "text": "AtLeastState (At least Live stream deceased)"
+  },
+  {
+    "path_id": 850,
+    "offset": 28,
+    "text": "AtLeastState (At least Stop Atmo)"
+  },
+  {
+    "path_id": 851,
+    "offset": 28,
+    "text": "AtLeastState (At least Tension Layer 2)"
+  },
+  {
+    "path_id": 852,
+    "offset": 28,
+    "text": "AtLeastState (At least Tension Layer 3)"
+  },
+  {
+    "path_id": 853,
+    "offset": 28,
+    "text": "AtLeastState (At least Tension Layer 4)"
+  },
+  {
+    "path_id": 854,
+    "offset": 28,
+    "text": "BlockCommentsState (Block all comments)"
+  },
+  {
+    "path_id": 855,
+    "offset": 28,
+    "text": "ChangeInsiderStatusState (Device status change Oleg's phone is online)"
+  },
+  {
+    "path_id": 855,
+    "offset": 196,
+    "text": "insider_baytephone"
+  },
+  {
+    "path_id": 856,
+    "offset": 28,
+    "text": "ChangeInsiderStatusState (Raban's PC is online)"
+  },
+  {
+    "path_id": 856,
+    "offset": 148,
+    "text": "insider_rabanpc"
+  },
+  {
+    "path_id": 857,
+    "offset": 28,
+    "text": "DelayState (Delay 0,3 sec)"
+  },
+  {
+    "path_id": 858,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 1"
+  },
+  {
+    "path_id": 859,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 2"
+  },
+  {
+    "path_id": 860,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 3"
+  },
+  {
+    "path_id": 861,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 4"
+  },
+  {
+    "path_id": 862,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 5"
+  },
+  {
+    "path_id": 863,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 6"
+  },
+  {
+    "path_id": 864,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 7"
+  },
+  {
+    "path_id": 865,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 8"
+  },
+  {
+    "path_id": 866,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec) 9"
+  },
+  {
+    "path_id": 867,
+    "offset": 28,
+    "text": "DelayState (Delay 1 sec)"
+  },
+  {
+    "path_id": 868,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 1"
+  },
+  {
+    "path_id": 869,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 2"
+  },
+  {
+    "path_id": 870,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 3"
+  },
+  {
+    "path_id": 871,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 4"
+  },
+  {
+    "path_id": 872,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 5"
+  },
+  {
+    "path_id": 873,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 6"
+  },
+  {
+    "path_id": 874,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 7"
+  },
+  {
+    "path_id": 875,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 8"
+  },
+  {
+    "path_id": 876,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec) 9"
+  },
+  {
+    "path_id": 877,
+    "offset": 28,
+    "text": "DelayState (Delay 2 sec)"
+  },
+  {
+    "path_id": 878,
+    "offset": 28,
+    "text": "DelayState (Delay 3 sec)"
+  },
+  {
+    "path_id": 879,
+    "offset": 28,
+    "text": "DelayState (Delay 5 sec) 1"
+  },
+  {
+    "path_id": 880,
+    "offset": 28,
+    "text": "DelayState (Delay 5 sec)"
+  },
+  {
+    "path_id": 881,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Bakay's phone - Desktop (encrypted))"
+  },
+  {
+    "path_id": 881,
+    "offset": 236,
+    "text": "insider_baytephone_desktopencrypt"
+  },
+  {
+    "path_id": 882,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Janus)"
+  },
+  {
+    "path_id": 882,
+    "offset": 188,
+    "text": "website_government_bayte"
+  },
+  {
+    "path_id": 883,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Medical)"
+  },
+  {
+    "path_id": 883,
+    "offset": 216,
+    "text": "website_medical_raban"
+  },
+  {
+    "path_id": 884,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Oleg Bakay)"
+  },
+  {
+    "path_id": 884,
+    "offset": 200,
+    "text": "CHAR_BAYTE"
+  },
+  {
+    "path_id": 885,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Percoleaks - Oleg Bakay)"
+  },
+  {
+    "path_id": 885,
+    "offset": 224,
+    "text": "website_leaks_bayte"
+  },
+  {
+    "path_id": 886,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Raban is glad)"
+  },
+  {
+    "path_id": 886,
+    "offset": 200,
+    "text": "data_raban_gladoleggone"
+  },
+  {
+    "path_id": 887,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed Raban is unhappy)"
+  },
+  {
+    "path_id": 887,
+    "offset": 208,
+    "text": "data_raban_unhappyoleggone"
+  },
+  {
+    "path_id": 888,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed TNB - FTP destroys school)"
+  },
+  {
+    "path_id": 888,
+    "offset": 240,
+    "text": "website_beholder_school"
+  },
+  {
+    "path_id": 889,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed TNB - Oleg's disappearance)"
+  },
+  {
+    "path_id": 889,
+    "offset": 252,
+    "text": "website_beholder_bayte"
+  },
+  {
+    "path_id": 890,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed The Office - Oleg Bakay)"
+  },
+  {
+    "path_id": 890,
+    "offset": 284,
+    "text": "website_government_bayte"
+  },
+  {
+    "path_id": 891,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed The Office - Search)"
+  },
+  {
+    "path_id": 891,
+    "offset": 240,
+    "text": "website_government_search"
+  },
+  {
+    "path_id": 892,
+    "offset": 28,
+    "text": "DocumentViewedState (Document viewed The People's Voice front page)"
+  },
+  {
+    "path_id": 892,
+    "offset": 224,
+    "text": "website_peoplesvoice_home"
+  },
+  {
+    "path_id": 893,
+    "offset": 28,
+    "text": "DocumentViewedState (New bookmark TNB - Encampments)"
+  },
+  {
+    "path_id": 893,
+    "offset": 192,
+    "text": "website_beholder_encampments"
+  },
+  {
+    "path_id": 894,
+    "offset": 28,
+    "text": "DocumentViewedState (New bookmark TNB - Terrorists)"
+  },
+  {
+    "path_id": 894,
+    "offset": 192,
+    "text": "website_beholder_terrorists"
+  },
+  {
+    "path_id": 895,
+    "offset": 28,
+    "text": "EmptyState ()"
+  },
+  {
+    "path_id": 896,
+    "offset": 28,
+    "text": "EmptyState (AND) 1"
+  },
+  {
+    "path_id": 896,
+    "offset": 60,
+    "text": "AND"
+  },
+  {
+    "path_id": 897,
+    "offset": 28,
+    "text": "EmptyState (AND)"
+  },
+  {
+    "path_id": 897,
+    "offset": 56,
+    "text": "AND"
+  },
+  {
+    "path_id": 898,
+    "offset": 28,
+    "text": "EmptyState (Flag Bakay died)"
+  },
+  {
+    "path_id": 899,
+    "offset": 28,
+    "text": "EmptyState (Flag Bakay was arrested)"
+  },
+  {
+    "path_id": 900,
+    "offset": 28,
+    "text": "EmptyState (Flag Dating selected)"
+  },
+  {
+    "path_id": 901,
+    "offset": 28,
+    "text": "EmptyState (Flag Dick move)"
+  },
+  {
+    "path_id": 902,
+    "offset": 28,
+    "text": "EmptyState (Flag Donations locked)"
+  },
+  {
+    "path_id": 903,
+    "offset": 28,
+    "text": "EmptyState (Flag Gov authority)"
+  },
+  {
+    "path_id": 904,
+    "offset": 28,
+    "text": "EmptyState (Flag Imported Profile Ignorance)"
+  },
+  {
+    "path_id": 905,
+    "offset": 28,
+    "text": "EmptyState (Flag Kill Oleg)"
+  },
+  {
+    "path_id": 906,
+    "offset": 28,
+    "text": "EmptyState (Flag Mall Saved Ignorance)"
+  },
+  {
+    "path_id": 907,
+    "offset": 28,
+    "text": "EmptyState (Flag Medical selected)"
+  },
+  {
+    "path_id": 908,
+    "offset": 28,
+    "text": "EmptyState (Flag Money money)"
+  },
+  {
+    "path_id": 909,
+    "offset": 28,
+    "text": "EmptyState (Flag Motive found)"
+  },
+  {
+    "path_id": 910,
+    "offset": 28,
+    "text": "EmptyState (Flag Nina Arrested Ignorance)"
+  },
+  {
+    "path_id": 911,
+    "offset": 28,
+    "text": "EmptyState (Flag Nina Dead Ignorance)"
+  },
+  {
+    "path_id": 912,
+    "offset": 28,
+    "text": "EmptyState (Flag Oleg caused the attack)"
+  },
+  {
+    "path_id": 913,
+    "offset": 28,
+    "text": "EmptyState (Flag Oleg didn't cause the attack)"
+  },
+  {
+    "path_id": 914,
+    "offset": 28,
+    "text": "EmptyState (Flag Oleg is disloyal)"
+  },
+  {
+    "path_id": 915,
+    "offset": 28,
+    "text": "EmptyState (Flag Oleg was revealed)"
+  },
+  {
+    "path_id": 916,
+    "offset": 28,
+    "text": "EmptyState (Flag Oleg's number)"
+  },
+  {
+    "path_id": 917,
+    "offset": 28,
+    "text": "EmptyState (Flag Party hacked Ignorance)"
+  },
+  {
+    "path_id": 918,
+    "offset": 28,
+    "text": "EmptyState (Flag Protect people)"
+  },
+  {
+    "path_id": 919,
+    "offset": 28,
+    "text": "EmptyState (Flag Raban believes Oleg is behind school)"
+  },
+  {
+    "path_id": 920,
+    "offset": 28,
+    "text": "EmptyState (Flag Safer nation)"
+  },
+  {
+    "path_id": 921,
+    "offset": 28,
+    "text": "EmptyState (Flag Spying on people)"
+  },
+  {
+    "path_id": 922,
+    "offset": 28,
+    "text": "EmptyState (Flag Watergate investigated Ignorance)"
+  },
+  {
+    "path_id": 923,
+    "offset": 28,
+    "text": "EmptyState (Life stream arrest)"
+  },
+  {
+    "path_id": 924,
+    "offset": 28,
+    "text": "EmptyState (Live stream deceased)"
+  },
+  {
+    "path_id": 925,
+    "offset": 28,
+    "text": "EmptyState (Stop music)"
+  },
+  {
+    "path_id": 926,
+    "offset": 28,
+    "text": "EmptyState (Tension 2)"
+  },
+  {
+    "path_id": 927,
+    "offset": 28,
+    "text": "EmptyState (Tension 3)"
+  },
+  {
+    "path_id": 928,
+    "offset": 28,
+    "text": "EmptyState (Tension 4)"
+  },
+  {
+    "path_id": 929,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1 2 4 Broken OUT)"
+  },
+  {
+    "path_id": 930,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1 2 4 Broken) 1"
+  },
+  {
+    "path_id": 931,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1 2 4 Broken)"
+  },
+  {
+    "path_id": 932,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1 2 4 Pad OUT)"
+  },
+  {
+    "path_id": 933,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1 2 4 Pad) 1"
+  },
+  {
+    "path_id": 934,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1 2 4 Pad)"
+  },
+  {
+    "path_id": 935,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 1)"
+  },
+  {
+    "path_id": 936,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 2 3 4 Texture)"
+  },
+  {
+    "path_id": 937,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 2 Kick OUT)"
+  },
+  {
+    "path_id": 938,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 2 Kick) 1"
+  },
+  {
+    "path_id": 939,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 2 Kick)"
+  },
+  {
+    "path_id": 940,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 3 Piano OUT)"
+  },
+  {
+    "path_id": 941,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 3 Piano)"
+  },
+  {
+    "path_id": 942,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Layer 4)"
+  },
+  {
+    "path_id": 943,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Raban's Theme 1)"
+  },
+  {
+    "path_id": 944,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 1 Bass OUT)"
+  },
+  {
+    "path_id": 945,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 1)"
+  },
+  {
+    "path_id": 946,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 2 3 4 Bass)"
+  },
+  {
+    "path_id": 947,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 2)"
+  },
+  {
+    "path_id": 948,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 3)"
+  },
+  {
+    "path_id": 949,
+    "offset": 28,
+    "text": "FadeAtmoLayerState (Fade atmo layer Tension 4)"
+  },
+  {
+    "path_id": 950,
+    "offset": 28,
+    "text": "IfElseState (Flag NOT Profile imported)"
+  },
+  {
+    "path_id": 950,
+    "offset": 80,
+    "text": "IfElseState (Flag NOT Profile imported)"
+  },
+  {
+    "path_id": 951,
+    "offset": 28,
+    "text": "IfElseState (If else Mall saved)"
+  },
+  {
+    "path_id": 951,
+    "offset": 72,
+    "text": "IfElseState (If else Mall saved)"
+  },
+  {
+    "path_id": 952,
+    "offset": 28,
+    "text": "IfElseState (If else Nina arrested)"
+  },
+  {
+    "path_id": 952,
+    "offset": 76,
+    "text": "IfElseState (If else Nina arrested)"
+  },
+  {
+    "path_id": 953,
+    "offset": 28,
+    "text": "IfElseState (If else Nina killed)"
+  },
+  {
+    "path_id": 953,
+    "offset": 76,
+    "text": "IfElseState (If else Nina killed)"
+  },
+  {
+    "path_id": 954,
+    "offset": 28,
+    "text": "IfElseState (If else Watergate investigated)"
+  },
+  {
+    "path_id": 955,
+    "offset": 28,
+    "text": "IfElseState (If-Else Army)"
+  },
+  {
+    "path_id": 955,
+    "offset": 68,
+    "text": "IfElseState (If-Else Army)"
+  },
+  {
+    "path_id": 956,
+    "offset": 28,
+    "text": "IfElseState (If-Else Attack on school known)"
+  },
+  {
+    "path_id": 956,
+    "offset": 84,
+    "text": "IfElseState (If-Else Attack on school known)"
+  },
+  {
+    "path_id": 957,
+    "offset": 28,
+    "text": "IfElseState (If-Else Dick move)"
+  },
+  {
+    "path_id": 957,
+    "offset": 72,
+    "text": "IfElseState (If-Else Dick move)"
+  },
+  {
+    "path_id": 958,
+    "offset": 28,
+    "text": "IfElseState (If-Else Donations blocked)"
+  },
+  {
+    "path_id": 958,
+    "offset": 80,
+    "text": "IfElseState (If-Else Donations blocked)"
+  },
+  {
+    "path_id": 959,
+    "offset": 28,
+    "text": "IfElseState (If-Else Donations)"
+  },
+  {
+    "path_id": 959,
+    "offset": 72,
+    "text": "IfElseState (If-Else Donations)"
+  },
+  {
+    "path_id": 960,
+    "offset": 28,
+    "text": "IfElseState (If-Else FTP destroyed school) 1"
+  },
+  {
+    "path_id": 960,
+    "offset": 84,
+    "text": "IfElseState (If-Else FTP destroyed school) 1"
+  },
+  {
+    "path_id": 961,
+    "offset": 28,
+    "text": "IfElseState (If-Else FTP destroyed school)"
+  },
+  {
+    "path_id": 961,
+    "offset": 84,
+    "text": "IfElseState (If-Else FTP destroyed school)"
+  },
+  {
+    "path_id": 962,
+    "offset": 28,
+    "text": "IfElseState (If-Else Found out Oleg is an informant)"
+  },
+  {
+    "path_id": 962,
+    "offset": 92,
+    "text": "IfElseState (If-Else Found out Oleg is an informant)"
+  }
+]

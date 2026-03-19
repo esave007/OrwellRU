@@ -1,0 +1,1145 @@
+{
+  "_meta": {
+    "description": "Translation mapping for Assembly-CSharp.dll #US heap strings (Orwell: Ignorance is Strength)",
+    "dll_path": "backup/Assembly-CSharp.dll",
+    "us_heap_absolute_offset": "0x1ad628",
+    "us_heap_size": 115084,
+    "total_strings_in_heap": 1823,
+    "translatable_count": 125,
+    "patching_approach": "Mono.Cecil (recommended) or dnSpyEx IL editing",
+    "notes": [
+      "Strings are UTF-16LE encoded in the .NET #US (User Strings) heap",
+      "Recommended: use Mono.Cecil to load assembly, iterate all methods, find ldstr instructions matching original text, replace with Russian",
+      "Alternative: use dnSpyEx GUI to search for each string and edit IL directly",
+      "IMPORTANT: Russian text is longer than English - verify UI layout after patching",
+      "Some strings are concatenated at runtime (e.g. ' calling ') - context matters"
+    ]
+  },
+  "translations": {
+    "Next step": {
+      "original": "Next step",
+      "translation": "Далее",
+      "heap_offset": "0x10d32",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 13,
+      "length_ratio_pct": 144
+    },
+    "Cancel": {
+      "original": "Cancel",
+      "translation": "Отмена",
+      "heap_offset": "0x17b4b",
+      "byte_length": 13,
+      "original_chars": 6,
+      "translation_chars": 6,
+      "length_ratio_pct": 100
+    },
+    "Finish": {
+      "original": "Finish",
+      "translation": "Готово",
+      "heap_offset": "0x10ec0",
+      "byte_length": 13,
+      "original_chars": 6,
+      "translation_chars": 6,
+      "length_ratio_pct": 100
+    },
+    "DID YOU KNOW?": {
+      "original": "DID YOU KNOW?",
+      "translation": "А ВЫ ЗНАЛИ?",
+      "heap_offset": "0x10d46",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 11,
+      "length_ratio_pct": 85
+    },
+    "YOU ARE 1 OF {0} ACCEPTED APPLICANTS.": {
+      "original": "YOU ARE 1 OF {0} ACCEPTED APPLICANTS.",
+      "translation": "ВЫ ОДИН ИЗ {0} ПРИНЯТЫХ КАНДИДАТОВ.",
+      "heap_offset": "0x10d62",
+      "byte_length": 75,
+      "original_chars": 37,
+      "translation_chars": 35,
+      "length_ratio_pct": 95
+    },
+    "YOU ARE THE FIRST ACCEPTED APPLICANT.": {
+      "original": "YOU ARE THE FIRST ACCEPTED APPLICANT.",
+      "translation": "ВЫ ПЕРВЫЙ ПРИНЯТЫЙ КАНДИДАТ.",
+      "heap_offset": "0x10dae",
+      "byte_length": 75,
+      "original_chars": 37,
+      "translation_chars": 28,
+      "length_ratio_pct": 76
+    },
+    "YOU ARE USING THE OFFICE VERSION OF ORWELL.": {
+      "original": "YOU ARE USING THE OFFICE VERSION OF ORWELL.",
+      "translation": "ВЫ ИСПОЛЬЗУЕТЕ СЛУЖЕБНУЮ ВЕРСИЮ ORWELL.",
+      "heap_offset": "0x10dfa",
+      "byte_length": 87,
+      "original_chars": 43,
+      "translation_chars": 39,
+      "length_ratio_pct": 91
+    },
+    "NO CONNECTION": {
+      "original": "NO CONNECTION",
+      "translation": "НЕТ ПОДКЛЮЧЕНИЯ",
+      "heap_offset": "0x10e52",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 15,
+      "length_ratio_pct": 115
+    },
+    "GO ONLINE TO SIGN-UP FOR OUR NEWSLETTER.": {
+      "original": "GO ONLINE TO SIGN-UP FOR OUR NEWSLETTER.",
+      "translation": "ПОДКЛЮЧИТЕСЬ К СЕТИ, ЧТОБЫ ПОДПИСАТЬСЯ НА РАССЫЛКУ.",
+      "heap_offset": "0x10e6e",
+      "byte_length": 81,
+      "original_chars": 40,
+      "translation_chars": 51,
+      "length_ratio_pct": 127
+    },
+    "Please choose a profile picture.": {
+      "original": "Please choose a profile picture.",
+      "translation": "Пожалуйста, выберите изображение профиля.",
+      "heap_offset": "0x10eea",
+      "byte_length": 65,
+      "original_chars": 32,
+      "translation_chars": 41,
+      "length_ratio_pct": 128
+    },
+    "Please enter a name.": {
+      "original": "Please enter a name.",
+      "translation": "Пожалуйста, введите имя.",
+      "heap_offset": "0x10f2c",
+      "byte_length": 41,
+      "original_chars": 20,
+      "translation_chars": 24,
+      "length_ratio_pct": 120
+    },
+    "Please enter a valid email address.": {
+      "original": "Please enter a valid email address.",
+      "translation": "Пожалуйста, введите корректный адрес эл. почты.",
+      "heap_offset": "0x10f56",
+      "byte_length": 71,
+      "original_chars": 35,
+      "translation_chars": 47,
+      "length_ratio_pct": 134
+    },
+    "Please insert at least one datachunk.": {
+      "original": "Please insert at least one datachunk.",
+      "translation": "Пожалуйста, загрузите хотя бы один блок данных.",
+      "heap_offset": "0x10f9e",
+      "byte_length": 75,
+      "original_chars": 37,
+      "translation_chars": 47,
+      "length_ratio_pct": 127
+    },
+    "Setting up profile": {
+      "original": "Setting up profile",
+      "translation": "Настройка профиля",
+      "heap_offset": "0x10fea",
+      "byte_length": 37,
+      "original_chars": 18,
+      "translation_chars": 17,
+      "length_ratio_pct": 94
+    },
+    "You must agree to the stated terms.": {
+      "original": "You must agree to the stated terms.",
+      "translation": "Вы должны принять указанные условия.",
+      "heap_offset": "0x11010",
+      "byte_length": 71,
+      "original_chars": 35,
+      "translation_chars": 36,
+      "length_ratio_pct": 103
+    },
+    "Aptitude Test": {
+      "original": "Aptitude Test",
+      "translation": "Тест на профпригодность",
+      "heap_offset": "0x11058",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 23,
+      "length_ratio_pct": 177
+    },
+    "Logging in": {
+      "original": "Logging in",
+      "translation": "Вход в систему",
+      "heap_offset": "0x110b8",
+      "byte_length": 21,
+      "original_chars": 10,
+      "translation_chars": 14,
+      "length_ratio_pct": 140
+    },
+    "Processing": {
+      "original": "Processing",
+      "translation": "Обработка",
+      "heap_offset": "0x110ce",
+      "byte_length": 21,
+      "original_chars": 10,
+      "translation_chars": 9,
+      "length_ratio_pct": 90
+    },
+    "Create new profile": {
+      "original": "Create new profile",
+      "translation": "Создать новый профиль",
+      "heap_offset": "0x15f1a",
+      "byte_length": 37,
+      "original_chars": 18,
+      "translation_chars": 21,
+      "length_ratio_pct": 117
+    },
+    "new portrait": {
+      "original": "new portrait",
+      "translation": "новый портрет",
+      "heap_offset": "0x15f40",
+      "byte_length": 25,
+      "original_chars": 12,
+      "translation_chars": 13,
+      "length_ratio_pct": 108
+    },
+    "Empty Profile": {
+      "original": "Empty Profile",
+      "translation": "Пустой профиль",
+      "heap_offset": "0x1828d",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 14,
+      "length_ratio_pct": 108
+    },
+    "Days on duty: ": {
+      "original": "Days on duty: ",
+      "translation": "Дней на службе: ",
+      "heap_offset": "0x1770c",
+      "byte_length": 29,
+      "original_chars": 14,
+      "translation_chars": 16,
+      "length_ratio_pct": 114
+    },
+    "Days on duty: 0": {
+      "original": "Days on duty: 0",
+      "translation": "Дней на службе: 0",
+      "heap_offset": "0x182a9",
+      "byte_length": 31,
+      "original_chars": 15,
+      "translation_chars": 17,
+      "length_ratio_pct": 113
+    },
+    "Profile 0": {
+      "original": "Profile 0",
+      "translation": "Профиль 0",
+      "heap_offset": "0x176f8",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 9,
+      "length_ratio_pct": 100
+    },
+    "Profile ": {
+      "original": "Profile ",
+      "translation": "Профиль ",
+      "heap_offset": "0x17a1c",
+      "byte_length": 17,
+      "original_chars": 8,
+      "translation_chars": 8,
+      "length_ratio_pct": 100
+    },
+    "None": {
+      "original": "None",
+      "translation": "Нет",
+      "heap_offset": "0x17a2e",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 3,
+      "length_ratio_pct": 75
+    },
+    "Assigned Case: Bonton Bombings": {
+      "original": "Assigned Case: Bonton Bombings",
+      "translation": "Назначенное дело: Взрывы в Бонтоне",
+      "heap_offset": "0x17a38",
+      "byte_length": 61,
+      "original_chars": 30,
+      "translation_chars": 34,
+      "length_ratio_pct": 113
+    },
+    "Delete profile": {
+      "original": "Delete profile",
+      "translation": "Удалить профиль",
+      "heap_offset": "0x17882",
+      "byte_length": 29,
+      "original_chars": 14,
+      "translation_chars": 15,
+      "length_ratio_pct": 107
+    },
+    "Are you sure you want to delete this profile?": {
+      "original": "Are you sure you want to delete this profile?",
+      "translation": "Вы уверены, что хотите удалить этот профиль?",
+      "heap_offset": "0x178a0",
+      "byte_length": 91,
+      "original_chars": 45,
+      "translation_chars": 44,
+      "length_ratio_pct": 98
+    },
+    "No, keep profile": {
+      "original": "No, keep profile",
+      "translation": "Нет, сохранить",
+      "heap_offset": "0x178fc",
+      "byte_length": 33,
+      "original_chars": 16,
+      "translation_chars": 14,
+      "length_ratio_pct": 88
+    },
+    "Yes, delete profile": {
+      "original": "Yes, delete profile",
+      "translation": "Да, удалить",
+      "heap_offset": "0x1791e",
+      "byte_length": 39,
+      "original_chars": 19,
+      "translation_chars": 11,
+      "length_ratio_pct": 58
+    },
+    "Load episode ": {
+      "original": "Load episode ",
+      "translation": "Загрузить эпизод ",
+      "heap_offset": "0x1772a",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 17,
+      "length_ratio_pct": 131
+    },
+    "Are you sure you want to load this Episode?": {
+      "original": "Are you sure you want to load this Episode?",
+      "translation": "Вы уверены, что хотите загрузить этот эпизод?",
+      "heap_offset": "0x17746",
+      "byte_length": 87,
+      "original_chars": 43,
+      "translation_chars": 45,
+      "length_ratio_pct": 105
+    },
+    "All subsequent progress of this profile will be lost.": {
+      "original": "All subsequent progress of this profile will be lost.",
+      "translation": "Весь последующий прогресс этого профиля будет утерян.",
+      "heap_offset": "0x1779e",
+      "byte_length": 107,
+      "original_chars": 53,
+      "translation_chars": 53,
+      "length_ratio_pct": 100
+    },
+    "No, keep progress": {
+      "original": "No, keep progress",
+      "translation": "Нет, сохранить прогресс",
+      "heap_offset": "0x1780a",
+      "byte_length": 35,
+      "original_chars": 17,
+      "translation_chars": 23,
+      "length_ratio_pct": 135
+    },
+    "Yes, load episode": {
+      "original": "Yes, load episode",
+      "translation": "Да, загрузить",
+      "heap_offset": "0x1782e",
+      "byte_length": 35,
+      "original_chars": 17,
+      "translation_chars": 13,
+      "length_ratio_pct": 76
+    },
+    "Episode One: Thesis": {
+      "original": "Episode One: Thesis",
+      "translation": "Эпизод первый: Тезис",
+      "heap_offset": "0x17946",
+      "byte_length": 39,
+      "original_chars": 19,
+      "translation_chars": 20,
+      "length_ratio_pct": 105
+    },
+    "Episode Two: Antithesis": {
+      "original": "Episode Two: Antithesis",
+      "translation": "Эпизод второй: Антитезис",
+      "heap_offset": "0x1796e",
+      "byte_length": 47,
+      "original_chars": 23,
+      "translation_chars": 24,
+      "length_ratio_pct": 104
+    },
+    "Episode Three: Synthesis": {
+      "original": "Episode Three: Synthesis",
+      "translation": "Эпизод третий: Синтез",
+      "heap_offset": "0x1799e",
+      "byte_length": 49,
+      "original_chars": 24,
+      "translation_chars": 21,
+      "length_ratio_pct": 88
+    },
+    "One": {
+      "original": "One",
+      "translation": "Первый",
+      "heap_offset": "0x17852",
+      "byte_length": 7,
+      "original_chars": 3,
+      "translation_chars": 6,
+      "length_ratio_pct": 200
+    },
+    "Two": {
+      "original": "Two",
+      "translation": "Второй",
+      "heap_offset": "0x1785a",
+      "byte_length": 7,
+      "original_chars": 3,
+      "translation_chars": 6,
+      "length_ratio_pct": 200
+    },
+    "Three": {
+      "original": "Three",
+      "translation": "Третий",
+      "heap_offset": "0x17862",
+      "byte_length": 11,
+      "original_chars": 5,
+      "translation_chars": 6,
+      "length_ratio_pct": 120
+    },
+    "Four": {
+      "original": "Four",
+      "translation": "Четвёртый",
+      "heap_offset": "0x1786e",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 9,
+      "length_ratio_pct": 225
+    },
+    "Five": {
+      "original": "Five",
+      "translation": "Пятый",
+      "heap_offset": "0x17878",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 5,
+      "length_ratio_pct": 125
+    },
+    "Ignorance is Strength": {
+      "original": "Ignorance is Strength",
+      "translation": "Незнание — сила",
+      "heap_offset": "0x18526",
+      "byte_length": 43,
+      "original_chars": 21,
+      "translation_chars": 15,
+      "length_ratio_pct": 71
+    },
+    "Log Out": {
+      "original": "Log Out",
+      "translation": "Выйти",
+      "heap_offset": "0x16916",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 5,
+      "length_ratio_pct": 71
+    },
+    "Log out": {
+      "original": "Log out",
+      "translation": "Выйти",
+      "heap_offset": "0x16e69",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 5,
+      "length_ratio_pct": 71
+    },
+    "Are you sure you want to log out? Orwell will remember where you left off.": {
+      "original": "Are you sure you want to log out? Orwell will remember where you left off.",
+      "translation": "Вы уверены, что хотите выйти? Orwell сохранит ваш прогресс.",
+      "heap_offset": "0x16927",
+      "byte_length": 149,
+      "original_chars": 74,
+      "translation_chars": 59,
+      "length_ratio_pct": 80
+    },
+    "Yes": {
+      "original": "Yes",
+      "translation": "Да",
+      "heap_offset": "0x169bd",
+      "byte_length": 7,
+      "original_chars": 3,
+      "translation_chars": 2,
+      "length_ratio_pct": 67
+    },
+    "No": {
+      "original": "No",
+      "translation": "Нет",
+      "heap_offset": "0x169c5",
+      "byte_length": 5,
+      "original_chars": 2,
+      "translation_chars": 3,
+      "length_ratio_pct": 150
+    },
+    "Quit Orwell": {
+      "original": "Quit Orwell",
+      "translation": "Выйти из Orwell",
+      "heap_offset": "0x169cb",
+      "byte_length": 23,
+      "original_chars": 11,
+      "translation_chars": 15,
+      "length_ratio_pct": 136
+    },
+    "Are you sure you want to quit your session? Orwell will remember where you left off.": {
+      "original": "Are you sure you want to quit your session? Orwell will remember where you left off.",
+      "translation": "Вы уверены, что хотите завершить сеанс? Orwell сохранит ваш прогресс.",
+      "heap_offset": "0x169e4",
+      "byte_length": 169,
+      "original_chars": 84,
+      "translation_chars": 69,
+      "length_ratio_pct": 82
+    },
+    "Are you sure you want to quit to your desktop?": {
+      "original": "Are you sure you want to quit to your desktop?",
+      "translation": "Вы уверены, что хотите выйти на рабочий стол?",
+      "heap_offset": "0x17bf3",
+      "byte_length": 93,
+      "original_chars": 46,
+      "translation_chars": 45,
+      "length_ratio_pct": 98
+    },
+    "FINISH WORK?": {
+      "original": "FINISH WORK?",
+      "translation": "ЗАВЕРШИТЬ РАБОТУ?",
+      "heap_offset": "0x16d54",
+      "byte_length": 25,
+      "original_chars": 12,
+      "translation_chars": 17,
+      "length_ratio_pct": 142
+    },
+    "Are you sure you want to finish your work for today? All unprocessed Datachunks will expire.": {
+      "original": "Are you sure you want to finish your work for today? All unprocessed Datachunks will expire.",
+      "translation": "Вы уверены, что хотите завершить работу на сегодня? Все необработанные блоки данных будут утрачены.",
+      "heap_offset": "0x16d6f",
+      "byte_length": 185,
+      "original_chars": 92,
+      "translation_chars": 99,
+      "length_ratio_pct": 108
+    },
+    "Yes, log out": {
+      "original": "Yes, log out",
+      "translation": "Да, выйти",
+      "heap_offset": "0x16e29",
+      "byte_length": 25,
+      "original_chars": 12,
+      "translation_chars": 9,
+      "length_ratio_pct": 75
+    },
+    "No, stay logged in": {
+      "original": "No, stay logged in",
+      "translation": "Нет, остаться",
+      "heap_offset": "0x16e43",
+      "byte_length": 37,
+      "original_chars": 18,
+      "translation_chars": 13,
+      "length_ratio_pct": 72
+    },
+    "Summary Day ": {
+      "original": "Summary Day ",
+      "translation": "Итоги дня ",
+      "heap_offset": "0x16f02",
+      "byte_length": 25,
+      "original_chars": 12,
+      "translation_chars": 10,
+      "length_ratio_pct": 83
+    },
+    "Incoming Call": {
+      "original": "Incoming Call",
+      "translation": "Входящий звонок",
+      "heap_offset": "0x4ec1",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 15,
+      "length_ratio_pct": 115
+    },
+    "Incoming Chat": {
+      "original": "Incoming Chat",
+      "translation": "Входящий чат",
+      "heap_offset": "0x4f9d",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 12,
+      "length_ratio_pct": 92
+    },
+    " is starting a conference call.": {
+      "original": " is starting a conference call.",
+      "translation": " начинает конференц-звонок.",
+      "heap_offset": "0x4edd",
+      "byte_length": 63,
+      "original_chars": 31,
+      "translation_chars": 27,
+      "length_ratio_pct": 87
+    },
+    " calling ": {
+      "original": " calling ",
+      "translation": " звонит ",
+      "heap_offset": "0x4f1d",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 8,
+      "length_ratio_pct": 89
+    },
+    "Do you want to tune in now?": {
+      "original": "Do you want to tune in now?",
+      "translation": "Хотите подключиться сейчас?",
+      "heap_offset": "0x4f31",
+      "byte_length": 55,
+      "original_chars": 27,
+      "translation_chars": 27,
+      "length_ratio_pct": 100
+    },
+    "Archive for later": {
+      "original": "Archive for later",
+      "translation": "Отложить",
+      "heap_offset": "0x4f69",
+      "byte_length": 35,
+      "original_chars": 17,
+      "translation_chars": 8,
+      "length_ratio_pct": 47
+    },
+    "Tune in": {
+      "original": "Tune in",
+      "translation": "Подключиться",
+      "heap_offset": "0x4f8d",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 12,
+      "length_ratio_pct": 171
+    },
+    " messaging ": {
+      "original": " messaging ",
+      "translation": " пишет ",
+      "heap_offset": "0x4fb9",
+      "byte_length": 23,
+      "original_chars": 11,
+      "translation_chars": 7,
+      "length_ratio_pct": 64
+    },
+    "Read Messages": {
+      "original": "Read Messages",
+      "translation": "Читать сообщения",
+      "heap_offset": "0x4fd1",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 16,
+      "length_ratio_pct": 123
+    },
+    "Physique": {
+      "original": "Physique",
+      "translation": "Телосложение",
+      "heap_offset": "0x68d7",
+      "byte_length": 17,
+      "original_chars": 8,
+      "translation_chars": 12,
+      "length_ratio_pct": 150
+    },
+    "N/A": {
+      "original": "N/A",
+      "translation": "Н/Д",
+      "heap_offset": "0x172b3",
+      "byte_length": 7,
+      "original_chars": 3,
+      "translation_chars": 3,
+      "length_ratio_pct": 100
+    },
+    "Agent": {
+      "original": "Agent",
+      "translation": "Агент",
+      "heap_offset": "0x172bb",
+      "byte_length": 11,
+      "original_chars": 5,
+      "translation_chars": 5,
+      "length_ratio_pct": 100
+    },
+    "Desktop": {
+      "original": "Desktop",
+      "translation": "Рабочий стол",
+      "heap_offset": "0x46ef",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 12,
+      "length_ratio_pct": 171
+    },
+    "Text": {
+      "original": "Text",
+      "translation": "Текст",
+      "heap_offset": "0x5d27",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 5,
+      "length_ratio_pct": 125
+    },
+    "Note": {
+      "original": "Note",
+      "translation": "Заметка",
+      "heap_offset": "0x5d31",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 7,
+      "length_ratio_pct": 175
+    },
+    "Map": {
+      "original": "Map",
+      "translation": "Карта",
+      "heap_offset": "0x5d3b",
+      "byte_length": 7,
+      "original_chars": 3,
+      "translation_chars": 5,
+      "length_ratio_pct": 167
+    },
+    "History": {
+      "original": "History",
+      "translation": "История",
+      "heap_offset": "0x5d43",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 7,
+      "length_ratio_pct": 100
+    },
+    "Picture": {
+      "original": "Picture",
+      "translation": "Изображение",
+      "heap_offset": "0x5d53",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 11,
+      "length_ratio_pct": 157
+    },
+    "Mail": {
+      "original": "Mail",
+      "translation": "Почта",
+      "heap_offset": "0x5d63",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 5,
+      "length_ratio_pct": 125
+    },
+    "Subject": {
+      "original": "Subject",
+      "translation": "Тема",
+      "heap_offset": "0x5d6d",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 4,
+      "length_ratio_pct": 57
+    },
+    "Contacts": {
+      "original": "Contacts",
+      "translation": "Контакты",
+      "heap_offset": "0x5d7d",
+      "byte_length": 17,
+      "original_chars": 8,
+      "translation_chars": 8,
+      "length_ratio_pct": 100
+    },
+    "Chat": {
+      "original": "Chat",
+      "translation": "Чат",
+      "heap_offset": "0x5d8f",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 3,
+      "length_ratio_pct": 75
+    },
+    "New objective": {
+      "original": "New objective",
+      "translation": "Новая задача",
+      "heap_offset": "0x58b0",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 12,
+      "length_ratio_pct": 92
+    },
+    "Objective solved": {
+      "original": "Objective solved",
+      "translation": "Задача выполнена",
+      "heap_offset": "0x58cc",
+      "byte_length": 33,
+      "original_chars": 16,
+      "translation_chars": 16,
+      "length_ratio_pct": 100
+    },
+    "Notice": {
+      "original": "Notice",
+      "translation": "Уведомление",
+      "heap_offset": "0x58ee",
+      "byte_length": 13,
+      "original_chars": 6,
+      "translation_chars": 11,
+      "length_ratio_pct": 183
+    },
+    "Orwell-ID: ": {
+      "original": "Orwell-ID: ",
+      "translation": "Orwell-ID: ",
+      "heap_offset": "0x58fc",
+      "byte_length": 23,
+      "original_chars": 11,
+      "translation_chars": 11,
+      "length_ratio_pct": 100
+    },
+    "Data uploading": {
+      "original": "Data uploading",
+      "translation": "Загрузка данных",
+      "heap_offset": "0x5b78",
+      "byte_length": 29,
+      "original_chars": 14,
+      "translation_chars": 15,
+      "length_ratio_pct": 107
+    },
+    "Data uploaded": {
+      "original": "Data uploaded",
+      "translation": "Данные загружены",
+      "heap_offset": "0x5b96",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 16,
+      "length_ratio_pct": 123
+    },
+    "Solved: ": {
+      "original": "Solved: ",
+      "translation": "Решено: ",
+      "heap_offset": "0x16804",
+      "byte_length": 17,
+      "original_chars": 8,
+      "translation_chars": 8,
+      "length_ratio_pct": 100
+    },
+    "Solved Objective": {
+      "original": "Solved Objective",
+      "translation": "Задача выполнена",
+      "heap_offset": "0x16cd0",
+      "byte_length": 33,
+      "original_chars": 16,
+      "translation_chars": 16,
+      "length_ratio_pct": 100
+    },
+    "New Objective": {
+      "original": "New Objective",
+      "translation": "Новая задача",
+      "heap_offset": "0xe7d1",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 12,
+      "length_ratio_pct": 92
+    },
+    "Orwell has lost the connection to the main server.": {
+      "original": "Orwell has lost the connection to the main server.",
+      "translation": "Orwell потерял подключение к главному серверу.",
+      "heap_offset": "0x16728",
+      "byte_length": 101,
+      "original_chars": 50,
+      "translation_chars": 46,
+      "length_ratio_pct": 92
+    },
+    "The connection to the main server has been re-established.": {
+      "original": "The connection to the main server has been re-established.",
+      "translation": "Подключение к главному серверу восстановлено.",
+      "heap_offset": "0x1678e",
+      "byte_length": 117,
+      "original_chars": 58,
+      "translation_chars": 45,
+      "length_ratio_pct": 78
+    },
+    "    just now": {
+      "original": "    just now",
+      "translation": "    только что",
+      "heap_offset": "0x659b",
+      "byte_length": 25,
+      "original_chars": 12,
+      "translation_chars": 14,
+      "length_ratio_pct": 117
+    },
+    "1 min ago": {
+      "original": "1 min ago",
+      "translation": "1 мин. назад",
+      "heap_offset": "0x65b5",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 12,
+      "length_ratio_pct": 133
+    },
+    "2 min ago": {
+      "original": "2 min ago",
+      "translation": "2 мин. назад",
+      "heap_offset": "0x65c9",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 12,
+      "length_ratio_pct": 133
+    },
+    "3 min ago": {
+      "original": "3 min ago",
+      "translation": "3 мин. назад",
+      "heap_offset": "0x65dd",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 12,
+      "length_ratio_pct": 133
+    },
+    "4 min ago": {
+      "original": "4 min ago",
+      "translation": "4 мин. назад",
+      "heap_offset": "0x65f1",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 12,
+      "length_ratio_pct": 133
+    },
+    "5 min ago": {
+      "original": "5 min ago",
+      "translation": "5 мин. назад",
+      "heap_offset": "0x6605",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 12,
+      "length_ratio_pct": 133
+    },
+    "recorded earlier": {
+      "original": "recorded earlier",
+      "translation": "записано ранее",
+      "heap_offset": "0x635f",
+      "byte_length": 33,
+      "original_chars": 16,
+      "translation_chars": 14,
+      "length_ratio_pct": 88
+    },
+    "earlier": {
+      "original": "earlier",
+      "translation": "ранее",
+      "heap_offset": "0x6490",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 5,
+      "length_ratio_pct": 71
+    },
+    "Exhibition Mode": {
+      "original": "Exhibition Mode",
+      "translation": "Выставочный режим",
+      "heap_offset": "0xf9f3",
+      "byte_length": 31,
+      "original_chars": 15,
+      "translation_chars": 17,
+      "length_ratio_pct": 113
+    },
+    "Insufficient activity detected. Restarting Orwell in ...": {
+      "original": "Insufficient activity detected. Restarting Orwell in ...",
+      "translation": "Обнаружено отсутствие активности. Перезапуск Orwell через ...",
+      "heap_offset": "0xfa13",
+      "byte_length": 113,
+      "original_chars": 56,
+      "translation_chars": 61,
+      "length_ratio_pct": 109
+    },
+    "Continue playing": {
+      "original": "Continue playing",
+      "translation": "Продолжить",
+      "heap_offset": "0xfa85",
+      "byte_length": 33,
+      "original_chars": 16,
+      "translation_chars": 10,
+      "length_ratio_pct": 62
+    },
+    "Restart": {
+      "original": "Restart",
+      "translation": "Перезапуск",
+      "heap_offset": "0xfaa7",
+      "byte_length": 15,
+      "original_chars": 7,
+      "translation_chars": 10,
+      "length_ratio_pct": 143
+    },
+    " (Exhibition Mode)": {
+      "original": " (Exhibition Mode)",
+      "translation": " (Выставочный режим)",
+      "heap_offset": "0x10696",
+      "byte_length": 37,
+      "original_chars": 18,
+      "translation_chars": 20,
+      "length_ratio_pct": 111
+    },
+    "A conflict with another <link=": {
+      "original": "A conflict with another <link=",
+      "translation": "Конфликт с другим <link=",
+      "heap_offset": "0x163a3",
+      "byte_length": 61,
+      "original_chars": 30,
+      "translation_chars": 24,
+      "length_ratio_pct": 80
+    },
+    "><u><i>datachunk</i></u></link> was already solved.": {
+      "original": "><u><i>datachunk</i></u></link> was already solved.",
+      "translation": "><u><i>блоком данных</i></u></link> уже решён.",
+      "heap_offset": "0x163e1",
+      "byte_length": 103,
+      "original_chars": 51,
+      "translation_chars": 46,
+      "length_ratio_pct": 90
+    },
+    "There is a conflict with another <link=": {
+      "original": "There is a conflict with another <link=",
+      "translation": "Обнаружен конфликт с другим <link=",
+      "heap_offset": "0x16449",
+      "byte_length": 79,
+      "original_chars": 39,
+      "translation_chars": 34,
+      "length_ratio_pct": 87
+    },
+    "><u><i>datachunk</i></u></link>.": {
+      "original": "><u><i>datachunk</i></u></link>.",
+      "translation": "><u><i>блоком данных</i></u></link>.",
+      "heap_offset": "0x16499",
+      "byte_length": 65,
+      "original_chars": 32,
+      "translation_chars": 36,
+      "length_ratio_pct": 112
+    },
+    "A conflict with ": {
+      "original": "A conflict with ",
+      "translation": "Конфликт с ",
+      "heap_offset": "0x164db",
+      "byte_length": 33,
+      "original_chars": 16,
+      "translation_chars": 11,
+      "length_ratio_pct": 69
+    },
+    " unknown datachunk was already solved.": {
+      "original": " unknown datachunk was already solved.",
+      "translation": " неизвестным блоком данных уже решён.",
+      "heap_offset": "0x164fd",
+      "byte_length": 77,
+      "original_chars": 38,
+      "translation_chars": 37,
+      "length_ratio_pct": 97
+    },
+    "There is a conflict with ": {
+      "original": "There is a conflict with ",
+      "translation": "Обнаружен конфликт с ",
+      "heap_offset": "0x1654b",
+      "byte_length": 51,
+      "original_chars": 25,
+      "translation_chars": 21,
+      "length_ratio_pct": 84
+    },
+    " unknown datachunk.": {
+      "original": " unknown datachunk.",
+      "translation": " неизвестным блоком данных.",
+      "heap_offset": "0x1657f",
+      "byte_length": 39,
+      "original_chars": 19,
+      "translation_chars": 27,
+      "length_ratio_pct": 142
+    },
+    "There is a conflict with unknown datachunks.": {
+      "original": "There is a conflict with unknown datachunks.",
+      "translation": "Обнаружен конфликт с неизвестными блоками данных.",
+      "heap_offset": "0x165a7",
+      "byte_length": 89,
+      "original_chars": 44,
+      "translation_chars": 49,
+      "length_ratio_pct": 111
+    },
+    "Disable Pairing": {
+      "original": "Disable Pairing",
+      "translation": "Отключить сопряжение",
+      "heap_offset": "0x17a76",
+      "byte_length": 31,
+      "original_chars": 15,
+      "translation_chars": 20,
+      "length_ratio_pct": 133
+    },
+    "Note: We strongly recommend pairing with an investigator for an enhanced user experience.": {
+      "original": "Note: We strongly recommend pairing with an investigator for an enhanced user experience.",
+      "translation": "Примечание: для улучшения работы настоятельно рекомендуется сопряжение с дознавателем.",
+      "heap_offset": "0x17a97",
+      "byte_length": 179,
+      "original_chars": 89,
+      "translation_chars": 86,
+      "length_ratio_pct": 97
+    },
+    "Orwell": {
+      "original": "Orwell",
+      "translation": "Orwell",
+      "heap_offset": "0xa98e",
+      "byte_length": 13,
+      "original_chars": 6,
+      "translation_chars": 6,
+      "length_ratio_pct": 100
+    },
+    "BIG Attendee": {
+      "original": "BIG Attendee",
+      "translation": "Участник BIG",
+      "heap_offset": "0xfb51",
+      "byte_length": 25,
+      "original_chars": 12,
+      "translation_chars": 12,
+      "length_ratio_pct": 100
+    },
+    "Submit": {
+      "original": "Submit",
+      "translation": "Отправить",
+      "heap_offset": "0x1b791",
+      "byte_length": 13,
+      "original_chars": 6,
+      "translation_chars": 9,
+      "length_ratio_pct": 150
+    },
+    "a communication": {
+      "original": "a communication",
+      "translation": "сообщение",
+      "heap_offset": "0xbcf8",
+      "byte_length": 31,
+      "original_chars": 15,
+      "translation_chars": 9,
+      "length_ratio_pct": 60
+    },
+    "datachunk": {
+      "original": "datachunk",
+      "translation": "блок данных",
+      "heap_offset": "0x172dd",
+      "byte_length": 19,
+      "original_chars": 9,
+      "translation_chars": 11,
+      "length_ratio_pct": 122
+    },
+    "datachunks": {
+      "original": "datachunks",
+      "translation": "блоки данных",
+      "heap_offset": "0x172f1",
+      "byte_length": 21,
+      "original_chars": 10,
+      "translation_chars": 12,
+      "length_ratio_pct": 120
+    },
+    "was": {
+      "original": "was",
+      "translation": "был",
+      "heap_offset": "0x17307",
+      "byte_length": 7,
+      "original_chars": 3,
+      "translation_chars": 3,
+      "length_ratio_pct": 100
+    },
+    "were": {
+      "original": "were",
+      "translation": "были",
+      "heap_offset": "0x1730f",
+      "byte_length": 9,
+      "original_chars": 4,
+      "translation_chars": 4,
+      "length_ratio_pct": 100
+    },
+    "this document": {
+      "original": "this document",
+      "translation": "этот документ",
+      "heap_offset": "0x1737d",
+      "byte_length": 27,
+      "original_chars": 13,
+      "translation_chars": 13,
+      "length_ratio_pct": 100
+    },
+    "OrwellOS_office v.": {
+      "original": "OrwellOS_office v.",
+      "translation": "OrwellOS_office в.",
+      "heap_offset": "0x10670",
+      "byte_length": 37,
+      "original_chars": 18,
+      "translation_chars": 18,
+      "length_ratio_pct": 100
+    }
+  }
+}

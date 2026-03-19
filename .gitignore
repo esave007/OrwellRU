@@ -1,0 +1,50 @@
+# Backups of original game files (copyrighted)
+backup/
+
+# Patched game files (contain copyrighted data)
+patches/
+
+# Third-party tools (redistributable separately)
+tools/UABEA/
+
+# Build artifacts
+tools/PatchDll/bin/
+tools/PatchDll/obj/
+
+# Temporary/helper scripts
+tools/_*
+tools/build_*
+tools/gen_*
+_build_*
+temp_*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Debug/intermediate atlas images
+fonts/*atlas*.png
+fonts/original_atlas_bold.png
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Windows shortcuts
+*.lnk
+
+# Distribution (future)
+dist/
+*.exe
+
+# Intermediate/working files
+originals/_*
+originals/level3_strings_raw.json
+originals/level3_to_translate.json
+originals/level3_still_needed.json
+translated/_*

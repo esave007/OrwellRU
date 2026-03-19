@@ -1,0 +1,21 @@
+{
+  "INSUFFICIENT RESULTS\r": "НЕДОСТАТОЧНЫЕ РЕЗУЛЬТАТЫ\r",
+  "APTITUDE TEST\r": "ТЕСТ НА ПРИГОДНОСТЬ\r",
+  "You failed the Aptitude test! You will be disqualified permanently!\r": "Тест провален! Дисквалификация навсегда!\r",
+  "You have been lying! You will be disqualified permanently!\r": "Вы лгали! Дисквалификация навсегда!\r",
+  "The test requires you to complete a set of tasks. Follow the on-screen instructions carefully and answer truthfully to the best of your beliefs.\r\n \r\nNote that an insufficient test result will disqualify you for special duty permanently.": "Тест требует выполнения ряда заданий. Внимательно следуйте инструкциям на экране и отвечайте честно, в соответствии со своими убеждениями.\r\n \r\nОбратите внимание: недостаточный результат теста навсегда лишит вас права на специальную службу.",
+  "In order to qualify for special duty within Orwell, taking the Aptitude Test is mandatory.\r": "Для спецслужбы Orwell прохождение теста обязательно.\r",
+  "Drag and drop one of the conflicted Datachunks into the answer sheet on the left of the screen. Note you can only pick one and that your choice is permanent.\r": "Перетащите один из блоков данных в лист ответов слева. Можно выбрать только один, выбор окончателен.\r",
+  "Drag and drop Datachunks into the answer sheet on the left of the screen. Note that your choices are permanent.\r": "Перетащите блоки данных в лист ответов в левой части экрана. Ваш выбор будет окончательным.\r",
+  "Drag and drop at least one of the highlighted statements (\u201cDatachunks\u201d) into the answer sheet on the left of the screen. Note that your choices are permanent.\r": "Перетащите выделенные утверждения (\u201cблоки данных\u201d) в лист ответов слева. Выбор окончателен.\r",
+  "Given the choice, would you prefer to have your medical record or your dating profile investigated?\r": "Что бы вы предпочли: проверку медкарты или профиля знакомств?\r",
+  "Which of the following statements are true to your attitude?\r": "Какие утверждения соответствуют вашей позиции?\r",
+  "Which of the following statements do you consider to be true, if any?\r": "Какие утверждения вы считаете верными?\r",
+  "Which information from your dating profile would you give to an investigator willingly?\r": "Что из профиля знакомств вы бы предоставили следователю?\r",
+  "Which of the following persons do you consider likely of having committed a crime?\r": "Кого из этих лиц вы считаете вероятным преступником?\r",
+  "Your best friend boasts about having been accepted into Orwell. Since you are working for Orwell yourself, you know that talking about your job is punishable by imprisonment.\r": "Ваш друг хвастается, что его приняли в Orwell. Вы тоже работаете в Orwell и знаете, что разглашение карается заключением.\r",
+  "Which information from your medical profile would you give to an investigator willingly?\r": "Что из медкарты вы бы предоставили следователю?\r",
+  "Confronted with the situation below, which action would you take?\r": "Как бы вы поступили в данной ситуации?\r",
+  "The Office doesn't like to be lied to. We see through your pitiful attempt to give favorable statements to become accepted. Admit your mistake and you will be given another chance.\r": "Управление не терпит лжи. Мы видим вашу попытку давать выгодные ответы. Признайте ошибку — и получите ещё один шанс.\r",
+  "The Office has rejected you as an agent for special duty due to your answers in the Aptitude Test. But if you ask for it, the test shall be reset and you will be given another chance.\r": "Управление отклонило вас из-за ответов в тесте. Попросите — и вам дадут ещё один шанс.\r"
+}

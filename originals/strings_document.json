@@ -1,0 +1,347 @@
+[
+  {
+    "id": "1021_100",
+    "path_id": 1021,
+    "offset": 100,
+    "byte_length": 39,
+    "padding": 1,
+    "category": "document",
+    "original": "New bookmark: Raban's Immigration entry",
+    "translation": ""
+  },
+  {
+    "id": "1021_336",
+    "path_id": 1021,
+    "offset": 336,
+    "byte_length": 29,
+    "padding": 3,
+    "category": "document",
+    "original": "National immigration database",
+    "translation": "",
+    "duplicate_ids": [
+      "1990_332"
+    ]
+  },
+  {
+    "id": "1055_172",
+    "path_id": 1055,
+    "offset": 172,
+    "byte_length": 10,
+    "padding": 2,
+    "category": "document",
+    "original": "Report in!",
+    "translation": "",
+    "duplicate_ids": [
+      "1063_172",
+      "4554_172",
+      "4561_172"
+    ]
+  },
+  {
+    "id": "1064_168",
+    "path_id": 1064,
+    "offset": 168,
+    "byte_length": 35,
+    "padding": 1,
+    "category": "document",
+    "original": "Echo 1 reporting. Come in, Command.",
+    "translation": ""
+  },
+  {
+    "id": "1229_152",
+    "path_id": 1229,
+    "offset": 152,
+    "byte_length": 104,
+    "padding": 0,
+    "category": "document",
+    "original": "Damn it. I'll have to assume this shows disloyalty towards us. Otherwise he would have reported that in.",
+    "translation": ""
+  },
+  {
+    "id": "1284_144",
+    "path_id": 1284,
+    "offset": 144,
+    "byte_length": 80,
+    "padding": 0,
+    "category": "document",
+    "original": "Orwell reports you have removed the encryption from Bakay's device. Open sesame.",
+    "translation": ""
+  },
+  {
+    "id": "1473_96",
+    "path_id": 1473,
+    "offset": 96,
+    "byte_length": 35,
+    "padding": 1,
+    "category": "document",
+    "original": "Datachunk: Raban's immigration date",
+    "translation": ""
+  },
+  {
+    "id": "1474_96",
+    "path_id": 1474,
+    "offset": 96,
+    "byte_length": 36,
+    "padding": 0,
+    "category": "document",
+    "original": "Datachunk: Raban's immigration image",
+    "translation": "",
+    "duplicate_ids": [
+      "2620_96"
+    ]
+  },
+  {
+    "id": "1494_92",
+    "path_id": 1494,
+    "offset": 92,
+    "byte_length": 23,
+    "padding": 1,
+    "category": "document",
+    "original": "Debriefing: Immigration",
+    "translation": ""
+  },
+  {
+    "id": "1527_79",
+    "path_id": 1527,
+    "offset": 79,
+    "byte_length": 37,
+    "padding": 3,
+    "category": "document",
+    "original": "\u0000)\u0000\u0000\u0000NewTickerReportState (Ticker New",
+    "translation": ""
+  },
+  {
+    "id": "1726_92",
+    "path_id": 1726,
+    "offset": 92,
+    "byte_length": 32,
+    "padding": 0,
+    "category": "document",
+    "original": "Update: Raban's immigration date",
+    "translation": ""
+  },
+  {
+    "id": "1727_96",
+    "path_id": 1727,
+    "offset": 96,
+    "byte_length": 33,
+    "padding": 3,
+    "category": "document",
+    "original": "Update: Raban's immigration image",
+    "translation": "",
+    "duplicate_ids": [
+      "3006_96"
+    ]
+  },
+  {
+    "id": "1976_4428",
+    "path_id": 1976,
+    "offset": 4428,
+    "byte_length": 790,
+    "padding": 2,
+    "category": "document",
+    "original": "<d target=\"data_karen_therapyalias\">Counseling page title: Open Soteria</d>\r\n<el>\r\nTagline: A place for everyone.\r\n<el>\r\n---\r\n<el>\r\nWelcome text: I'm glad you found my website. I am a professional psychotherapist with a degree in Psychology and Medicine. I offer advice, mentoring and support for victims of armed conflict, especially war escapees and refugees. Send me a personal message if you would like to talk about your experiences.\r\n<el>\r\n---\r\n<el>\r\nBlog: It always helps to see that you are not alone with your experiences and feelings, knowing that others are struggling with similar issues. Read personal stories of people who contacted me here.\r\n<el>\r\nAll names mentioned below have been changed. All stories are published anonymously and with the consent of the people affected.",
+    "translation": ""
+  },
+  {
+    "id": "1990_100",
+    "path_id": 1990,
+    "offset": 100,
+    "byte_length": 39,
+    "padding": 1,
+    "category": "document",
+    "original": "New bookmark: Immigration record - Ilya",
+    "translation": ""
+  },
+  {
+    "id": "2256_152",
+    "path_id": 2256,
+    "offset": 152,
+    "byte_length": 70,
+    "padding": 2,
+    "category": "document",
+    "original": "Report anything that seems fishy about this veteran to me immediately.",
+    "translation": ""
+  },
+  {
+    "id": "2328_156",
+    "path_id": 2328,
+    "offset": 156,
+    "byte_length": 63,
+    "padding": 1,
+    "category": "document",
+    "original": "You don't need to. Thank you for your report. You're dismissed.",
+    "translation": ""
+  },
+  {
+    "id": "2353_156",
+    "path_id": 2353,
+    "offset": 156,
+    "byte_length": 74,
+    "padding": 2,
+    "category": "document",
+    "original": "What the hell happened?! I have... reports... of an explosion at the mall!",
+    "translation": ""
+  },
+  {
+    "id": "2356_156",
+    "path_id": 2356,
+    "offset": 156,
+    "byte_length": 122,
+    "padding": 2,
+    "category": "document",
+    "original": "Wait. That's not the team I dispatched! Who took Karen into custody? Our team is reporting that they are still on route...",
+    "translation": ""
+  },
+  {
+    "id": "2564_96",
+    "path_id": 2564,
+    "offset": 96,
+    "byte_length": 35,
+    "padding": 1,
+    "category": "document",
+    "original": "Datachunk: Ilya's immigration photo",
+    "translation": "",
+    "duplicate_ids": [
+      "2866_96"
+    ]
+  },
+  {
+    "id": "3294_3372",
+    "path_id": 3294,
+    "offset": 3372,
+    "byte_length": 12,
+    "padding": 0,
+    "category": "document",
+    "original": "Raban Report",
+    "translation": "",
+    "duplicate_ids": [
+      "3306_2664"
+    ]
+  },
+  {
+    "id": "3294_3412",
+    "path_id": 3294,
+    "offset": 3412,
+    "byte_length": 2686,
+    "padding": 2,
+    "category": "document",
+    "original": "<i target=\"image_social_logo\"></i>\r\n\r\nrehabilitation council\r\n\r\nPSYCHOLOGICAL REPORT - FINAL REPORT\r\n\r\nReport No. 536/W783\r\n\r\nDate\r\n\r\nOctober 10, 2012\r\n\r\nIssuing facility\r\n\r\nBonton Rehab Council\r\n\r\nAuthor (psychotherapist)\r\n\r\nKaren Levine\r\n\r\nPatient ID\r\n\r\nPR-34207\r\n\r\nPatient name\r\n\r\nRaban Vhart\r\n\r\nPatient date of birth\r\n\r\nAugust 15, 1972\r\n\r\nPrescribed therapy\r\n\r\nWeekly counseling in 2-hour-sessions\r\n\r\nI. AUTHOR\r\n<el>\r\nI am Karen Levine and have been working for Bonton Rehab as a clinical psychologist since February 2010. My specialist field is psychological trauma. Full details of my qualifications, and project history will be provided separately by my employer, the Bonton Rehab Council. \r\n\r\nII. PATIENT HISTORY\r\n<el>\r\nThe patient is a Pargesian refugee whom I have been treating since February, 2011. The patient was assigned to Outer Bonton Reception Camp, where he was treated for symptoms of PTSD. Traumatic events and severe injury that caused the patient to lose his ability to walk in his home country, coupled with his recent immigration to The Nation are the major contributing factors. \r\n\r\nIII. THERAPY PROGRESSION\r\n<el>\r\n<d target=\"data_raban_apathetic\">The patient was initially very unresponsive and reclusive, even apathetic in therapy sessions.</d> Occasionally, the patient would even switch to a rather aggressive tone, when I pushed too much towards him revealing details about his experiences and emotional state. This is probably due to the difficult conditions of living in the refugee encampment for an extensive amount of time, which is very much in conflict with the patients personality valuing strong individuality.\r\n<el>\r\n<d target=\"data_raban_happier\">Around the summer of 2012, the patient went through a sudden change. He seemed to become more outgoing, happier and willing to talk more</d>, though was still trying to keep conversations superficial. Throughout the sessions, the patient has been opening up more and more, and I feel like we have been making tremendous progress. In addition, the patient also seemed to much more appreciated by fellow camp residents. As of writing this, I am unsure whether to attribute the change to the effects of the therapy or to external factors.\r\n\r\nIV. THERAPIST'S RECOMMENDATION\r\n<el>\r\nAlthough the patient seems to have made a lot of progress during the past months, <d target=\"data_karen_watchingraban\">I strongly recommend to extend therapy and would like to keep him under close observation personally</d> to ensure the progress achieved by the patient so far continues, and to determine the exact cause of the change in personality. I will therefore file a request for extending therapy by six months.",
+    "translation": "",
+    "duplicate_ids": [
+      "3306_2704"
+    ]
+  },
+  {
+    "id": "3294_6164",
+    "path_id": 3294,
+    "offset": 6164,
+    "byte_length": 11,
+    "padding": 1,
+    "category": "document",
+    "original": "Ilya Report",
+    "translation": "",
+    "duplicate_ids": [
+      "3306_5456"
+    ]
+  },
+  {
+    "id": "3294_6204",
+    "path_id": 3294,
+    "offset": 6204,
+    "byte_length": 2233,
+    "padding": 3,
+    "category": "document",
+    "original": "<i target=\"image_social_logo\"></i>\r\n\r\nrehabilitation council\r\n\r\nPSYCHOLOGICAL REPORT - FINAL REPORT\r\n\r\nReport No. 547/W798\r\n\r\nDate\r\n\r\nOctober 10, 2012\r\n\r\nIssuing facility\r\n\r\nBonton Rehab Council\r\n\r\nAuthor (psychotherapist)\r\n\r\nKaren Levine\r\n\r\nPatient ID\r\n\r\nPR-28529\r\n\r\nPatient name\r\n\r\nIlya Vhart\r\n\r\nPatient date of birth\r\n\r\nMay 18, 1983\r\n\r\nPrescribed therapy\r\n\r\nWeekly counseling in 2-hour-sessions\r\n\r\nI. AUTHOR\r\n<el>\r\nI am Karen Levine and have been working for Bonton Rehab as a clinical psychologist since February 2010. My specialist field is psychological trauma. Full details of my qualifications, and project history will be provided separately by my employer, the Bonton Rehab Council. \r\n\r\nII. PATIENT HISTORY\r\n<el>\r\nThe patient immigrated to The Nation in February 2011 as a Pargesian refugee after his brother was involved in a school bombing, losing his ability to walk. I have known and treated the patient since that time.\r\n\r\nIII. THERAPY PROGRESSION\r\n<el>\r\nWhile being very shy and unwilling to talk about details of his experiences for several weeks at the beginning of therapy, the patient has slowly become more outgoing and open after several sessions. <d target=\"data_ilya_optimistic\">His optimism and overall social and friendly character, as well as a tendency to look at the bright side of things</d> has helped him a lot to get through the psychological trauma of the hardships he and his brother faced back in Parges.\r\n<el>\r\nAs the patient slowly opened up, <d target=\"data_ilya_volunteeredforarmy\">he especially emphasized his 'heroic escape from military service in Parges' at multiple occasions.</d> He also seemed to become more and more interested in myself and my private life, making it difficult for me to maintain my professional distance as a therapist.\r\n<el>\r\nI also talked to him about his brother and his increasingly reclusive behavior, urging Ilya to assist his disabled brother.\r\n\r\nIV. THERAPIST'S RECOMMENDATION\r\n<el>\r\nThe therapy is regarded as successful and I am happy to dismiss my patient as largely recovered from his symptoms. However, I feel that it would be very important for him and his brother to leave the refugee camp as soon as possible in order to maintain their mental health.",
+    "translation": "",
+    "duplicate_ids": [
+      "3306_5496"
+    ]
+  },
+  {
+    "id": "3298_4664",
+    "path_id": 3298,
+    "offset": 4664,
+    "byte_length": 30,
+    "padding": 2,
+    "category": "document",
+    "original": "Your e-ticket wallet is empty.",
+    "translation": "",
+    "duplicate_ids": [
+      "3301_788"
+    ]
+  },
+  {
+    "id": "3301_235",
+    "path_id": 3301,
+    "offset": 235,
+    "byte_length": 256,
+    "padding": 0,
+    "category": "document",
+    "original": "\u0000\u0012\u0000\u0000\u0000insider_ilyasphone\u0000\u0000\u001a\u0000\u0000\u0000insider_ilyasphone_eticket\u0000\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000\b\u0000\u0000\u0000E Ticket\f\u0000\u0000\u0000Ilya's Phone\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000G\u0001\u0000\u0000Trans-National Express\r\n\r\ne-ticket\r\n\r\nYour booking number\r\n\r\n9536GS243-77\r\n\r\n<d target=\"data_ilya_boughtticket\">1 ADULT\r\nTicket type: one way Bonton tr",
+    "translation": "",
+    "duplicate_ids": [
+      "3308_683"
+    ]
+  },
+  {
+    "id": "3307_108",
+    "path_id": 3307,
+    "offset": 108,
+    "byte_length": 39,
+    "padding": 1,
+    "category": "document",
+    "original": "Insider document update: Karen's Report",
+    "translation": ""
+  },
+  {
+    "id": "3307_199",
+    "path_id": 3307,
+    "offset": 199,
+    "byte_length": 256,
+    "padding": 0,
+    "category": "document",
+    "original": "\u0000\u0010\u0000\u0000\u0000insider_karenspc\u001b\u0000\u0000\u0000insider_karenspc_ninareport\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000b\u0000\u0000\u0000Nina Report\u0000\n\u0000\u0000\u0000Karen's PC\u0000\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000M\f\u0000\u0000<i target=\"image_social_logo\"></i>\r\n\r\nrehabilitation council\r\n\r\nPSYCHOLOGICAL REPORT - FINAL REPORT\r\n\r\nReport No. 656/W963\r\n\r\nDate\r\n\r\nApril 15, 2017\r\n\r",
+    "translation": ""
+  },
+  {
+    "id": "3308_223",
+    "path_id": 3308,
+    "offset": 223,
+    "byte_length": 256,
+    "padding": 0,
+    "category": "document",
+    "original": "\u0000\u0012\u0000\u0000\u0000insider_ilyasphone\u0000\u0000 \u0000\u0000\u0000insider_ilyasphone_eticketupdate\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0011\u0000\u0000\u0000E Ticket (Update)\u0000\u0000\u0000\f\u0000\u0000\u0000Ilya's Phone\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000O\u0001\u0000\u0000Trans-National Express\r\n\r\ne-ticket\r\n\r\nYour booking number\r\n\r\n9536GS243-77\r\n\r\n<d target=\"data_ilya_boughttwotickets\">2 ADULTS\r\nTicket ty",
+    "translation": ""
+  },
+  {
+    "id": "3598_152",
+    "path_id": 3598,
+    "offset": 152,
+    "byte_length": 83,
+    "padding": 1,
+    "category": "document",
+    "original": "I figure we need to... check on him once more. Good of you to report this in to me.",
+    "translation": ""
+  },
+  {
+    "id": "4374_268",
+    "path_id": 4374,
+    "offset": 268,
+    "byte_length": 105,
+    "padding": 3,
+    "category": "document",
+    "original": "was aware that {CHAR_NINA} was behaving abnormally prior to the Bonton Bombings, but did not report on it",
+    "translation": ""
+  },
+  {
+    "id": "4562_168",
+    "path_id": 4562,
+    "offset": 168,
+    "byte_length": 38,
+    "padding": 2,
+    "category": "document",
+    "original": "Echo 1 reporting in. Come in, Command.",
+    "translation": ""
+  }
+]

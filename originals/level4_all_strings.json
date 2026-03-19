@@ -1,0 +1,3390 @@
+{
+  "source_file": "C:\\Projects\\OrwellRU\\backup\\level4",
+  "unity_version": "5.6.3f1",
+  "file_size": 270952,
+  "total_objects": 1505,
+  "objects_with_text": 171,
+  "total_strings": 263,
+  "objects": {
+    "5": {
+      "path_id": 5,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 63,
+      "offset_in_file": 34736,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Tooltip Text"
+        }
+      ]
+    },
+    "8": {
+      "path_id": 8,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 34952,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category6"
+        }
+      ]
+    },
+    "18": {
+      "path_id": 18,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 35728,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "21": {
+      "path_id": 21,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 239,
+      "offset_in_file": 36000,
+      "strings": [
+        {
+          "offset": 128,
+          "byte_length": 101,
+          "padding": 3,
+          "total_slot": 108,
+          "text": "txt_ (chunks: 'data_task_dickmove, data_task_warnfriend, data_task_ignorance, data_task_nothingtodo')"
+        }
+      ]
+    },
+    "33": {
+      "path_id": 33,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 115,
+      "offset_in_file": 36968,
+      "strings": [
+        {
+          "offset": 68,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "grey_out_everything_but_evaluation (1)"
+        }
+      ]
+    },
+    "39": {
+      "path_id": 39,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 95,
+      "offset_in_file": 37456,
+      "strings": [
+        {
+          "offset": 68,
+          "byte_length": 20,
+          "padding": 0,
+          "total_slot": 24,
+          "text": "Toggle Ignore Button"
+        }
+      ]
+    },
+    "43": {
+      "path_id": 43,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 37784,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "45": {
+      "path_id": 45,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 55,
+      "offset_in_file": 38088,
+      "strings": [
+        {
+          "offset": 32,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Event Manager"
+        }
+      ]
+    },
+    "47": {
+      "path_id": 47,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 38208,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "55": {
+      "path_id": 55,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 38800,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "57": {
+      "path_id": 57,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 38992,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category2"
+        }
+      ]
+    },
+    "61": {
+      "path_id": 61,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 83,
+      "offset_in_file": 39336,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Content Bookmarks"
+        }
+      ]
+    },
+    "64": {
+      "path_id": 64,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 39584,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "66": {
+      "path_id": 66,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 39888,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category5"
+        }
+      ]
+    },
+    "68": {
+      "path_id": 68,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 283,
+      "offset_in_file": 40016,
+      "strings": [
+        {
+          "offset": 140,
+          "byte_length": 134,
+          "padding": 2,
+          "total_slot": 140,
+          "text": "txt_ (chunks: 'data_task_unjustlaw, data_task_lying, data_task_understandpov, data_task_governmentauthority, data_task_absolutetruth')"
+        }
+      ]
+    },
+    "71": {
+      "path_id": 71,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 40456,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "75": {
+      "path_id": 75,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 55,
+      "offset_in_file": 40832,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "Profiler_relationshipfinder"
+        }
+      ]
+    },
+    "81": {
+      "path_id": 81,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 41232,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "95": {
+      "path_id": 95,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 63,
+      "offset_in_file": 42224,
+      "strings": [
+        {
+          "offset": 32,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Profiler_fade_animator"
+        }
+      ]
+    },
+    "101": {
+      "path_id": 101,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 179,
+      "offset_in_file": 42624,
+      "strings": [
+        {
+          "offset": 104,
+          "byte_length": 66,
+          "padding": 2,
+          "total_slot": 72,
+          "text": "txt_ (chunks: 'data_task_medicalprofile, data_task_datingprofile')"
+        }
+      ]
+    },
+    "102": {
+      "path_id": 102,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 43,
+      "offset_in_file": 42808,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Content Websites"
+        }
+      ]
+    },
+    "103": {
+      "path_id": 103,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 63,
+      "offset_in_file": 42856,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 11,
+          "padding": 1,
+          "total_slot": 16,
+          "text": "orwell file"
+        }
+      ]
+    },
+    "111": {
+      "path_id": 111,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 43496,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "112": {
+      "path_id": 112,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 43616,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "115": {
+      "path_id": 115,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 39,
+      "offset_in_file": 43880,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Sliding Area"
+        }
+      ]
+    },
+    "122": {
+      "path_id": 122,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 115,
+      "offset_in_file": 44320,
+      "strings": [
+        {
+          "offset": 68,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "profiler_conflicting_dataChunk_overlay"
+        }
+      ]
+    },
+    "125": {
+      "path_id": 125,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 99,
+      "offset_in_file": 44624,
+      "strings": [
+        {
+          "offset": 68,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Swipe Tabbed Presenter"
+        }
+      ]
+    },
+    "126": {
+      "path_id": 126,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 51,
+      "offset_in_file": 44728,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "Profile Image Manager"
+        }
+      ]
+    },
+    "128": {
+      "path_id": 128,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 44864,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "129": {
+      "path_id": 129,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 44992,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "137": {
+      "path_id": 137,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 45584,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "138": {
+      "path_id": 138,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 171,
+      "offset_in_file": 45712,
+      "strings": [
+        {
+          "offset": 104,
+          "byte_length": 58,
+          "padding": 2,
+          "total_slot": 64,
+          "text": "txt_ (chunks: 'data_task_favorable, data_task_truthfully')"
+        }
+      ]
+    },
+    "139": {
+      "path_id": 139,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 45888,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "143": {
+      "path_id": 143,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 46192,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category7"
+        }
+      ]
+    },
+    "146": {
+      "path_id": 146,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 46400,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "149": {
+      "path_id": 149,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 46640,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "152": {
+      "path_id": 152,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 46880,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category5 (1)"
+        }
+      ]
+    },
+    "161": {
+      "path_id": 161,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 47520,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "164": {
+      "path_id": 164,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 47768,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category1"
+        }
+      ]
+    },
+    "168": {
+      "path_id": 168,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 48064,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "169": {
+      "path_id": 169,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 48192,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category4"
+        }
+      ]
+    },
+    "172": {
+      "path_id": 172,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 48392,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "177": {
+      "path_id": 177,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 48784,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category6 (1)"
+        }
+      ]
+    },
+    "180": {
+      "path_id": 180,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 91,
+      "offset_in_file": 48992,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 25,
+          "padding": 3,
+          "total_slot": 32,
+          "text": "Unknown Person Name Label"
+        }
+      ]
+    },
+    "181": {
+      "path_id": 181,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 49088,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category1 (1)"
+        }
+      ]
+    },
+    "184": {
+      "path_id": 184,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 51,
+      "offset_in_file": 49280,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "Overlays (order matters)"
+        }
+      ]
+    },
+    "195": {
+      "path_id": 195,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 39,
+      "offset_in_file": 50096,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Sliding Area"
+        }
+      ]
+    },
+    "198": {
+      "path_id": 198,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 39,
+      "offset_in_file": 50280,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Sliding Area"
+        }
+      ]
+    },
+    "201": {
+      "path_id": 201,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 50456,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "ibtn_profiler_category3"
+        }
+      ]
+    },
+    "202": {
+      "path_id": 202,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 47,
+      "offset_in_file": 50544,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 19,
+          "padding": 1,
+          "total_slot": 24,
+          "text": "Update Drop Tooltip"
+        }
+      ]
+    },
+    "210": {
+      "path_id": 210,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 51024,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "212": {
+      "path_id": 212,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 51208,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "213": {
+      "path_id": 213,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 291,
+      "offset_in_file": 51328,
+      "strings": [
+        {
+          "offset": 140,
+          "byte_length": 144,
+          "padding": 0,
+          "total_slot": 148,
+          "text": "txt_ (chunks: 'data_task_registration, data_task_durationrelationship, data_task_sexual, data_task_personschatted, data_task_sexualpreferences')"
+        }
+      ]
+    },
+    "216": {
+      "path_id": 216,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 51760,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category3 (1)"
+        }
+      ]
+    },
+    "220": {
+      "path_id": 220,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 52136,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "221": {
+      "path_id": 221,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 52256,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "222": {
+      "path_id": 222,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 52384,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "225": {
+      "path_id": 225,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 52648,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "231": {
+      "path_id": 231,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 67,
+      "offset_in_file": 53104,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Online Presences"
+        }
+      ]
+    },
+    "232": {
+      "path_id": 232,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 43,
+      "offset_in_file": 53176,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 15,
+          "padding": 1,
+          "total_slot": 20,
+          "text": "Game Controller"
+        }
+      ]
+    },
+    "233": {
+      "path_id": 233,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 55,
+      "offset_in_file": 53224,
+      "strings": [
+        {
+          "offset": 32,
+          "byte_length": 14,
+          "padding": 2,
+          "total_slot": 20,
+          "text": "Window Manager"
+        }
+      ]
+    },
+    "236": {
+      "path_id": 236,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 53400,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "237": {
+      "path_id": 237,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 53528,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "238": {
+      "path_id": 238,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 53656,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "240": {
+      "path_id": 240,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 75,
+      "offset_in_file": 53856,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 10,
+          "padding": 2,
+          "total_slot": 16,
+          "text": "Name Label"
+        }
+      ]
+    },
+    "245": {
+      "path_id": 245,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 54240,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "248": {
+      "path_id": 248,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 111,
+      "offset_in_file": 54520,
+      "strings": [
+        {
+          "offset": 68,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "profiler_upload_dataChunk_overlay"
+        }
+      ]
+    },
+    "249": {
+      "path_id": 249,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 54632,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category2 (1)"
+        }
+      ]
+    },
+    "252": {
+      "path_id": 252,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 54952,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "253": {
+      "path_id": 253,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 59,
+      "offset_in_file": 55080,
+      "strings": [
+        {
+          "offset": 32,
+          "byte_length": 18,
+          "padding": 2,
+          "total_slot": 24,
+          "text": "Resolution Manager"
+        }
+      ]
+    },
+    "255": {
+      "path_id": 255,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 55264,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category7 (1)"
+        }
+      ]
+    },
+    "256": {
+      "path_id": 256,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 39,
+      "offset_in_file": 55344,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Sliding Area"
+        }
+      ]
+    },
+    "258": {
+      "path_id": 258,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 55456,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "265": {
+      "path_id": 265,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 167,
+      "offset_in_file": 55984,
+      "strings": [
+        {
+          "offset": 104,
+          "byte_length": 55,
+          "padding": 1,
+          "total_slot": 60,
+          "text": "txt_ (chunks: 'data_task_wrongfully, data_task_accept')"
+        }
+      ]
+    },
+    "267": {
+      "path_id": 267,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 56216,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "268": {
+      "path_id": 268,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 119,
+      "offset_in_file": 56336,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 67,
+          "padding": 1,
+          "total_slot": 72,
+          "text": "TMP SubMeshUI [Ubuntu-Bold SDF Material + LiberationSans SDF Atlas]"
+        }
+      ]
+    },
+    "269": {
+      "path_id": 269,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 95,
+      "offset_in_file": 56456,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 32,
+          "padding": 0,
+          "total_slot": 36,
+          "text": "Camera (TMP needs _screenParams)"
+        }
+      ]
+    },
+    "270": {
+      "path_id": 270,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 75,
+      "offset_in_file": 56552,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 10,
+          "padding": 2,
+          "total_slot": 16,
+          "text": "Website En"
+        }
+      ]
+    },
+    "276": {
+      "path_id": 276,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 56992,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "279": {
+      "path_id": 279,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 67,
+      "offset_in_file": 57304,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Import Canvas"
+        }
+      ]
+    },
+    "281": {
+      "path_id": 281,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 57448,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "282": {
+      "path_id": 282,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 39,
+      "offset_in_file": 57576,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Sliding Area"
+        }
+      ]
+    },
+    "285": {
+      "path_id": 285,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 59,
+      "offset_in_file": 57736,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 29,
+          "padding": 3,
+          "total_slot": 36,
+          "text": "Datachunk evaluation overlays"
+        }
+      ]
+    },
+    "286": {
+      "path_id": 286,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 57800,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "289": {
+      "path_id": 289,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 58072,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "291": {
+      "path_id": 291,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 58256,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "294": {
+      "path_id": 294,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 75,
+      "offset_in_file": 58528,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "txt_profiler_profile (1)"
+        }
+      ]
+    },
+    "296": {
+      "path_id": 296,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 283,
+      "offset_in_file": 58688,
+      "strings": [
+        {
+          "offset": 140,
+          "byte_length": 136,
+          "padding": 0,
+          "total_slot": 140,
+          "text": "txt_ (chunks: 'data_task_securitypioneer, data_task_safernation, data_task_spyingpeople, data_task_protectpeople, data_task_moneymoney')"
+        }
+      ]
+    },
+    "298": {
+      "path_id": 298,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 123,
+      "offset_in_file": 59048,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 33,
+          "padding": 3,
+          "total_slot": 40,
+          "text": "chunk box normal ignorance(Clone)"
+        }
+      ]
+    },
+    "300": {
+      "path_id": 300,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 79,
+      "offset_in_file": 59264,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 27,
+          "padding": 1,
+          "total_slot": 32,
+          "text": "ibtn_profiler_category4 (1)"
+        }
+      ]
+    },
+    "301": {
+      "path_id": 301,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 59344,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "304": {
+      "path_id": 304,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 75,
+      "offset_in_file": 59640,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Profiler Category Line"
+        }
+      ]
+    },
+    "306": {
+      "path_id": 306,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 87,
+      "offset_in_file": 59792,
+      "strings": [
+        {
+          "offset": 56,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Swipe Tabbed Presenter"
+        }
+      ]
+    },
+    "310": {
+      "path_id": 310,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 39,
+      "offset_in_file": 60104,
+      "strings": [
+        {
+          "offset": 20,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Sliding Area"
+        }
+      ]
+    },
+    "312": {
+      "path_id": 312,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 267,
+      "offset_in_file": 60200,
+      "strings": [
+        {
+          "offset": 140,
+          "byte_length": 117,
+          "padding": 3,
+          "total_slot": 124,
+          "text": "txt_ (chunks: 'data_task_size, data_task_fitness, data_task_prescriptions, data_task_conditions, data_task_fullbody')"
+        }
+      ]
+    },
+    "316": {
+      "path_id": 316,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 60744,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "317": {
+      "path_id": 317,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 127,
+      "offset_in_file": 60872,
+      "strings": [
+        {
+          "offset": 80,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "chunk box conflicting ignorance(Clone)"
+        }
+      ]
+    },
+    "318": {
+      "path_id": 318,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 75,
+      "offset_in_file": 61000,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "listener_scrollbar (1)"
+        }
+      ]
+    },
+    "322": {
+      "path_id": 322,
+      "class_id": 1,
+      "class_name": "GameObject",
+      "object_size": 75,
+      "offset_in_file": 61344,
+      "strings": [
+        {
+          "offset": 44,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "txt_profiler_profile (1)"
+        }
+      ]
+    },
+    "949": {
+      "path_id": 949,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 776,
+      "offset_in_file": 107440,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 18,
+          "padding": 2,
+          "total_slot": 24,
+          "text": "kitty@meowmeow.com"
+        }
+      ]
+    },
+    "950": {
+      "path_id": 950,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 780,
+      "offset_in_file": 108216,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "INSUFFICIENT RESULTS\r"
+        }
+      ]
+    },
+    "952": {
+      "path_id": 952,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 109760,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 7,
+          "padding": 1,
+          "total_slot": 12,
+          "text": "Task 5\r"
+        }
+      ]
+    },
+    "953": {
+      "path_id": 953,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 992,
+      "offset_in_file": 110528,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 236,
+          "padding": 0,
+          "total_slot": 240,
+          "text": "The test requires you to complete a set of tasks. Follow the on-screen instructions carefully and answer truthfully to the best of your beliefs.\r\n \r\nNote that an insufficient test result will disqualify you for special duty permanently."
+        }
+      ]
+    },
+    "954": {
+      "path_id": 954,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 1336,
+      "offset_in_file": 111520,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 577,
+          "padding": 3,
+          "total_slot": 584,
+          "text": "<link=\"data_task_dickmove\"><color=#FFFFFF>· Without saying anything to my friend, I inform the National authorities at the next possibility.</color></link>\r\n<link=\"data_task_warnfriend\"><color=#FFFFFF>· I warn my friend I am working for Orwell, too, and that I will have to inform the authorities if this continues.</color></link>\r\n<link=\"data_task_ignorance\"><color=#FFFFFF>· I feign ignorance, but hint my friend talking about such a delicate job might not be advisable.</color></link>\r\n<link=\"data_task_nothingtodo\"><color=#FFFFFF>· I do nothing about it.</color></link>"
+        }
+      ]
+    },
+    "955": {
+      "path_id": 955,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 856,
+      "offset_in_file": 112856,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 100,
+          "padding": 0,
+          "total_slot": 104,
+          "text": "Given the choice, would you prefer to have your medical record or your dating profile investigated?\r"
+        }
+      ]
+    },
+    "956": {
+      "path_id": 956,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 772,
+      "offset_in_file": 113712,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Operating System"
+        }
+      ]
+    },
+    "957": {
+      "path_id": 957,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 916,
+      "offset_in_file": 114488,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 158,
+          "padding": 2,
+          "total_slot": 164,
+          "text": "Drag and drop one of the conflicted Datachunks into the answer sheet on the left of the screen. Note you can only pick one and that your choice is permanent.\r"
+        }
+      ]
+    },
+    "958": {
+      "path_id": 958,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 820,
+      "offset_in_file": 115408,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 61,
+          "padding": 3,
+          "total_slot": 68,
+          "text": "Which of the following statements are true to your attitude?\r"
+        }
+      ]
+    },
+    "959": {
+      "path_id": 959,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 116232,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 11,
+          "padding": 1,
+          "total_slot": 16,
+          "text": "Send Answer"
+        }
+      ]
+    },
+    "960": {
+      "path_id": 960,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 117000,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 7,
+          "padding": 1,
+          "total_slot": 12,
+          "text": "Task 4\r"
+        }
+      ]
+    },
+    "961": {
+      "path_id": 961,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 117768,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 9,
+          "padding": 3,
+          "total_slot": 16,
+          "text": "THANK YOU"
+        }
+      ]
+    },
+    "962": {
+      "path_id": 962,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 828,
+      "offset_in_file": 118536,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 70,
+          "padding": 2,
+          "total_slot": 76,
+          "text": "Which of the following statements do you consider to be true, if any?\r"
+        }
+      ]
+    },
+    "963": {
+      "path_id": 963,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 772,
+      "offset_in_file": 119368,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 14,
+          "padding": 2,
+          "total_slot": 20,
+          "text": "APTITUDE TEST\r"
+        }
+      ]
+    },
+    "964": {
+      "path_id": 964,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 1292,
+      "offset_in_file": 120144,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 533,
+          "padding": 3,
+          "total_slot": 540,
+          "text": "<link=\"data_task_unjustlaw\"><color=#FFFFFF>· An unjust law can and should be violated.</color></link>\r\n<link=\"data_task_lying\"><color=#FFFFFF>· There is no such thing as a justified lie.</color></link>\r\n<link=\"data_task_understandpov\"><color=#FFFFFF>· There are two sides to every story.</color></link>\r\n<link=\"data_task_governmentauthority\"><color=#FFFFFF>· A government should safeguard the citizens by any means necessary.</color></link>\r\n<link=\"data_task_absolutetruth\"><color=#FFFFFF>· Absolute truth exists.</color></link>"
+        }
+      ]
+    },
+    "965": {
+      "path_id": 965,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 121440,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 7,
+          "padding": 1,
+          "total_slot": 12,
+          "text": "Task 6\r"
+        }
+      ]
+    },
+    "966": {
+      "path_id": 966,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 122208,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "E-Mail"
+        }
+      ]
+    },
+    "968": {
+      "path_id": 968,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 992,
+      "offset_in_file": 123744,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 235,
+          "padding": 1,
+          "total_slot": 240,
+          "text": "<link=\"data_task_medicalprofile\"><color=#FFFFFF>· I would rather have my medical record investigated.</color></link>\r\n<link=\"data_task_datingprofile\"><color=#FFFFFF>· I would rather have my dating profile investigated.</color></link>"
+        }
+      ]
+    },
+    "969": {
+      "path_id": 969,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 124736,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "Applicant-ID"
+        }
+      ]
+    },
+    "970": {
+      "path_id": 970,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 868,
+      "offset_in_file": 125504,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 112,
+          "padding": 0,
+          "total_slot": 116,
+          "text": "Drag and drop Datachunks into the answer sheet on the left of the screen. Note that your choices are permanent.\r"
+        }
+      ]
+    },
+    "972": {
+      "path_id": 972,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 776,
+      "offset_in_file": 127136,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 18,
+          "padding": 2,
+          "total_slot": 24,
+          "text": "kitty@meowmeow.com"
+        }
+      ]
+    },
+    "973": {
+      "path_id": 973,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 844,
+      "offset_in_file": 127912,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 88,
+          "padding": 0,
+          "total_slot": 92,
+          "text": "Which information from your dating profile would you give to an investigator willingly?\r"
+        }
+      ]
+    },
+    "974": {
+      "path_id": 974,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 824,
+      "offset_in_file": 128760,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 68,
+          "padding": 0,
+          "total_slot": 72,
+          "text": "You failed the Aptitude test! You will be disqualified permanently!\r"
+        }
+      ]
+    },
+    "980": {
+      "path_id": 980,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 988,
+      "offset_in_file": 133424,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 230,
+          "padding": 2,
+          "total_slot": 236,
+          "text": "<link=\"data_task_favorable\"><color=#FFFFFF>· I admit having picked most favorable answers.</color></link>\r\n<link=\"data_task_truthfully\"><color=#FFFFFF>· Your claim is wrong. I answered truthfully during this test.</color></link>"
+        }
+      ]
+    },
+    "981": {
+      "path_id": 981,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 840,
+      "offset_in_file": 134416,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 83,
+          "padding": 1,
+          "total_slot": 88,
+          "text": "Which of the following persons do you consider likely of having committed a crime?\r"
+        }
+      ]
+    },
+    "983": {
+      "path_id": 983,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 136024,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 7,
+          "padding": 1,
+          "total_slot": 12,
+          "text": "Task 2\r"
+        }
+      ]
+    },
+    "984": {
+      "path_id": 984,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 940,
+      "offset_in_file": 136792,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 181,
+          "padding": 3,
+          "total_slot": 188,
+          "text": "The Office doesn't like to be lied to. We see through your pitiful attempt to give favorable statements to become accepted. Admit your mistake and you will be given another chance.\r"
+        }
+      ]
+    },
+    "985": {
+      "path_id": 985,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 868,
+      "offset_in_file": 137736,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 112,
+          "padding": 0,
+          "total_slot": 116,
+          "text": "Drag and drop Datachunks into the answer sheet on the left of the screen. Note that your choices are permanent.\r"
+        }
+      ]
+    },
+    "986": {
+      "path_id": 986,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 868,
+      "offset_in_file": 138608,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 112,
+          "padding": 0,
+          "total_slot": 116,
+          "text": "Drag and drop Datachunks into the answer sheet on the left of the screen. Note that your choices are permanent.\r"
+        }
+      ]
+    },
+    "989": {
+      "path_id": 989,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 141016,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 7,
+          "padding": 1,
+          "total_slot": 12,
+          "text": "Task 3\r"
+        }
+      ]
+    },
+    "990": {
+      "path_id": 990,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 141784,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 8,
+          "padding": 0,
+          "total_slot": 12,
+          "text": "Task 1 \r"
+        }
+      ]
+    },
+    "991": {
+      "path_id": 991,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 940,
+      "offset_in_file": 142552,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 184,
+          "padding": 0,
+          "total_slot": 188,
+          "text": "The Office has rejected you as an agent for special duty due to your answers in the Aptitude Test. But if you ask for it, the test shall be reset and you will be given another chance.\r"
+        }
+      ]
+    },
+    "993": {
+      "path_id": 993,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 784,
+      "offset_in_file": 144256,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 25,
+          "padding": 3,
+          "total_slot": 32,
+          "text": "RELATED\nDOCUMENT(S) FOUND"
+        }
+      ]
+    },
+    "995": {
+      "path_id": 995,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 932,
+      "offset_in_file": 145800,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 175,
+          "padding": 1,
+          "total_slot": 180,
+          "text": "Your best friend boasts about having been accepted into Orwell. Since you are working for Orwell yourself, you know that talking about your job is punishable by imprisonment.\r"
+        }
+      ]
+    },
+    "996": {
+      "path_id": 996,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 146736,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 11,
+          "padding": 1,
+          "total_slot": 16,
+          "text": "Paired with"
+        }
+      ]
+    },
+    "997": {
+      "path_id": 997,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 772,
+      "offset_in_file": 147504,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 14,
+          "padding": 2,
+          "total_slot": 20,
+          "text": "Unknown Person"
+        }
+      ]
+    },
+    "1000": {
+      "path_id": 1000,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 764,
+      "offset_in_file": 149808,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 7,
+          "padding": 1,
+          "total_slot": 12,
+          "text": "Task 5\r"
+        }
+      ]
+    },
+    "1001": {
+      "path_id": 1001,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 848,
+      "offset_in_file": 150576,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 91,
+          "padding": 1,
+          "total_slot": 96,
+          "text": "In order to qualify for special duty within Orwell, taking the Aptitude Test is mandatory.\r"
+        }
+      ]
+    },
+    "1002": {
+      "path_id": 1002,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 1216,
+      "offset_in_file": 151424,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 457,
+          "padding": 3,
+          "total_slot": 464,
+          "text": "<link=\"data_task_registration\"><color=#FFFFFF>· Profile picture</color></link>\r\n<link=\"data_task_durationrelationship\"><color=#FFFFFF>· Duration of last relationship</color></link>\r\n<link=\"data_task_sexual\"><color=#FFFFFF>· Sexual orientation</color></link>\r\n<link=\"data_task_personschatted\"><color=#FFFFFF>· Full transcripts of all chats</color></link>\r\n<link=\"data_task_sexualpreferences\"><color=#FFFFFF>· Sexual preferences and quirks</color></link>"
+        }
+      ]
+    },
+    "1005": {
+      "path_id": 1005,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 844,
+      "offset_in_file": 154168,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 87,
+          "padding": 1,
+          "total_slot": 92,
+          "text": "Not all conflicting datachunks \r\nhave been found yet. \r\nUpload is strongly discouraged."
+        }
+      ]
+    },
+    "1006": {
+      "path_id": 1006,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 784,
+      "offset_in_file": 155016,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 28,
+          "padding": 0,
+          "total_slot": 32,
+          "text": "Carlos Dos santos di domingo"
+        }
+      ]
+    },
+    "1009": {
+      "path_id": 1009,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 157320,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 10,
+          "padding": 2,
+          "total_slot": 16,
+          "text": "Occupation"
+        }
+      ]
+    },
+    "1010": {
+      "path_id": 1010,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 1016,
+      "offset_in_file": 158088,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 258,
+          "padding": 2,
+          "total_slot": 264,
+          "text": "<link=\"data_task_wrongfully\"><color=#FFFFFF>· My choices were poor. Let me redo the test.</color></link>\r\n<link=\"data_task_accept\"><color=#FFFFFF>· I cannot change my answers as they reflect my honest opinions. I accept the disqualification.</color></link>"
+        }
+      ]
+    },
+    "1011": {
+      "path_id": 1011,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 868,
+      "offset_in_file": 159104,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 112,
+          "padding": 0,
+          "total_slot": 116,
+          "text": "Drag and drop Datachunks into the answer sheet on the left of the screen. Note that your choices are permanent.\r"
+        }
+      ]
+    },
+    "1012": {
+      "path_id": 1012,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 780,
+      "offset_in_file": 159976,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "INEXPLICIT INFORMATION"
+        }
+      ]
+    },
+    "1013": {
+      "path_id": 1013,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 160760,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 12,
+          "padding": 0,
+          "total_slot": 16,
+          "text": "DROP HERE TO"
+        }
+      ]
+    },
+    "1014": {
+      "path_id": 1014,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 848,
+      "offset_in_file": 161528,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 89,
+          "padding": 3,
+          "total_slot": 96,
+          "text": "Which information from your medical profile would you give to an investigator willingly?\r"
+        }
+      ]
+    },
+    "1015": {
+      "path_id": 1015,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 920,
+      "offset_in_file": 162376,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 163,
+          "padding": 1,
+          "total_slot": 168,
+          "text": "Drag and drop at least one of the highlighted statements (“Datachunks”) into the answer sheet on the left of the screen. Note that your choices are permanent.\r"
+        }
+      ]
+    },
+    "1016": {
+      "path_id": 1016,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 816,
+      "offset_in_file": 163296,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 59,
+          "padding": 1,
+          "total_slot": 64,
+          "text": "You have been lying! You will be disqualified permanently!\r"
+        }
+      ]
+    },
+    "1017": {
+      "path_id": 1017,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 768,
+      "offset_in_file": 164112,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 9,
+          "padding": 3,
+          "total_slot": 16,
+          "text": "Applicant"
+        }
+      ]
+    },
+    "1018": {
+      "path_id": 1018,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 1268,
+      "offset_in_file": 164880,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 511,
+          "padding": 1,
+          "total_slot": 516,
+          "text": "<link=\"data_task_securitypioneer\"><color=#FFFFFF>· I want to be a pioneer in the most advanced security program.</color></link>\r\n<link=\"data_task_safernation\"><color=#FFFFFF>· I want to make The Nation a safer place.</color></link>\r\n<link=\"data_task_spyingpeople\"><color=#FFFFFF>· I like spying on people.</color></link>\r\n<link=\"data_task_protectpeople\"><color=#FFFFFF>· I want to protect people from harm.</color></link>\r\n<link=\"data_task_moneymoney\"><color=#FFFFFF>· I am in for the money.</color></link>"
+        }
+      ]
+    },
+    "1019": {
+      "path_id": 1019,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 792,
+      "offset_in_file": 166152,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 36,
+          "padding": 0,
+          "total_slot": 40,
+          "text": "kitty@meowmeow.comkitty@meowmeow.com"
+        }
+      ]
+    },
+    "1021": {
+      "path_id": 1021,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 784,
+      "offset_in_file": 167704,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 25,
+          "padding": 3,
+          "total_slot": 32,
+          "text": "kitty@meowmeow.comttttttt"
+        }
+      ]
+    },
+    "1022": {
+      "path_id": 1022,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 772,
+      "offset_in_file": 168488,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Title of Website"
+        }
+      ]
+    },
+    "1023": {
+      "path_id": 1023,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 824,
+      "offset_in_file": 169264,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 66,
+          "padding": 2,
+          "total_slot": 72,
+          "text": "Confronted with the situation below, which action would you take?\r"
+        }
+      ]
+    },
+    "1024": {
+      "path_id": 1024,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 1208,
+      "offset_in_file": 170088,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 452,
+          "padding": 0,
+          "total_slot": 456,
+          "text": "<link=\"data_task_size\"><color=#FFFFFF>· Size and weight</color></link>\r\n<link=\"data_task_fitness\"><color=#FFFFFF>· Current fitness parameters</color></link>\r\n<link=\"data_task_prescriptions\"><color=#FFFFFF>· Active prescriptions</color></link>\r\n<link=\"data_task_conditions\"><color=#FFFFFF>· Past medical conditions and history</color></link>\r\n<link=\"data_task_fullbody\"><color=#FFFFFF>· Pictures and information from a full-body scan</color></link>"
+        }
+      ]
+    },
+    "1025": {
+      "path_id": 1025,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 780,
+      "offset_in_file": 171296,
+      "strings": [
+        {
+          "offset": 196,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "This cannot be undone"
+        }
+      ]
+    },
+    "1050": {
+      "path_id": 1050,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 300,
+      "offset_in_file": 178000,
+      "strings": [
+        {
+          "offset": 100,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 7"
+        }
+      ]
+    },
+    "1084": {
+      "path_id": 1084,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 296,
+      "offset_in_file": 183904,
+      "strings": [
+        {
+          "offset": 96,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 1"
+        }
+      ]
+    },
+    "1117": {
+      "path_id": 1117,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 3452,
+      "offset_in_file": 189752,
+      "strings": [
+        {
+          "offset": 552,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "Gameflow Tag 2 (Marc)"
+        },
+        {
+          "offset": 580,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "Display mail in listener"
+        },
+        {
+          "offset": 608,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "Gameflow Tag 1 (Marc)"
+        },
+        {
+          "offset": 676,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "Insider Document Test"
+        },
+        {
+          "offset": 724,
+          "byte_length": 15,
+          "padding": 1,
+          "total_slot": 20,
+          "text": "Objectives Test"
+        },
+        {
+          "offset": 744,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "Gameflow Tag 1 Revision"
+        },
+        {
+          "offset": 844,
+          "byte_length": 18,
+          "padding": 2,
+          "total_slot": 24,
+          "text": "Pursuit Quest Test"
+        },
+        {
+          "offset": 912,
+          "byte_length": 9,
+          "padding": 3,
+          "total_slot": 16,
+          "text": "Mail Test"
+        },
+        {
+          "offset": 948,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "Gameflow Day 5 (Test)"
+        },
+        {
+          "offset": 988,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Update Drag Test"
+        },
+        {
+          "offset": 1008,
+          "byte_length": 29,
+          "padding": 3,
+          "total_slot": 36,
+          "text": "Ignorance Is Strength - Day 1"
+        },
+        {
+          "offset": 1044,
+          "byte_length": 34,
+          "padding": 2,
+          "total_slot": 40,
+          "text": "Ignorance Is Strength - Day 1 TEST"
+        },
+        {
+          "offset": 1084,
+          "byte_length": 34,
+          "padding": 2,
+          "total_slot": 40,
+          "text": "Ignorance Is Strength - Day 1 Test"
+        },
+        {
+          "offset": 1124,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Aptitude Test"
+        },
+        {
+          "offset": 1192,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": ",\u0000\u0000\u0000Assets/Resources/Flows/Gameflow T"
+        },
+        {
+          "offset": 1244,
+          "byte_length": 50,
+          "padding": 2,
+          "total_slot": 56,
+          "text": "Assets/Resources/Flows/Display mail in listener 11"
+        },
+        {
+          "offset": 1300,
+          "byte_length": 44,
+          "padding": 0,
+          "total_slot": 48,
+          "text": "Assets/Resources/Flows/Gameflow Tag 1 (Marc)"
+        },
+        {
+          "offset": 1348,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Tag 1"
+        },
+        {
+          "offset": 1392,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Tag 2"
+        },
+        {
+          "offset": 1436,
+          "byte_length": 64,
+          "padding": 0,
+          "total_slot": 68,
+          "text": "Assets/Resources_Ignorance/Resources/Flows/Insider Document Test"
+        },
+        {
+          "offset": 1504,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Tag 3"
+        },
+        {
+          "offset": 1548,
+          "byte_length": 38,
+          "padding": 2,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Objectives Test"
+        },
+        {
+          "offset": 1592,
+          "byte_length": 46,
+          "padding": 2,
+          "total_slot": 52,
+          "text": "Assets/Resources/Flows/Gameflow Tag 1 Revision"
+        },
+        {
+          "offset": 1644,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Day 1"
+        },
+        {
+          "offset": 1688,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Day 2"
+        },
+        {
+          "offset": 1732,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Day 3"
+        },
+        {
+          "offset": 1776,
+          "byte_length": 31,
+          "padding": 1,
+          "total_slot": 36,
+          "text": "Assets/Resources/Flows/chattest"
+        },
+        {
+          "offset": 1812,
+          "byte_length": 41,
+          "padding": 3,
+          "total_slot": 48,
+          "text": "Assets/Resources/Flows/Pursuit Quest Test"
+        },
+        {
+          "offset": 1860,
+          "byte_length": 42,
+          "padding": 2,
+          "total_slot": 48,
+          "text": "Assets/Resources/Flows/Gameflow Day 4 Test"
+        },
+        {
+          "offset": 1908,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Day 4"
+        },
+        {
+          "offset": 1952,
+          "byte_length": 32,
+          "padding": 0,
+          "total_slot": 36,
+          "text": "Assets/Resources/Flows/Mail Test"
+        },
+        {
+          "offset": 1988,
+          "byte_length": 37,
+          "padding": 3,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Gameflow Day 5"
+        },
+        {
+          "offset": 2032,
+          "byte_length": 44,
+          "padding": 0,
+          "total_slot": 48,
+          "text": "Assets/Resources/Flows/Gameflow Day 5 (Test)"
+        },
+        {
+          "offset": 2080,
+          "byte_length": 30,
+          "padding": 2,
+          "total_slot": 36,
+          "text": "Assets/Resources/Flows/Endings"
+        },
+        {
+          "offset": 2116,
+          "byte_length": 39,
+          "padding": 1,
+          "total_slot": 44,
+          "text": "Assets/Resources/Flows/Update Drag Test"
+        },
+        {
+          "offset": 2160,
+          "byte_length": 72,
+          "padding": 0,
+          "total_slot": 76,
+          "text": "Assets/Resources_Ignorance/Resources/Flows/Ignorance Is Strength - Day 1"
+        },
+        {
+          "offset": 2236,
+          "byte_length": 77,
+          "padding": 3,
+          "total_slot": 84,
+          "text": "Assets/Resources_Ignorance/Resources/Flows/Ignorance Is Strength - Day 1 TEST"
+        },
+        {
+          "offset": 2320,
+          "byte_length": 77,
+          "padding": 3,
+          "total_slot": 84,
+          "text": "Assets/Resources_Ignorance/Resources/Flows/Ignorance Is Strength - Day 1 Test"
+        },
+        {
+          "offset": 2404,
+          "byte_length": 56,
+          "padding": 0,
+          "total_slot": 60,
+          "text": "Assets/Resources_Ignorance/Resources/Flows/Aptitude Test"
+        },
+        {
+          "offset": 2828,
+          "byte_length": 9,
+          "padding": 3,
+          "total_slot": 16,
+          "text": "Mail Test"
+        },
+        {
+          "offset": 2876,
+          "byte_length": 18,
+          "padding": 2,
+          "total_slot": 24,
+          "text": "Pursuit Quest Test"
+        },
+        {
+          "offset": 2900,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Update Drag Test"
+        },
+        {
+          "offset": 2920,
+          "byte_length": 21,
+          "padding": 3,
+          "total_slot": 28,
+          "text": "Insider Document Test"
+        },
+        {
+          "offset": 2948,
+          "byte_length": 29,
+          "padding": 3,
+          "total_slot": 36,
+          "text": "Ignorance Is Strength - Day 1"
+        },
+        {
+          "offset": 2984,
+          "byte_length": 34,
+          "padding": 2,
+          "total_slot": 40,
+          "text": "Ignorance Is Strength - Day 1 TEST"
+        },
+        {
+          "offset": 3024,
+          "byte_length": 34,
+          "padding": 2,
+          "total_slot": 40,
+          "text": "Ignorance Is Strength - Day 1 Test"
+        },
+        {
+          "offset": 3064,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Aptitude Test"
+        },
+        {
+          "offset": 3100,
+          "byte_length": 46,
+          "padding": 2,
+          "total_slot": 52,
+          "text": "Episode One: The Clocks were Striking Thirteen"
+        },
+        {
+          "offset": 3152,
+          "byte_length": 47,
+          "padding": 1,
+          "total_slot": 52,
+          "text": "Episode Two: A Place where there is No Darkness"
+        },
+        {
+          "offset": 3204,
+          "byte_length": 23,
+          "padding": 1,
+          "total_slot": 28,
+          "text": "Episode Three: Unperson"
+        },
+        {
+          "offset": 3232,
+          "byte_length": 25,
+          "padding": 3,
+          "total_slot": 32,
+          "text": "Episode Four: Memory Hole"
+        },
+        {
+          "offset": 3280,
+          "byte_length": 47,
+          "padding": 1,
+          "total_slot": 52,
+          "text": "Episode Five: Under the Spreading Chestnut Tree"
+        },
+        {
+          "offset": 3416,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Aptitude Test"
+        }
+      ]
+    },
+    "1145": {
+      "path_id": 1145,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 296,
+      "offset_in_file": 196784,
+      "strings": [
+        {
+          "offset": 96,
+          "byte_length": 8,
+          "padding": 0,
+          "total_slot": 12,
+          "text": "The Test"
+        }
+      ]
+    },
+    "1156": {
+      "path_id": 1156,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 920,
+      "offset_in_file": 198728,
+      "strings": [
+        {
+          "offset": 228,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK1"
+        },
+        {
+          "offset": 256,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK2"
+        },
+        {
+          "offset": 284,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK3"
+        },
+        {
+          "offset": 312,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK4"
+        },
+        {
+          "offset": 340,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK5"
+        },
+        {
+          "offset": 368,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK6"
+        },
+        {
+          "offset": 396,
+          "byte_length": 24,
+          "padding": 0,
+          "total_slot": 28,
+          "text": "PROFILER_DATALABEL_TASK7"
+        }
+      ]
+    },
+    "1162": {
+      "path_id": 1162,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 14448,
+      "offset_in_file": 200608,
+      "strings": [
+        {
+          "offset": 2204,
+          "byte_length": 10,
+          "padding": 2,
+          "total_slot": 16,
+          "text": "Ilya Vhart"
+        },
+        {
+          "offset": 2312,
+          "byte_length": 11,
+          "padding": 1,
+          "total_slot": 16,
+          "text": "Raban Vhart"
+        },
+        {
+          "offset": 2420,
+          "byte_length": 18,
+          "padding": 2,
+          "total_slot": 24,
+          "text": "Karen Levine-Vhart"
+        },
+        {
+          "offset": 2640,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Intervention team"
+        },
+        {
+          "offset": 2704,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Intervention team"
+        },
+        {
+          "offset": 2736,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Intervention team"
+        },
+        {
+          "offset": 2908,
+          "byte_length": 4,
+          "padding": 0,
+          "total_slot": 8,
+          "text": "Task"
+        },
+        {
+          "offset": 2948,
+          "byte_length": 4,
+          "padding": 0,
+          "total_slot": 8,
+          "text": "Task"
+        },
+        {
+          "offset": 3012,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Themba van Biljon"
+        },
+        {
+          "offset": 3128,
+          "byte_length": 19,
+          "padding": 1,
+          "total_slot": 24,
+          "text": "Cassandra Watergate"
+        },
+        {
+          "offset": 3248,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Josef Langley"
+        },
+        {
+          "offset": 3360,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Juliet Kerrington"
+        },
+        {
+          "offset": 3596,
+          "byte_length": 14,
+          "padding": 2,
+          "total_slot": 20,
+          "text": "Nina Maternova"
+        },
+        {
+          "offset": 3708,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Prof. Abraham Goldfels"
+        },
+        {
+          "offset": 3828,
+          "byte_length": 19,
+          "padding": 1,
+          "total_slot": 24,
+          "text": "Catherine Delacroix"
+        },
+        {
+          "offset": 4100,
+          "byte_length": 15,
+          "padding": 1,
+          "total_slot": 20,
+          "text": "Alice Watergate"
+        },
+        {
+          "offset": 4212,
+          "byte_length": 15,
+          "padding": 1,
+          "total_slot": 20,
+          "text": "Bruno Watergate"
+        },
+        {
+          "offset": 4324,
+          "byte_length": 10,
+          "padding": 2,
+          "total_slot": 16,
+          "text": "Mary Bligh"
+        },
+        {
+          "offset": 4432,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Esther Kerrington"
+        },
+        {
+          "offset": 4548,
+          "byte_length": 19,
+          "padding": 1,
+          "total_slot": 24,
+          "text": "Jonathan Kerrington"
+        },
+        {
+          "offset": 4772,
+          "byte_length": 17,
+          "padding": 3,
+          "total_slot": 24,
+          "text": "Semiramis Flowers"
+        },
+        {
+          "offset": 4848,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Semiramis Flowers Ltd."
+        },
+        {
+          "offset": 4912,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Viktor Rhosen"
+        },
+        {
+          "offset": 5464,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Office of Doctor White"
+        },
+        {
+          "offset": 5544,
+          "byte_length": 22,
+          "padding": 2,
+          "total_slot": 28,
+          "text": "Office of Doctor White"
+        },
+        {
+          "offset": 5844,
+          "byte_length": 15,
+          "padding": 1,
+          "total_slot": 20,
+          "text": "June Kerrington"
+        },
+        {
+          "offset": 5956,
+          "byte_length": 15,
+          "padding": 1,
+          "total_slot": 20,
+          "text": "Laverne Winters"
+        },
+        {
+          "offset": 6068,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Elwood Hendricks"
+        },
+        {
+          "offset": 6180,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Margarete Aarons"
+        },
+        {
+          "offset": 6296,
+          "byte_length": 10,
+          "padding": 2,
+          "total_slot": 16,
+          "text": "Eva Aarons"
+        },
+        {
+          "offset": 6400,
+          "byte_length": 14,
+          "padding": 2,
+          "total_slot": 20,
+          "text": "Barbra Langley"
+        },
+        {
+          "offset": 6512,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Dr. Daniel Lyons"
+        },
+        {
+          "offset": 6624,
+          "byte_length": 16,
+          "padding": 0,
+          "total_slot": 20,
+          "text": "Anonymous sender"
+        },
+        {
+          "offset": 6808,
+          "byte_length": 28,
+          "padding": 0,
+          "total_slot": 32,
+          "text": "The National Beholder Office"
+        }
+      ]
+    },
+    "1170": {
+      "path_id": 1170,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 308,
+      "offset_in_file": 216192,
+      "strings": [
+        {
+          "offset": 108,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 7"
+        }
+      ]
+    },
+    "1174": {
+      "path_id": 1174,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 296,
+      "offset_in_file": 216840,
+      "strings": [
+        {
+          "offset": 96,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 4"
+        }
+      ]
+    },
+    "1178": {
+      "path_id": 1178,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 296,
+      "offset_in_file": 217664,
+      "strings": [
+        {
+          "offset": 96,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 3"
+        }
+      ]
+    },
+    "1291": {
+      "path_id": 1291,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 296,
+      "offset_in_file": 237176,
+      "strings": [
+        {
+          "offset": 96,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 2"
+        }
+      ]
+    },
+    "1327": {
+      "path_id": 1327,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 96,
+      "offset_in_file": 243248,
+      "strings": [
+        {
+          "offset": 60,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Submit"
+        },
+        {
+          "offset": 72,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Cancel"
+        }
+      ]
+    },
+    "1376": {
+      "path_id": 1376,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 300,
+      "offset_in_file": 251544,
+      "strings": [
+        {
+          "offset": 100,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 5"
+        }
+      ]
+    },
+    "1449": {
+      "path_id": 1449,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 296,
+      "offset_in_file": 262456,
+      "strings": [
+        {
+          "offset": 96,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 6"
+        }
+      ]
+    },
+    "1467": {
+      "path_id": 1467,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 288,
+      "offset_in_file": 265064,
+      "strings": [
+        {
+          "offset": 184,
+          "byte_length": 13,
+          "padding": 3,
+          "total_slot": 20,
+          "text": "Aptitude Test"
+        }
+      ]
+    },
+    "1502": {
+      "path_id": 1502,
+      "class_id": 114,
+      "class_name": "MonoBehaviour",
+      "object_size": 304,
+      "offset_in_file": 270312,
+      "strings": [
+        {
+          "offset": 104,
+          "byte_length": 6,
+          "padding": 2,
+          "total_slot": 12,
+          "text": "Task 5"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,791 @@
+[
+  {
+    "id": "892_108",
+    "path_id": 892,
+    "offset": 108,
+    "byte_length": 46,
+    "padding": 2,
+    "category": "article",
+    "original": "Document viewed: The People's Voice front page",
+    "translation": ""
+  },
+  {
+    "id": "1009_320",
+    "path_id": 1009,
+    "offset": 320,
+    "byte_length": 641,
+    "padding": 3,
+    "category": "article",
+    "original": "From:\r\n\r\nUNKNOWN SENDER\r\n\r\nReceived:\r\n\r\n9.03 am on April 10, 2017\r\n\r\nSubject:\r\n\r\nA token of my appreciation for your blog\r\n\r\nRaban,\r\n<el>\r\nI found something you might be very interested in: <l target=\"website_leaks_bayte\">www.percoleaks.tna/operationflyingdog</l>\r\n<el>\r\nI've done some digging through the document and there was even a phone number of a device they issued to this guy, <d target=\"data_bayte_phonenumber\">Oleg Bakay: +777 200 165 89</d>.\r\nNo need to thank me.\r\n<el>\r\nThis proves what you have been writing about for such a long time. Make everyone see it now.\r\n<el>\r\n<d target=\"data_raban_fandavid\">Your fan,\r\nDavid Johns</d>",
+    "translation": "",
+    "duplicate_ids": [
+      "1977_484"
+    ]
+  },
+  {
+    "id": "1011_163",
+    "path_id": 1011,
+    "offset": 163,
+    "byte_length": 256,
+    "padding": 0,
+    "category": "article",
+    "original": "\u0000\u000f\u0000\u0000\u0000insider_rabanpc\u0000\u001e\u0000\u0000\u0000insider_rabanpc_browserhistory\u0000\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000\f\u0000\u0000\u0000browser.hist\n\u0000\u0000\u0000Raban's PC\u0000\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000N\u0002\u0000\u0000April 13\twww.pargesianpatriots.tna - Kassart awards bravest soldiers 2013\r\n\r\nApril 13\t<l target=\"website_beholder_bayte\">www.the-national-beholder.",
+    "translation": ""
+  },
+  {
+    "id": "1018_332",
+    "path_id": 1018,
+    "offset": 332,
+    "byte_length": 18,
+    "padding": 2,
+    "category": "article",
+    "original": "The People's Voice",
+    "translation": "",
+    "duplicate_ids": [
+      "1025_320",
+      "1026_332",
+      "1027_392",
+      "1699_304",
+      "2897_244",
+      "4299_352",
+      "4407_344",
+      "4513_236",
+      "4517_308",
+      "4518_316",
+      "4519_316",
+      "4520_308",
+      "4523_280",
+      "4524_272",
+      "4525_276",
+      "4526_272",
+      "4527_268",
+      "4528_296"
+    ]
+  },
+  {
+    "id": "1022_392",
+    "path_id": 1022,
+    "offset": 392,
+    "byte_length": 21,
+    "padding": 3,
+    "category": "article",
+    "original": "The National Beholder",
+    "translation": "",
+    "duplicate_ids": [
+      "4510_384"
+    ]
+  },
+  {
+    "id": "1023_420",
+    "path_id": 1023,
+    "offset": 420,
+    "byte_length": 32,
+    "padding": 0,
+    "category": "article",
+    "original": "The People's Voice - Admin Panel",
+    "translation": "",
+    "duplicate_ids": [
+      "3338_384",
+      "3339_452",
+      "3340_380",
+      "3341_396"
+    ]
+  },
+  {
+    "id": "1025_104",
+    "path_id": 1025,
+    "offset": 104,
+    "byte_length": 45,
+    "padding": 3,
+    "category": "article",
+    "original": "New bookmark: The People's Voice - Encampment",
+    "translation": ""
+  },
+  {
+    "id": "1026_112",
+    "path_id": 1026,
+    "offset": 112,
+    "byte_length": 51,
+    "padding": 1,
+    "category": "article",
+    "original": "New bookmark: The People's Voice - Starting journey",
+    "translation": ""
+  },
+  {
+    "id": "1027_104",
+    "path_id": 1027,
+    "offset": 104,
+    "byte_length": 46,
+    "padding": 2,
+    "category": "article",
+    "original": "New bookmark: The People's Voice - Viral Story",
+    "translation": ""
+  },
+  {
+    "id": "1035_172",
+    "path_id": 1035,
+    "offset": 172,
+    "byte_length": 175,
+    "padding": 1,
+    "category": "article",
+    "original": "And it is going to be the most remarkable statement I have ever made: <d target=\"data_raban_destroybeholder\">The destruction of the cooperation between Kassart and Blaine.</d>",
+    "translation": "",
+    "duplicate_ids": [
+      "4873_172"
+    ]
+  },
+  {
+    "id": "1160_144",
+    "path_id": 1160,
+    "offset": 144,
+    "byte_length": 132,
+    "padding": 0,
+    "category": "article",
+    "original": "Doubt anything you read. Especially when it comes to The People's Voice. Don't give me wrong info to work with. I'm counting on you.",
+    "translation": ""
+  },
+  {
+    "id": "1175_152",
+    "path_id": 1175,
+    "offset": 152,
+    "byte_length": 104,
+    "padding": 0,
+    "category": "article",
+    "original": "That's an odd thing to say, isn't it? We're taking that as a death threat, as did The National Beholder.",
+    "translation": ""
+  },
+  {
+    "id": "1178_152",
+    "path_id": 1178,
+    "offset": 152,
+    "byte_length": 126,
+    "padding": 2,
+    "category": "article",
+    "original": "The People's Voice. We have heard of them. This preposterous \"news\" site has people rallying for protests in Parges for years.",
+    "translation": ""
+  },
+  {
+    "id": "1279_144",
+    "path_id": 1279,
+    "offset": 144,
+    "byte_length": 125,
+    "padding": 3,
+    "category": "article",
+    "original": "The National Beholder is the most respectable news site in The Nation. You may browse their headlines freely to get informed.",
+    "translation": ""
+  },
+  {
+    "id": "1329_144",
+    "path_id": 1329,
+    "offset": 144,
+    "byte_length": 105,
+    "padding": 3,
+    "category": "article",
+    "original": "What the...?! This bastard! The People's Voice. Raban Vhart is streaming right now. You need to see this!",
+    "translation": "",
+    "duplicate_ids": [
+      "1334_144"
+    ]
+  },
+  {
+    "id": "1401_96",
+    "path_id": 1401,
+    "offset": 96,
+    "byte_length": 33,
+    "padding": 3,
+    "category": "article",
+    "original": "Commentary: The National Beholder",
+    "translation": ""
+  },
+  {
+    "id": "1402_92",
+    "path_id": 1402,
+    "offset": 92,
+    "byte_length": 30,
+    "padding": 2,
+    "category": "article",
+    "original": "Commentary: The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "1491_180",
+    "path_id": 1491,
+    "offset": 180,
+    "byte_length": 69,
+    "padding": 3,
+    "category": "article",
+    "original": "He is the editor-in-chief of a \"news\" site called The People's Voice.",
+    "translation": ""
+  },
+  {
+    "id": "1507_160",
+    "path_id": 1507,
+    "offset": 160,
+    "byte_length": 177,
+    "padding": 3,
+    "category": "article",
+    "original": "{CHAR_RABAN} released a photo of our intervention team's actions taken through surveillance cameras on The People's Voice and blamed The Nation of arresting a Pargesian officer.",
+    "translation": ""
+  },
+  {
+    "id": "1508_160",
+    "path_id": 1508,
+    "offset": 160,
+    "byte_length": 179,
+    "padding": 1,
+    "category": "article",
+    "original": "{CHAR_RABAN} released a photo of our intervention team's actions taken through surveillance cameras on The People's Voice and blamed The Nation of eliminating a Pargesian officer.",
+    "translation": ""
+  },
+  {
+    "id": "1510_147",
+    "path_id": 1510,
+    "offset": 147,
+    "byte_length": 256,
+    "padding": 0,
+    "category": "article",
+    "original": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000b\u0001\u0000\u0000Our agent {CHAR_BAYTE} has gone missing. The online newspaper The National Beholder has received a recording of a telephone call between him and {CHAR_RABAN} right before his vanishing. The Office decided to intervene and look for ",
+    "translation": ""
+  },
+  {
+    "id": "1614_132",
+    "path_id": 1614,
+    "offset": 132,
+    "byte_length": 68,
+    "padding": 0,
+    "category": "article",
+    "original": "Update: The People's Voice - Home (Basic) to Home (Update 1 custody)",
+    "translation": ""
+  },
+  {
+    "id": "1615_128",
+    "path_id": 1615,
+    "offset": 128,
+    "byte_length": 67,
+    "padding": 1,
+    "category": "article",
+    "original": "Update: The People's Voice - Home (Basic) to Home (Update 1 killed)",
+    "translation": ""
+  },
+  {
+    "id": "1699_252",
+    "path_id": 1699,
+    "offset": 252,
+    "byte_length": 37,
+    "padding": 3,
+    "category": "article",
+    "original": "editor-in-chief of The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "1971_340",
+    "path_id": 1971,
+    "offset": 340,
+    "byte_length": 665,
+    "padding": 3,
+    "category": "article",
+    "original": "April 14\twww.lookup.tna - Lookup Web Search: \"Demjan Kassart - dirty secrets\"\r\n\r\nApril 13\twww.pargesianpatriots.tna - Kassart awards bravest soldiers 2013\r\n\r\nApril 13\t<l target=\"website_beholder_bayte\">www.the-national-beholder.tna - The National Beholder - Populist blog involved in terrorist's disappearance?</l>\r\n\r\nApril 13\t<l target=\"website_beholder_home\">www.the-national-beholder.tna - The National Beholder - Headlines</l>\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"Forces of True Parges - Oleg Bakay\"\r\n\r\nApril 13 \tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 13\t<l target=\"website_leaks_bayte\">www.percoleaks.tna - Operation Flying Dog</l>",
+    "translation": "",
+    "duplicate_ids": [
+      "1972_1232"
+    ]
+  },
+  {
+    "id": "1971_1120",
+    "path_id": 1971,
+    "offset": 1120,
+    "byte_length": 590,
+    "padding": 2,
+    "category": "article",
+    "original": "April 13\twww.pargesianpatriots.tna - Kassart awards bravest soldiers 2013\r\n\r\nApril 13\t<l target=\"website_beholder_bayte\">www.the-national-beholder.tna - The National Beholder - Is anti-Kassart blog involved in Pargesian soldier's disappearance?</l>\r\n\r\nApril 13\t<l target=\"website_beholder_home\">www.the-national-beholder.tna - The National Beholder - Headlines</l>\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"oleg bakay pargesian army\"\r\n\r\nApril 13 \tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 13\t<l target=\"website_leaks_bayte\">www.percoleaks.tna - Operation Flying Dog</l>",
+    "translation": ""
+  },
+  {
+    "id": "1972_340",
+    "path_id": 1972,
+    "offset": 340,
+    "byte_length": 751,
+    "padding": 1,
+    "category": "article",
+    "original": "April 14\twww.nationalpost.tna - 30 Things you did not know about President Kassart\r\n\r\nApril 14\twww.lookup.tna - Lookup Web Search: \"Demjan Kassart - dirty secrets\"\r\n\r\nApril 13\twww.pargesianpatriots.tna - Kassart awards bravest soldiers 2013\r\n\r\nApril 13\t<l target=\"website_beholder_bayte\">www.the-national-beholder.tna - The National Beholder - Populist blog involved in terrorist's disappearance?</l>\r\n\r\nApril 13\t<l target=\"website_beholder_home\">www.the-national-beholder.tna - The National Beholder - Headlines</l>\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"Forces of True Parges - Oleg Bakay\"\r\n\r\nApril 13 \tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 13\t<l target=\"website_leaks_bayte\">www.percoleaks.tna - Operation Flying Dog</l>",
+    "translation": "",
+    "duplicate_ids": [
+      "1973_1312",
+      "1974_1308"
+    ]
+  },
+  {
+    "id": "1973_207",
+    "path_id": 1973,
+    "offset": 207,
+    "byte_length": 256,
+    "padding": 0,
+    "category": "article",
+    "original": "\u0000\u000f\u0000\u0000\u0000insider_rabanpc\u0000+\u0000\u0000\u0000insider_rabanpc_browserhistoryarticlestage3\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001c\u0000\u0000\u0000browser.hist Article Stage 3\n\u0000\u0000\u0000Raban's PC\u0000\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000\u0000:\u0003\u0000\u0000April 14\twww.gossipnews.tna - Is President Kassart really a mafia boss?\r\n\r\nApril 14\twww.nationalpost.tna - 30 Things yo",
+    "translation": "",
+    "duplicate_ids": [
+      "1974_203"
+    ]
+  },
+  {
+    "id": "1975_340",
+    "path_id": 1975,
+    "offset": 340,
+    "byte_length": 953,
+    "padding": 3,
+    "category": "article",
+    "original": "April 14\twww.truthuncovered.tna - Demjan Kassart's history of fabricated elections - an investigative documentary of Government fraud\r\n\r\nApril 14\twww.gossipnews.tna - Is Kassart really a mafia boss?\r\n\r\nApril 14\twww.nationalpost.tna - 30 Things you did not know about President Kassart\r\n\r\nApril 14\twww.lookup.tna - Lookup Web Search: \"Demjan Kassart - dirty secrets\"\r\n\r\nApril 13\twww.pargesianpatriots.tna - Kassart awards bravest soldiers 2013\r\n\r\nApril 13\t<l target=\"website_beholder_bayte\">www.the-national-beholder.tna - The National Beholder - Populist blog involved in terrorist's disappearance?</l>\r\n\r\nApril 13\t<l target=\"website_beholder_home\">www.the-national-beholder.tna - The National Beholder - Headlines</l>\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"Forces of True Parges - Oleg Bakay\"\r\n\r\nApril 13 \tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 13\t<l target=\"website_leaks_bayte\">www.percoleaks.tna - Operation Flying Dog</l>",
+    "translation": ""
+  },
+  {
+    "id": "1975_1436",
+    "path_id": 1975,
+    "offset": 1436,
+    "byte_length": 826,
+    "padding": 2,
+    "category": "article",
+    "original": "April 14\twww.gossipnews.tna - Is President Kassart really a mafia boss?\r\n\r\nApril 14\twww.nationalpost.tna - 30 Things you did not know about President Kassart\r\n\r\nApril 14\twww.lookup.tna - Lookup Web Search: \"Demjan Kassart - dirty secrets\"\r\n\r\nApril 13\twww.pargesianpatriots.tna - Kassart awards bravest soldiers 2013\r\n\r\nApril 13\t<l target=\"website_beholder_bayte\">www.the-national-beholder.tna - The National Beholder - Populist blog involved in terrorist's disappearance?</l>\r\n\r\nApril 13\t<l target=\"website_beholder_home\">www.the-national-beholder.tna - The National Beholder - Headlines</l>\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"Forces of True Parges - Oleg Bakay\"\r\n\r\nApril 13 \tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 13\t<l target=\"website_leaks_bayte\">www.percoleaks.tna - Operation Flying Dog</l>",
+    "translation": ""
+  },
+  {
+    "id": "1976_744",
+    "path_id": 1976,
+    "offset": 744,
+    "byte_length": 666,
+    "padding": 2,
+    "category": "article",
+    "original": "April 14\twww.qna.tna - Question and Answer - \"How to take down robot dinosaurs in Skyline: Infinite Dawns\"\r\n\r\nApril 13\t<l target=\"website_beholder_assault1\">www.the-national-beholder.tna - The National Beholder - Bomb obliterates Freedom Memorial and kills three</l>\r\n\r\nApril 13\t<l target=\"website_beholder_home\">www.the-national-beholder.tna - The National Beholder - Headlines</l>\r\n\r\nApril 12\twww.watergate-pharma.tna - Watergate Pharmaceuticals\r\n\r\nApril 12\tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 12\t<l target=\"website_beholder_bayte\">www.the-national-beholder.tna - The National Beholder - Populist blog involved in terrorist's disappearance?</l>",
+    "translation": ""
+  },
+  {
+    "id": "1976_2332",
+    "path_id": 1976,
+    "offset": 2332,
+    "byte_length": 1279,
+    "padding": 1,
+    "category": "article",
+    "original": "From:\r\n\r\nmccoughney@bontoncityapartments.tna\r\n\r\nTo:\r\n\r\n<d target=\"data_ilya_email\">ilya.vhart@bontonmail.tna</d>\r\n\r\nReceived:\r\n\r\n8.15 a.m. on March 21, 2017\r\n\r\nSubject:\r\n\r\nOverdue apartment rent\r\n\r\nDear Mr Vhart,\r\n<el>\r\nUnfortunately we have to inform you that we did not receive payment for your monthly rent for the following address:\r\n<el>\r\n<d target=\"data_ilya_address\">Apartment 303\r\nPenn Street 125\r\n9R-BT Bonton</d>\r\n<el>\r\nRent for the month of March was due on March 3, 2017. <d target=\"data_ilya_overdue\">However, our payment records state that the outstanding amount of $865.00 has not been received.</d>\r\n<el>\r\nThis is the third time that your rent has been overdue, so we will forward this matter to our debt collection agency if you do not make payment in the next five business days. \r\n<el>\r\nIf you have made payment in the past three business days, please disregard this letter. A $30.00 overdue fee will be deducted from your <d target=\"data_ilya_bankacc\">bank account 336 100 181 01</d> with the next monthly statement. We would like to take this opportunity to remind you that failure to pay could result in eviction, and court proceedings.\r\n<el>\r\nRegards,\r\n<el>\r\nDonald McCoughney\r\nManager Penn St Apartments\r\n\r\n--\r\nThank you for renting at Penn St Apartments.",
+    "translation": ""
+  },
+  {
+    "id": "2082_172",
+    "path_id": 2082,
+    "offset": 172,
+    "byte_length": 107,
+    "padding": 1,
+    "category": "article",
+    "original": "Don't rack your brains over it. I only did the necessary thing to expose the lies of The National Beholder.",
+    "translation": "",
+    "duplicate_ids": [
+      "4683_172"
+    ]
+  },
+  {
+    "id": "2083_172",
+    "path_id": 2083,
+    "offset": 172,
+    "byte_length": 156,
+    "padding": 0,
+    "category": "article",
+    "original": "Now, with the world seeing the Beholder for what it really is, and finally shifting their attention to The People's Voice, I am ready to take the next step.",
+    "translation": "",
+    "duplicate_ids": [
+      "4684_172"
+    ]
+  },
+  {
+    "id": "2090_172",
+    "path_id": 2090,
+    "offset": 172,
+    "byte_length": 135,
+    "padding": 1,
+    "category": "article",
+    "original": "I called to warn you about the consequences. The People's Voice will gain even more attention, and it won't only be from our followers.",
+    "translation": "",
+    "duplicate_ids": [
+      "4691_172"
+    ]
+  },
+  {
+    "id": "2161_172",
+    "path_id": 2161,
+    "offset": 172,
+    "byte_length": 114,
+    "padding": 2,
+    "category": "article",
+    "original": "<d target=\"data_raban_karennotthreaten\">I will not allow you to threaten the reputation of The People's Voice!</d>",
+    "translation": ""
+  },
+  {
+    "id": "2228_144",
+    "path_id": 2228,
+    "offset": 144,
+    "byte_length": 90,
+    "padding": 2,
+    "category": "article",
+    "original": "Already? The People's Voice has a new announcement. We should tune in as soon as possible.",
+    "translation": "",
+    "duplicate_ids": [
+      "2361_144"
+    ]
+  },
+  {
+    "id": "2357_156",
+    "path_id": 2357,
+    "offset": 156,
+    "byte_length": 151,
+    "padding": 1,
+    "category": "article",
+    "original": "There's massive fallout due to our little \"intervention.\" The National Beholder is met with public distrust, and - by extension - so is the government.",
+    "translation": ""
+  },
+  {
+    "id": "2362_156",
+    "path_id": 2362,
+    "offset": 156,
+    "byte_length": 120,
+    "padding": 0,
+    "category": "article",
+    "original": "This casts a shadow over The People's Voice. Raban will have to react, and the focus on this article will surely suffer.",
+    "translation": ""
+  },
+  {
+    "id": "2363_156",
+    "path_id": 2363,
+    "offset": 156,
+    "byte_length": 132,
+    "padding": 0,
+    "category": "article",
+    "original": "This casts a shadow over The People's Voice. It doesn't matter that he published the article, we will divert attention away from it.",
+    "translation": ""
+  },
+  {
+    "id": "2384_144",
+    "path_id": 2384,
+    "offset": 144,
+    "byte_length": 86,
+    "padding": 2,
+    "category": "article",
+    "original": "Mhm. The People's Voice has a new announcement. We should tune in as soon as possible.",
+    "translation": ""
+  },
+  {
+    "id": "2386_156",
+    "path_id": 2386,
+    "offset": 156,
+    "byte_length": 132,
+    "padding": 0,
+    "category": "article",
+    "original": "Those... delicate pictures will spark a discussion big enough to divert attention from The People's Voice. A form of damage control.",
+    "translation": ""
+  },
+  {
+    "id": "2390_144",
+    "path_id": 2390,
+    "offset": 144,
+    "byte_length": 97,
+    "padding": 3,
+    "category": "article",
+    "original": "GODDAMN! Raban released a new article on The People's Voice. It's the provocation he spoke about!",
+    "translation": ""
+  },
+  {
+    "id": "2630_188",
+    "path_id": 2630,
+    "offset": 188,
+    "byte_length": 44,
+    "padding": 0,
+    "category": "article",
+    "original": "He is the lead editor at The People's Voice.",
+    "translation": ""
+  },
+  {
+    "id": "2654_260",
+    "path_id": 2654,
+    "offset": 260,
+    "byte_length": 499,
+    "padding": 1,
+    "category": "article",
+    "original": "brother I need your help asap!\r\n\r\nthere's... <d target=\"data_ilya_impliedmeds\">i may have done something stupid at work and today supplies are gone</d> and i am supposed to issue a statement and now the police has been raiding the watergate offices! did you see the latest tnb report? <l target=\"website_beholder_watergate\">www.the-national-beholder.tna/new-watergate-scandal</l> could these be the consequences you have been warning us about??\r\n\r\nwhat am i gonna do, can you advise? i need you now!",
+    "translation": ""
+  },
+  {
+    "id": "2659_252",
+    "path_id": 2659,
+    "offset": 252,
+    "byte_length": 483,
+    "padding": 1,
+    "category": "article",
+    "original": "Brother,\r\n\r\nYOU CANNOT BE SERIOUS. HOW CAN YOU BE THIS IRRESPONSIBLE?\r\n\r\nI hope for your sake that you're not involved with the supplies! You know The People's Voice cannot afford to be connected to anything REMOTELY conspicuous. Our enemies are waiting for any opportunity, no matter how small. We cannot afford giving them anything in the slightest!\r\n\r\nNow stay at home and write the damn statement, lest you make things even worse. After today nobody will care about this anymore.",
+    "translation": ""
+  },
+  {
+    "id": "2662_248",
+    "path_id": 2662,
+    "offset": 248,
+    "byte_length": 785,
+    "padding": 3,
+    "category": "article",
+    "original": "On Singular and still lonely? It doesn't have to be that way!\r\n\r\nSign up for Singular Pro and get instant access to:\r\n\r\n* start conversations - show initiative and take the first step!\r\n* unlimited open conversations simultaneously - talk to everyone at once!\r\n* more opinion questions - find your match more accurately!\r\n* a highlighted frame around your portrait - stand out from the crowd!\r\n\r\nSigning up for Singular now for only $ 9.99 per month will award you AND your promoter additional 2,000 Love Credits.\r\n\r\nWhat are you waiting for?\r\n\r\nThe Singular Team\r\n\r\n---\r\nNote: You receive this mail because <d target=\"data_karen_invitedtosingular\">Karen signed you up</d> for Singular and you created an account. To unsubscribe, please write an empty mail to unsubscribe@singular.tna.",
+    "translation": ""
+  },
+  {
+    "id": "2897_196",
+    "path_id": 2897,
+    "offset": 196,
+    "byte_length": 33,
+    "padding": 3,
+    "category": "article",
+    "original": "lead editor at The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "2935_196",
+    "path_id": 2935,
+    "offset": 196,
+    "byte_length": 48,
+    "padding": 0,
+    "category": "article",
+    "original": "private email address: ilya.vhart@bontonmail.tna",
+    "translation": ""
+  },
+  {
+    "id": "3303_368",
+    "path_id": 3303,
+    "offset": 368,
+    "byte_length": 972,
+    "padding": 0,
+    "category": "article",
+    "original": "From:\r\n\r\noffice@bonton-rehabcouncil.tna\r\n\r\nReceived:\r\n\r\n6.25 am on April 15, 2017\r\n\r\nSubject:\r\n\r\nReport on your Patient No. NA-13514 - Nina Maternova\r\n\r\nDear Mrs. Levine-Vhart,\r\n<el>\r\nIt has been brought to our attention that your patient no. NA-32694 has been involved in a criminal case. She has been taken into custody and the case is now being investigated thoroughly. As you know, a situation like this requires a report by the therapeutic counsellor who treated her.\r\n<el>\r\nWe therefore kindly ask you to hand in your report on Mrs. Maternova by the end of the day. Please be informed that this report is highly important for the case and will be used in court. The Rehab Council is obliged to inform you that all of your statements have to be as accurate as possible and that you are obliged to answer all questions you may be asked in court truthfully.\r\n<el>\r\nYours sincerely,\r\n<el>\r\nEsther Backer\r\n<el>\r\nRehab Council Administration\r\n100 Penn Street\r\n9F-BT Bonton",
+    "translation": ""
+  },
+  {
+    "id": "3304_352",
+    "path_id": 3304,
+    "offset": 352,
+    "byte_length": 983,
+    "padding": 1,
+    "category": "article",
+    "original": "From:\r\n\r\noffice@bonton-rehabcouncil.tna\r\n\r\nReceived:\r\n\r\n6.25 am on April 15, 2017\r\n\r\nSubject:\r\n\r\nReport on your Patient No. NA-13514 - Nina Maternova\r\n\r\nDear Mrs. Levine-Vhart,\r\n<el>\r\nIt has been brought to our attention that your patient no. NA-32694 has been involved in a criminal case. Unfortunately, she has been shot on the run and the case is now being investigated thoroughly. As you know, a situation like this requires a report by the therapeutic counsellor who treated her.\r\n<el>\r\nWe therefore kindly ask you to hand in your report on Mrs. Maternova by the end of the day. Please be informed that this report is highly important for the case and will be used in court. The Rehab Council is obliged to inform you that all of your statements have to be as accurate as possible and that you are obliged to answer all questions you may be asked in court truthfully.\r\n<el>\r\nYours sincerely,\r\n<el>\r\nEsther Baker\r\n<el>\r\nRehab Council Administration\r\n100 Penn Street\r\n9F-BT Bonton",
+    "translation": ""
+  },
+  {
+    "id": "3305_356",
+    "path_id": 3305,
+    "offset": 356,
+    "byte_length": 1009,
+    "padding": 3,
+    "category": "article",
+    "original": "From:\r\n\r\noffice@bonton-rehabcouncil.tna\r\n\r\nReceived:\r\n\r\n6.25 am on April 15, 2017\r\n\r\nSubject:\r\n\r\nReport on your Patient No. NA-13514 - Nina Maternova\r\n\r\nDear Mrs. Levine-Vhart,\r\n<el>\r\nIt has been brought to our attention that your patient no. NA-32694 has been involved in a criminal case. Unfortunately, she is now fugitive after a failed attempt to arrest her and the case is now being investigated thoroughly. As you know, a situation like this requires a report by the therapeutic counsellor who treated her.\r\n<el>\r\nWe therefore kindly ask you to hand in your report on Mrs. Maternova by the end of the day. Please be informed that this report is highly important for the case and will be used in court. The Rehab Council is obliged to inform you that all of your statements have to be as accurate as possible and that you are obliged to answer all questions you may be asked in court truthfully.\r\n<el>\r\nYours sincerely,\r\n<el>\r\nEsther Baker\r\n<el>\r\nRehab Council Administration100 Penn Street\r\n9F-BT Bonton",
+    "translation": ""
+  },
+  {
+    "id": "3313_2856",
+    "path_id": 3313,
+    "offset": 2856,
+    "byte_length": 486,
+    "padding": 2,
+    "category": "article",
+    "original": "April 15\twww.singular.tna - concerned1's Profile\r\n\r\nApril 15\twww.lookup.tna - Lookup Web Search: \"Nina Maternova\"\r\n\r\nApril 14\twww.lookup.tna - Lookup Web Search: \"Juliet Kerrington\"\r\n\r\nApril 14\twww.lookup.tna - Lookup Web Search: \"Abraham Goldfels\"\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"Thought\"\r\n\r\nApril 13\tmaps.bonton.tna - Bonton City - Inner City Map\r\n\r\nApril 13\twww.lookup.tna - Lookup Web Search: \"Cassandra Watergate\"\r\n\r\nApril 12\tyoutime.tna - Funny Cats - MUST WATCH!",
+    "translation": ""
+  },
+  {
+    "id": "3563_164",
+    "path_id": 3563,
+    "offset": 164,
+    "byte_length": 174,
+    "padding": 2,
+    "category": "article",
+    "original": "Reports say there are already people gathering in front of the Presidential Palace where the two are meeting, attempting to stall the talks in the name of The People's Voice.",
+    "translation": ""
+  },
+  {
+    "id": "3588_164",
+    "path_id": 3588,
+    "offset": 164,
+    "byte_length": 130,
+    "padding": 2,
+    "category": "article",
+    "original": "As soon as these connections become \"evident\", Raban's reputation may greatly suffer. This could put The People's Voice to an end.",
+    "translation": ""
+  },
+  {
+    "id": "3664_164",
+    "path_id": 3664,
+    "offset": 164,
+    "byte_length": 115,
+    "padding": 1,
+    "category": "article",
+    "original": "Regardless, it doesn't matter what role had with The People's Voice. What matters is only the destruction of Raban.",
+    "translation": ""
+  },
+  {
+    "id": "3727_140",
+    "path_id": 3727,
+    "offset": 140,
+    "byte_length": 97,
+    "padding": 3,
+    "category": "article",
+    "original": "Could it be that our actions caused a bit of trouble among the ranks of The People's Voice? Good.",
+    "translation": ""
+  },
+  {
+    "id": "3757_156",
+    "path_id": 3757,
+    "offset": 156,
+    "byte_length": 67,
+    "padding": 1,
+    "category": "article",
+    "original": "There are still far too many people standing by The People's Voice!",
+    "translation": ""
+  },
+  {
+    "id": "4011_260",
+    "path_id": 4011,
+    "offset": 260,
+    "byte_length": 738,
+    "padding": 2,
+    "category": "article",
+    "original": "raban, it's a lie. it's all a lie.\r\n\r\ni'm not your friend. i've never been. i can't fully explain it at this time, i've only been here recently.\r\n\r\ni've just been informed that you're about to claim the nation bombed your school. you have no idea how right you are. i realized, this may be my last chance of getting out of this mess.\r\n\r\n<d target=\"data_raban_informeddavid\">so i got my hands on some internal documents for you.</d> what really happened at prava secondary, it's all in there: <l target=\"website_leaks_school\">percoleaks.tna/pNpgRUdQ89</l>\r\n\r\ni will try to get you more. keep an eye on new percoleaks documents. for now i must keep my head down. they will now come for me.\r\n\r\nhit them. hit them as hard as you can.\r\n\r\ndavid",
+    "translation": ""
+  },
+  {
+    "id": "4013_264",
+    "path_id": 4013,
+    "offset": 264,
+    "byte_length": 553,
+    "padding": 3,
+    "category": "article",
+    "original": "David,\r\n\r\nYour loyalty to me is beyond any limits. <d target=\"data_raban_davidlongtime\">You have been with me from the start. The People's Voice would not nearly have become what it is had you not been there. You're more than a fan. You're a true friend.</d>\r\n\r\nBut I'm tired. I've been writing furiously all day to this point, and look where it got me. Nowhere. Everything around me is falling apart. I have no one left. Even my followers are turning their backs on me.\r\n\r\nIt's over. It has to end. I want it to end.\r\n\r\nThank you. For standing with me.",
+    "translation": ""
+  },
+  {
+    "id": "4014_264",
+    "path_id": 4014,
+    "offset": 264,
+    "byte_length": 782,
+    "padding": 2,
+    "category": "article",
+    "original": "David,\r\n\r\nYour loyalty to me is beyond any limits. <d target=\"data_raban_davidlongtime\">You have been with me from the start. The People's Voice would not nearly have become what it is had you not been there. You're more than a fan. You're a true friend.</d>\r\n\r\nBut it's all going down. Not even Ilya is by my side any longer. He has made mistakes, yes. But he has been subject of so much hate today. I cannot even say where it all is coming from.\r\n\r\nI'm tired. I've been writing furiously all day to this point, and look where it got me. Nowhere. Everything around me is falling apart. I have no one left. Even my followers are turning their backs on me.\r\n\r\n<d target=\"data_raban_doesntwanttogoon\">It's over. It has to end. I want it to end.</d>\r\n\r\nThank you. For standing with me.",
+    "translation": ""
+  },
+  {
+    "id": "4015_268",
+    "path_id": 4015,
+    "offset": 268,
+    "byte_length": 860,
+    "padding": 0,
+    "category": "article",
+    "original": "David,\r\n\r\nYour loyalty to me is beyond any limits. <d target=\"data_raban_davidlongtime\">You have been with me from the start. The People's Voice would not nearly have become what it is had you not been there. You're more than a fan. You're a true friend.</d>\r\n\r\nBut it's all going down. And I believe now I know why: My wife Karen must have been spying on me the whole time. The recent revelation about her connections to The Party. Her family is in politics! What did I expect? Why did I leave my guard down then? How could I be so naive and believe she would love me?\r\n\r\nI'm tired. I've been writing furiously all day to this point, and look where it got me. Nowhere. Everything around me is falling apart. I have no one left. Even my followers are turning their backs on me.\r\n\r\nIt's over. It has to end. I want it to end.\r\n\r\nThank you. For standing with me.",
+    "translation": ""
+  },
+  {
+    "id": "4036_205",
+    "path_id": 4036,
+    "offset": 205,
+    "byte_length": 39,
+    "padding": 1,
+    "category": "article",
+    "original": "\u0000\u0000\u0000\"\u0000\u0000\u0000website_beholder_breakingninadea",
+    "translation": "",
+    "duplicate_ids": [
+      "4037_197"
+    ]
+  },
+  {
+    "id": "4299_132",
+    "path_id": 4299,
+    "offset": 132,
+    "byte_length": 69,
+    "padding": 3,
+    "category": "article",
+    "original": "Update: David has been important in the shaping of The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "4299_284",
+    "path_id": 4299,
+    "offset": 284,
+    "byte_length": 55,
+    "padding": 1,
+    "category": "article",
+    "original": "has been important in the shaping of The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "4341_208",
+    "path_id": 4341,
+    "offset": 208,
+    "byte_length": 137,
+    "padding": 3,
+    "category": "article",
+    "original": "#TraitorOfThePeople: Ilya Vhart, editor at The People's Voice, wanted to get away from the blog and his \"abusive\" brother for a long time",
+    "translation": "",
+    "duplicate_ids": [
+      "4341_360"
+    ]
+  },
+  {
+    "id": "4397_228",
+    "path_id": 4397,
+    "offset": 228,
+    "byte_length": 52,
+    "padding": 0,
+    "category": "article",
+    "original": "believes {CHAR_KAREN} to threaten The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "4401_244",
+    "path_id": 4401,
+    "offset": 244,
+    "byte_length": 62,
+    "padding": 2,
+    "category": "article",
+    "original": "believes other editors of The People's Voice to be his enemies",
+    "translation": ""
+  },
+  {
+    "id": "4407_260",
+    "path_id": 4407,
+    "offset": 260,
+    "byte_length": 71,
+    "padding": 1,
+    "category": "article",
+    "original": "has been knowing {CHAR_DAVID} since the beginning of The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "4411_208",
+    "path_id": 4411,
+    "offset": 208,
+    "byte_length": 119,
+    "padding": 1,
+    "category": "article",
+    "original": "#FakeMarriage: How Raban Vhart of The People's Voice planned his escape from a refugee camp by seducing their therapist",
+    "translation": "",
+    "duplicate_ids": [
+      "4411_340"
+    ]
+  },
+  {
+    "id": "4428_260",
+    "path_id": 4428,
+    "offset": 260,
+    "byte_length": 69,
+    "padding": 3,
+    "category": "article",
+    "original": "withdrew contribution rights from other editors on The People's Voice",
+    "translation": ""
+  },
+  {
+    "id": "4908_156",
+    "path_id": 4908,
+    "offset": 156,
+    "byte_length": 122,
+    "padding": 2,
+    "category": "article",
+    "original": "A recording of it was sent to the National Beholder's newsroom recently. Anonymously, of course. Which is another mystery.",
+    "translation": ""
+  }
+]
