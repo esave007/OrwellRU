@@ -1,0 +1,16 @@
+{
+  "_comment_safe": "These are safe to patch in level4 (UI button labels in pid=1327)",
+  "Submit": "",
+  "Cancel": "",
+  "_comment_risky": "These are in gameflow/entity config (pid=1117,1162). Translations from level3 shown. Patching may break flow/entity lookups.",
+  "Episode One: The Clocks were Striking Thirteen": "Эпизод первый: Часы пробили тринадцать",
+  "Episode Two: A Place where there is No Darkness": "Эпизод второй: Место, где нет темноты",
+  "Episode Three: Unperson": "Эпизод третий: Нелицо",
+  "Episode Four: Memory Hole": "Эпизод четвёртый: Провал памяти",
+  "Episode Five: Under the Spreading Chestnut Tree": "Эпизод пятый: Под раскидистым каштаном",
+  "Anonymous sender": "Анонимный отправитель",
+  "The National Beholder Office": "Редакция «Национального Обозревателя»",
+  "Intervention team": "Группа захвата",
+  "Office of Doctor White": "Кабинет доктора Уайта",
+  "Task": ""
+}

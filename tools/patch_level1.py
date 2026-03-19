@@ -140,6 +140,11 @@ TRANSLATIONS = {
     "WE PROTECT THE NATION.": "МЫ ЗАЩИЩАЕМ НАЦИЮ.",
     "YOUR WORK WILL FURTHER THE NATION.": "ВАШ ТРУД ПОСЛУЖИТ НАЦИИ.",
     "THANK YOU FOR STANDING WATCH.": "БЛАГОДАРИМ ЗА БДИТЕЛЬНОСТЬ.",
+
+    # --- Profile slots ---
+    "Profile 01": "Профиль 01",
+    "Profile 02": "Профиль 02",
+    "Profile 5": "Профиль 5",
 }
 
 # RectTransform adjustments for Russian text
