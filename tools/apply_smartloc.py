@@ -1,53 +1,42 @@
 #!/usr/bin/env python3
 """
 Apply SmartLocalization translation to resources.assets.
-Replaces English values in the Language.en TextAsset XML with Russian translations.
-Also replaces in Language (master) and Language.en.de (delta).
+Replaces English values in the Language.en and Language TextAsset XMLs.
+
+Pipeline: reads BACKUP via UnityPy for XML modification,
+then constructs raw TextAsset bytes and applies via custom binary patcher.
+This avoids chaining UnityPy saves (which corrupts MonoBehaviour objects).
 """
-import os, sys, json
+import os, sys, json, re, struct
 os.environ["PYTHONIOENCODING"] = "utf-8"
 sys.stdout.reconfigure(encoding='utf-8')
 
 import UnityPy
 from pathlib import Path
 
-GAME_DATA = Path(r"C:\Steam\steamapps\common\Orwell Ignorance is Strength\Ignorance_Data")
+sys.path.insert(0, str(Path(__file__).parent))
+from unity_serialized_patcher import UnitySerializedFile
+
 PROJECT = Path(r"C:\Projects\OrwellRU")
+BACKUP = PROJECT / "backup"
 
 
-def apply_translations(env, asset_name, translations):
-    """Replace translation values in a SmartLocalization TextAsset."""
-    for obj in env.objects:
-        if obj.type.name != "TextAsset":
-            continue
-        data = obj.read()
-        if data.m_Name != asset_name:
-            continue
+def build_text_asset_raw(name: str, script: str) -> bytes:
+    """Build raw TextAsset data: [name_len][name][pad][script_len][script][pad]"""
+    name_bytes = name.encode('utf-8')
+    script_bytes = script.encode('utf-8')
 
-        text = data.m_Script
-        modified = False
+    data = bytearray()
+    # Name
+    data += struct.pack('<I', len(name_bytes))
+    data += name_bytes
+    data += b'\x00' * ((4 - len(name_bytes) % 4) % 4)
+    # Script
+    data += struct.pack('<I', len(script_bytes))
+    data += script_bytes
+    data += b'\x00' * ((4 - len(script_bytes) % 4) % 4)
 
-        for key, russian in translations.items():
-            if not russian:
-                continue  # Skip empty values
-
-            # Find the XML pattern: <data name="KEY" ...><value>ENGLISH</value></data>
-            # We need to find the value within the correct data element
-            import re
-            pattern = rf'(<data name="{re.escape(key)}"[^>]*>\s*<value>)(.*?)(</value>)'
-            match = re.search(pattern, text, re.DOTALL)
-            if match:
-                old_value = match.group(2)
-                if old_value and old_value != russian:
-                    text = text[:match.start(2)] + russian + text[match.end(2):]
-                    modified = True
-                    print(f"  {key}: '{old_value}' -> '{russian}'")
-
-        if modified:
-            data.m_Script = text
-            data.save()
-            return True
-    return False
+    return bytes(data)
 
 
 def main():
@@ -61,62 +50,63 @@ def main():
 
     print(f"Loaded {len(translations)} translation entries")
 
-    # Load resources.assets
-    env = UnityPy.load(str(GAME_DATA / "resources.assets"))
+    # Use UnityPy to READ backup TextAssets and modify XML in memory
+    print(f"\nReading BACKUP with UnityPy...")
+    env = UnityPy.load(str(BACKUP / "resources.assets"))
 
-    # Apply to Language.en (main English)
-    print("\n--- Language.en ---")
-    ok1 = apply_translations(env, "Language.en", translations)
-    print(f"  Applied: {ok1}")
+    replacements = {}  # {path_id: new_raw_bytes}
 
-    # Apply to Language (master, same as en)
-    print("\n--- Language (master) ---")
-    ok2 = apply_translations(env, "Language", translations)
-    print(f"  Applied: {ok2}")
+    for asset_name in ["Language.en", "Language"]:
+        print(f"\n--- {asset_name} ---")
+        for obj in env.objects:
+            if obj.type.name != "TextAsset":
+                continue
+            data = obj.read()
+            if data.m_Name != asset_name:
+                continue
 
-    # Save
+            text = data.m_Script
+            count = 0
+            for key, russian in translations.items():
+                if not russian:
+                    continue
+                pattern = rf'(<data name="{re.escape(key)}"[^>]*>\s*<value>)(.*?)(</value>)'
+                match = re.search(pattern, text, re.DOTALL)
+                if match:
+                    old_value = match.group(2)
+                    if old_value and old_value != russian:
+                        text = text[:match.start(2)] + russian + text[match.end(2):]
+                        count += 1
+
+            if count > 0:
+                raw = build_text_asset_raw(data.m_Name, text)
+                replacements[obj.path_id] = raw
+                print(f"  {count} replacements, raw={len(raw)} bytes")
+            break
+
+    if not replacements:
+        print("No SmartLoc changes to apply!")
+        return
+
+    # Apply via custom binary patcher
+    src_path = PROJECT / "patches" / "resources.assets"
+    if not src_path.exists():
+        src_path = BACKUP / "resources.assets"
+    print(f"\nApplying via custom patcher to {src_path}...")
+
+    usf = UnitySerializedFile(str(src_path))
     out_path = PROJECT / "patches" / "resources.assets"
-    with open(out_path, "wb") as f:
-        f.write(env.file.save())
+    usf.rebuild_with_replacements(replacements, str(out_path))
 
-    orig_size = (GAME_DATA / "resources.assets").stat().st_size
-    new_size = out_path.stat().st_size
-    print(f"\nSaved: {out_path}")
-    print(f"Original: {orig_size} bytes")
-    print(f"Modified: {new_size} bytes ({new_size - orig_size:+d})")
+    print(f"Saved: {out_path} ({os.path.getsize(str(out_path))} bytes)")
 
     # Verify
     print("\n--- Verification ---")
-    env2 = UnityPy.load(str(out_path))
-    for obj in env2.objects:
-        if obj.type.name == "TextAsset":
-            data = obj.read()
-            if data.m_Name == "Language.en":
-                text = data.m_Script
-                # Check a few translations
-                checks = [
-                    ("Новая игра", "MAINMENU_NEW_GAME"),
-                    ("Меню", "INGAMEMENU_TITLE"),
-                    ("Сохранить", "INGAMEMENU_SAVE_GAME"),
-                    ("Загрузить", "INGAMEMENU_LOAD_GAME"),
-                    ("Профиль", "PROFILER_TAB_PROFILE"),
-                    ("Связи", "PROFILER_TAB_RELATIONSHIPS"),
-                    ("Закладки", "READER_TAB_BOOKMARKS"),
-                ]
-                all_ok = True
-                for ru_text, key in checks:
-                    if ru_text in text:
-                        print(f"  {key}: OK ({ru_text})")
-                    else:
-                        print(f"  {key}: FAIL ('{ru_text}' not found)")
-                        all_ok = False
-                if all_ok:
-                    print("\n  ALL VERIFICATIONS PASSED!")
-                break
-
-    obj_count_orig = sum(1 for _ in UnityPy.load(str(GAME_DATA / "resources.assets")).objects)
-    obj_count_new = sum(1 for _ in env2.objects)
-    print(f"\n  Object count: original={obj_count_orig}, modified={obj_count_new}")
+    with open(out_path, 'rb') as f:
+        raw = f.read()
+    checks = ["Новая игра", "Меню", "Сохранить", "Загрузить", "Профиль", "Связи", "Закладки"]
+    ok = sum(1 for c in checks if c.encode('utf-8') in raw)
+    print(f"  {ok}/{len(checks)} verified OK")
 
 
 if __name__ == "__main__":

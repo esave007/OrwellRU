@@ -86,12 +86,29 @@ def main():
     replacements = {}
     total_replaced = 0
 
+    # PIDs to SKIP — internal game controllers, NOT display text!
+    SKIP_PIDS = {
+        # Aptitude test screen state controllers (website_aptitudetest_*)
+        696, 697, 698, 699, 700,
+        # Flow state objects ("Aptitude Test" lookup key)
+        733, 734, 735, 736, 737, 738, 739, 740, 741, 742,
+        # "Update: Task *" internal event identifiers
+        796, 797, 798, 799, 800, 801, 802, 803, 804, 805,
+        806, 807, 808, 809, 810, 811, 812, 813, 814, 815,
+        816, 817, 818, 819, 820, 821, 822, 823, 824, 825,
+        826, 827, 828,
+        # Main gameflow controller
+        4988,
+    }
+
     print("\nApplying translations to MonoBehaviour objects:")
     for obj in usf.objects:
         if obj['type_index'] >= len(usf.types):
             continue
         class_id = usf.types[obj['type_index']]['class_id']
         if class_id != 114:
+            continue
+        if obj['path_id'] in SKIP_PIDS:
             continue
         raw = usf.get_object_data(obj['path_id'])
         if not raw or len(raw) < 20:

@@ -27,7 +27,7 @@
     },
     "Cancel": {
       "original": "Cancel",
-      "translation": "Отмена",
+      "translation": "Cancel",
       "heap_offset": "0x17b4b",
       "byte_length": 13,
       "original_chars": 6,
@@ -153,12 +153,12 @@
     },
     "Aptitude Test": {
       "original": "Aptitude Test",
-      "translation": "Тест на профпригодность",
+      "translation": "Aptitude Test",
       "heap_offset": "0x11058",
       "byte_length": 27,
       "original_chars": 13,
-      "translation_chars": 23,
-      "length_ratio_pct": 177
+      "translation_chars": 13,
+      "length_ratio_pct": 100
     },
     "Logging in": {
       "original": "Logging in",
@@ -243,12 +243,12 @@
     },
     "None": {
       "original": "None",
-      "translation": "Нет",
+      "translation": "None",
       "heap_offset": "0x17a2e",
       "byte_length": 9,
       "original_chars": 4,
-      "translation_chars": 3,
-      "length_ratio_pct": 75
+      "translation_chars": 4,
+      "length_ratio_pct": 100
     },
     "Assigned Case: Bonton Bombings": {
       "original": "Assigned Case: Bonton Bombings",
@@ -657,12 +657,12 @@
     },
     "Text": {
       "original": "Text",
-      "translation": "Текст",
+      "translation": "Text",
       "heap_offset": "0x5d27",
       "byte_length": 9,
       "original_chars": 4,
-      "translation_chars": 5,
-      "length_ratio_pct": 125
+      "translation_chars": 4,
+      "length_ratio_pct": 100
     },
     "Note": {
       "original": "Note",
@@ -1071,12 +1071,12 @@
     },
     "Submit": {
       "original": "Submit",
-      "translation": "Отправить",
+      "translation": "Submit",
       "heap_offset": "0x1b791",
       "byte_length": 13,
       "original_chars": 6,
-      "translation_chars": 9,
-      "length_ratio_pct": 150
+      "translation_chars": 6,
+      "length_ratio_pct": 100
     },
     "a communication": {
       "original": "a communication",

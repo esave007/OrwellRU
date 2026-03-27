@@ -209,7 +209,7 @@ def main():
     print("\n--- Generating Cyrillic SDF glyphs ---")
     face = freetype.Face(ttf_path)
 
-    # Calibrated parameters (see CLAUDE.md / script header for derivation):
+    # Calibrated parameters (see script header for derivation):
     #   render_size=71 → 'A' bitmap is 48x49; with spread=5 the padded SDF is 58x59.
     #   Atlas 'A' height = 59.16, so the height matches exactly.
     #   Width is 58 vs 57.03 in atlas — 1px extra, acceptable.
@@ -361,8 +361,8 @@ def main():
 
     # === STEP 7: Apply to game's resources.assets ===
     print("\n--- Applying to resources.assets ---")
-    # Load the DEPLOYED file (which has SmartLoc + MonoBehaviour translations)
-    env = UnityPy.load(str(GAME_DATA / "resources.assets"))
+    # Load from BACKUP (original, unmodified) — never chain UnityPy saves!
+    env = UnityPy.load(str(PROJECT / "backup" / "resources.assets"))
 
     for obj in env.objects:
         if obj.path_id == FONT_PATH_ID:

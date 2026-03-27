@@ -179,6 +179,26 @@ def main():
     replacements = {}
     total_replaced = 0
 
+    # PIDs to SKIP — internal game controllers, NOT display text!
+    # Replacing strings in these corrupts binary structure (shifts field offsets)
+    SKIP_PIDS = {
+        # Screen state controllers (script PID 702) — "Task N" is internal label
+        1050,   # website_aptitudetest_task7lie
+        1084,   # website_aptitudetest_task1
+        1145,   # website_aptitudetest_intro
+        1170,   # website_aptitudetest_task7insufficient
+        1174,   # website_aptitudetest_task4
+        1178,   # website_aptitudetest_task3
+        1291,   # website_aptitudetest_task2
+        1376,   # website_aptitudetest_task5dating
+        1449,   # website_aptitudetest_task6
+        1502,   # website_aptitudetest_task5medical
+        # Gameflow manager — "Aptitude Test" is flow lookup key
+        1117,
+        # StandaloneInputModule — "Submit"/"Cancel" are input axis names
+        1327,
+    }
+
     # Apply text translations to ALL MonoBehaviour objects
     print("\nApplying translations to all MonoBehaviour objects:")
     for obj in usf.objects:
@@ -186,6 +206,8 @@ def main():
             continue
         class_id = usf.types[obj['type_index']]['class_id']
         if class_id != 114:  # MonoBehaviour only
+            continue
+        if obj['path_id'] in SKIP_PIDS:
             continue
         raw = usf.get_object_data(obj['path_id'])
         if not raw or len(raw) < 20:
