@@ -174,7 +174,7 @@ begin
   if GameDir <> '' then
     Result := GameDir
   else
-    Result := 'C:\Steam\steamapps\common\Orwell Ignorance is Strength';
+    Result := 'C:\Program Files (x86)\Steam\steamapps\common\Orwell Ignorance is Strength';
 end;
 
 procedure InitializeWizard;
