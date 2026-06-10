@@ -126,7 +126,7 @@
     },
     "Please insert at least one datachunk.": {
       "original": "Please insert at least one datachunk.",
-      "translation": "Пожалуйста, загрузите хотя бы один блок данных.",
+      "translation": "Пожалуйста, загрузите хотя бы один фрагмент данных.",
       "heap_offset": "0x10f9e",
       "byte_length": 75,
       "original_chars": 37,
@@ -468,12 +468,12 @@
     },
     "Quit Orwell": {
       "original": "Quit Orwell",
-      "translation": "Выйти из Orwell",
+      "translation": "Выйти",
       "heap_offset": "0x169cb",
       "byte_length": 23,
       "original_chars": 11,
-      "translation_chars": 15,
-      "length_ratio_pct": 136
+      "translation_chars": 6,
+      "length_ratio_pct": 55
     },
     "Are you sure you want to quit your session? Orwell will remember where you left off.": {
       "original": "Are you sure you want to quit your session? Orwell will remember where you left off.",
@@ -504,7 +504,7 @@
     },
     "Are you sure you want to finish your work for today? All unprocessed Datachunks will expire.": {
       "original": "Are you sure you want to finish your work for today? All unprocessed Datachunks will expire.",
-      "translation": "Вы уверены, что хотите завершить работу на сегодня? Все необработанные блоки данных будут утрачены.",
+      "translation": "Вы уверены, что хотите завершить работу на сегодня? Все необработанные фрагменты данных будут утрачены.",
       "heap_offset": "0x16d6f",
       "byte_length": 185,
       "original_chars": 92,
@@ -963,7 +963,7 @@
     },
     "><u><i>datachunk</i></u></link> was already solved.": {
       "original": "><u><i>datachunk</i></u></link> was already solved.",
-      "translation": "><u><i>блоком данных</i></u></link> уже решён.",
+      "translation": "><u><i>фрагментом данных</i></u></link> уже решён.",
       "heap_offset": "0x163e1",
       "byte_length": 103,
       "original_chars": 51,
@@ -981,7 +981,7 @@
     },
     "><u><i>datachunk</i></u></link>.": {
       "original": "><u><i>datachunk</i></u></link>.",
-      "translation": "><u><i>блоком данных</i></u></link>.",
+      "translation": "><u><i>фрагментом данных</i></u></link>.",
       "heap_offset": "0x16499",
       "byte_length": 65,
       "original_chars": 32,
@@ -999,7 +999,7 @@
     },
     " unknown datachunk was already solved.": {
       "original": " unknown datachunk was already solved.",
-      "translation": " неизвестным блоком данных уже решён.",
+      "translation": " неизвестным фрагментом данных уже решён.",
       "heap_offset": "0x164fd",
       "byte_length": 77,
       "original_chars": 38,
@@ -1017,7 +1017,7 @@
     },
     " unknown datachunk.": {
       "original": " unknown datachunk.",
-      "translation": " неизвестным блоком данных.",
+      "translation": " неизвестным фрагментом данных.",
       "heap_offset": "0x1657f",
       "byte_length": 39,
       "original_chars": 19,
@@ -1026,7 +1026,7 @@
     },
     "There is a conflict with unknown datachunks.": {
       "original": "There is a conflict with unknown datachunks.",
-      "translation": "Обнаружен конфликт с неизвестными блоками данных.",
+      "translation": "Обнаружен конфликт с неизвестными фрагментами данных.",
       "heap_offset": "0x165a7",
       "byte_length": 89,
       "original_chars": 44,
@@ -1089,7 +1089,7 @@
     },
     "datachunk": {
       "original": "datachunk",
-      "translation": "блок данных",
+      "translation": "фрагмент данных",
       "heap_offset": "0x172dd",
       "byte_length": 19,
       "original_chars": 9,
@@ -1098,7 +1098,7 @@
     },
     "datachunks": {
       "original": "datachunks",
-      "translation": "блоки данных",
+      "translation": "фрагменты данных",
       "heap_offset": "0x172f1",
       "byte_length": 21,
       "original_chars": 10,

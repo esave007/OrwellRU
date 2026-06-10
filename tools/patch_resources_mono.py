@@ -18,10 +18,16 @@ BACKUP = PROJECT / "backup"
 
 
 def load_translations():
-    """Load ALL translation batches for resources.assets."""
+    """Load translation batches for resources.assets.
+
+    Pipeline safety:
+    - batch_resources_*.json — curated translations (highest priority)
+    - batch_level3_*.json — reused for shared dialogue/text
+    - Game logic objects are protected by SKIP_TYPE_INDICES (not here)
+    """
     translations = {}
 
-    # Load batch_resources_*.json files
+    # Load batch_resources_*.json files (curated, highest priority)
     pattern = str(PROJECT / "translated" / "batch_resources_*.json")
     batch_files = sorted(glob.glob(pattern))
     for fpath in batch_files:
@@ -32,20 +38,8 @@ def load_translations():
         translations.update(filled)
         print(f"  {fname}: {len(filled)}/{len(batch)} entries")
 
-    # Also load from translation_template.json (entries that have translations)
-    template_path = PROJECT / "translated" / "translation_template.json"
-    if template_path.exists():
-        with open(template_path, 'r', encoding='utf-8') as f:
-            template = json.load(f)
-        template_trans = {e['original']: e['translation'] for e in template
-                         if e.get('translation') and e['translation'] != e['original']}
-        # Don't overwrite batch translations (they're more recent/reviewed)
-        for k, v in template_trans.items():
-            if k not in translations:
-                translations[k] = v
-        print(f"  translation_template.json: {len(template_trans)} entries (non-duplicate)")
-
-    # Also reuse level3 translations (many strings appear in both)
+    # Reuse level3 translations (many strings appear in both)
+    # Safe because game logic objects are filtered by SKIP_TYPE_INDICES
     l3_pattern = str(PROJECT / "translated" / "batch_level3_*.json")
     l3_count = 0
     for fpath in sorted(glob.glob(l3_pattern)):
@@ -86,7 +80,51 @@ def main():
     replacements = {}
     total_replaced = 0
 
-    # PIDs to SKIP — internal game controllers, NOT display text!
+    # Type indices to SKIP — pure game logic, NO display text.
+    # Translating internal state names/identifiers breaks game flow.
+    SKIP_TYPE_INDICES = {
+        7,   # FacebookSettings (1 obj)
+        8,   # PlayFabSharedSettings (1 obj)
+        9,   # DocumentViewedState — has _documentId, _chatId, _personId (4 objs)
+        10,  # EmptyState — logic gates (960 objs)
+        11,  # FadeAtmoLayerState — audio (75 objs)
+        12,  # IfElseState — logic (284 objs)
+        13,  # NewBookmarkState — has _onlinePresenceName lookup (76 objs)
+        14,  # NewDataChunkState — has _chunkId, _personId CRITICAL (48 objs)
+        15,  # NewPersonState — has _personId (1 obj)
+        16,  # NewTargetPersonState — has _personId (12 objs)
+        17,  # OrState — logic (207 objs)
+        18,  # PlayMusicState — audio (13 objs)
+        19,  # StartEndingFlowState — has _flowName lookup (4 objs)
+        20,  # UpdateProfileState — has field identifiers (53 objs)
+        21,  # AtClockTimeState — timing (145 objs)
+        22,  # AtLeastState — logic (14 objs)
+        23,  # BlockCommentsState — logic (3 objs)
+        24,  # ChangeInsiderStatusState — logic (14 objs)
+        25,  # DelayState — timing (73 objs)
+        26,  # InfluencerFollowerCountState — logic (35 objs)
+        27,  # InsiderObject — has CHAR_* person IDs (3 objs)
+        28,  # InsiderDocumentObject — has insider_* doc IDs (22 objs)
+        29,  # LevelCompleteState — logic (2 objs)
+        31,  # UpdateDropRepeatableState — has _dropId (28 objs)
+        37,  # OnlinePresenceBookmarkData — has document IDs (4 objs)
+        39,  # ObjectiveSolvedState — logic (31 objs)
+        40,  # OnGameEventCallbackState — logic (12 objs)
+        41,  # UnlockAchievementState — logic (18 objs)
+        45,  # WeatherState — logic (9 objs)
+        46,  # MergePersonsState — logic (1 obj)
+        47,  # OpenDocumentState — has document IDs (6 objs)
+        48,  # OpenAppOrTabState — logic (22 objs)
+        49,  # ToolEventState — logic (1 obj)
+        50,  # WaitState — logic (3 objs)
+        51,  # GameFlow controllers — episode transitions (8 objs)
+        52,  # VoiceOverTimings — timing data (1 obj)
+        53,  # Font objects — handled by font patcher (6 objs)
+        54,  # DropCap Numbers — glyph data (3 objs)
+        55,  # TMP Default Style Sheet (1 obj)
+    }
+
+    # PIDs to SKIP — specific objects with internal lookup keys
     SKIP_PIDS = {
         # Aptitude test screen state controllers (website_aptitudetest_*)
         696, 697, 698, 699, 700,
@@ -97,10 +135,10 @@ def main():
         806, 807, 808, 809, 810, 811, 812, 813, 814, 815,
         816, 817, 818, 819, 820, 821, 822, 823, 824, 825,
         826, 827, 828,
-        # Main gameflow controller
-        4988,
     }
 
+    skipped_type = 0
+    skipped_pid = 0
     print("\nApplying translations to MonoBehaviour objects:")
     for obj in usf.objects:
         if obj['type_index'] >= len(usf.types):
@@ -108,7 +146,11 @@ def main():
         class_id = usf.types[obj['type_index']]['class_id']
         if class_id != 114:
             continue
+        if obj['type_index'] in SKIP_TYPE_INDICES:
+            skipped_type += 1
+            continue
         if obj['path_id'] in SKIP_PIDS:
+            skipped_pid += 1
             continue
         raw = usf.get_object_data(obj['path_id'])
         if not raw or len(raw) < 20:
@@ -118,6 +160,8 @@ def main():
             replacements[obj['path_id']] = new_raw
             total_replaced += count
 
+    print(f"\n  Skipped {skipped_type} objects by type_index (game logic)")
+    print(f"  Skipped {skipped_pid} objects by PID (internal controllers)")
     print(f"\nText: {total_replaced} replacements in {len(replacements)} objects")
 
     # Rebuild

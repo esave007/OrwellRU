@@ -203,6 +203,13 @@ def main():
     replacements = {}
     total_replaced = 0
 
+    # PIDs to SKIP — Unity engine components, NOT display text!
+    SKIP_PIDS = {
+        # StandaloneInputModule — m_CancelButton axis name is "Cancel";
+        # translating it breaks Input.GetButtonDown -> exception every frame
+        1477,
+    }
+
     # Apply text translations to ALL MonoBehaviour objects
     print("\nApplying translations to all MonoBehaviour objects:")
     for obj in usf.objects:
@@ -210,6 +217,8 @@ def main():
             continue
         class_id = usf.types[obj['type_index']]['class_id']
         if class_id != 114:  # MonoBehaviour only
+            continue
+        if obj['path_id'] in SKIP_PIDS:
             continue
         raw = usf.get_object_data(obj['path_id'])
         if not raw or len(raw) < 20:
