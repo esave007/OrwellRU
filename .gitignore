@@ -53,3 +53,5 @@ originals/level3_strings_raw.json
 originals/level3_to_translate.json
 originals/level3_still_needed.json
 translated/_*
+originals/level3_replacement_map.json
+originals/resources_replacement_map.json
