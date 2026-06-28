@@ -43,8 +43,6 @@ dist/
 
 # Internal dev docs
 docs/plans/
-CLAUDE.md
-PLAN.md
 start.cmd
 
 # Intermediate/working files
