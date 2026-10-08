@@ -3,7 +3,7 @@
 ; Author: eSave
 
 #define MyAppName "Orwell:IS_RUS"
-#define MyAppVersion "0.5.1 (beta)"
+#define MyAppVersion "0.6.0 (beta)"
 #define MyAppPublisher "eSave"
 #define MyAppURL "https://steamcommunity.com/app/633060"
 #define SteamAppID "633060"
@@ -18,7 +18,7 @@ DefaultDirName={code:GetGameDir}
 DirExistsWarning=no
 DisableProgramGroupPage=yes
 OutputDir=..\dist
-OutputBaseFilename=Orwell_IS_RUS_v0.5.1_beta
+OutputBaseFilename=Orwell_IS_RUS_v0.6.0_beta
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern
@@ -31,7 +31,7 @@ PrivilegesRequired=lowest
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Messages]
-russian.BeveledLabel=Orwell: Ignorance is Strength — Русификатор v0.5.1 (beta)
+russian.BeveledLabel=Orwell: Ignorance is Strength — Русификатор v0.6.0 (beta)
 
 [CustomMessages]
 russian.GameNotFound=Игра Orwell: Ignorance is Strength не найдена!%n%nУкажите папку с игрой вручную (где находится Ignorance.exe).
@@ -54,7 +54,13 @@ Source: "..\patches\level2"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversi
 Source: "..\patches\level3"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\level4"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\sharedassets3.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
+; v0.6.0: fonts with Cyrillic (sharedassets0/1), Russian intro video (sharedassets2), runtime layout module
+Source: "..\patches\sharedassets0.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
+Source: "..\patches\sharedassets1.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
+Source: "..\patches\sharedassets2.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
+Source: "..\patches\sharedassets2.resource"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\Assembly-CSharp.dll"; DestDir: "{app}\Ignorance_Data\Managed"; Flags: ignoreversion
+Source: "..\patches\OrwellRuFix.dll"; DestDir: "{app}\Ignorance_Data\Managed"; Flags: ignoreversion
 
 [Code]
 var
@@ -232,12 +238,17 @@ begin
     BackupDir := AppDir + '\_backup_ru';
     BackupManaged := BackupDir + '\Managed';
 
-    // Create backup of original files (only if not already backed up)
-    if not DirExists(BackupDir) then
+    // Create backup of original files. BackupFile never overwrites an existing backup, so an
+    // update over v0.5.x keeps the original files and only adds the ones v0.6.0 replaces in addition.
+    if not DirExists(BackupDir) or not FileExists(BackupDir + '\sharedassets0.assets') then
     begin
       ForceDirectories(BackupDir);
       ForceDirectories(BackupManaged);
 
+      BackupFile(DataDir, 'sharedassets0.assets', BackupDir);
+      BackupFile(DataDir, 'sharedassets1.assets', BackupDir);
+      BackupFile(DataDir, 'sharedassets2.assets', BackupDir);
+      BackupFile(DataDir, 'sharedassets2.resource', BackupDir);
       BackupFile(DataDir, 'resources.assets', BackupDir);
       BackupFile(DataDir, 'level0', BackupDir);
       BackupFile(DataDir, 'level1', BackupDir);
@@ -281,6 +292,17 @@ begin
         CopyFile(BackupDir + '\sharedassets3.assets', DataDir + '\sharedassets3.assets', False);
       if FileExists(BackupManaged + '\Assembly-CSharp.dll') then
         CopyFile(BackupManaged + '\Assembly-CSharp.dll', ManagedDir + '\Assembly-CSharp.dll', False);
+      if FileExists(BackupDir + '\sharedassets0.assets') then
+        CopyFile(BackupDir + '\sharedassets0.assets', DataDir + '\sharedassets0.assets', False);
+      if FileExists(BackupDir + '\sharedassets1.assets') then
+        CopyFile(BackupDir + '\sharedassets1.assets', DataDir + '\sharedassets1.assets', False);
+      if FileExists(BackupDir + '\sharedassets2.assets') then
+        CopyFile(BackupDir + '\sharedassets2.assets', DataDir + '\sharedassets2.assets', False);
+      if FileExists(BackupDir + '\sharedassets2.resource') then
+        CopyFile(BackupDir + '\sharedassets2.resource', DataDir + '\sharedassets2.resource', False);
+      // OrwellRuFix.dll is not part of the game; the restored Assembly-CSharp.dll no longer loads it
+      DeleteFile(ManagedDir + '\OrwellRuFix.dll');
+      DeleteFile(AppDir + '\OrwellRuFix.log');
 
       // Clean up backup folder
       DelTree(BackupDir, True, True, True);

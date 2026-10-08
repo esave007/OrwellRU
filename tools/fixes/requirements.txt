@@ -1,0 +1,7 @@
+UnityPy==1.25.4
+TypeTreeGeneratorAPI==0.0.10
+freetype-py==2.5.1
+scipy==1.18.1
+numpy==2.5.3
+pillow==12.3.0
+etcpak==0.9.15
