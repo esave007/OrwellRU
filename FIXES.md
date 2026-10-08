@@ -128,6 +128,11 @@
 - переставляет прямоугольники подсветки фрагментов на реальное положение слов (как `ChunkBoxDrawing.CreateBox`:
   по прямоугольнику на строку, отступы 5/10), добавляя/обнуляя лишние.
 Ошибки пишутся в `OrwellRuFix.log` рядом с `Ignorance.exe` и не попадают в игру.
+Подписи, которые игра заполняет именем enum (`ToString()`): вкладка Прослушки (`CommunicationType`), вкладка
+и заголовки устройств Взлома (`InsiderDevice.DeviceType`) — модуль находит их через поля `_contentTabCaption` /
+`_nameLabel` соответствующих компонентов и переводит.
+`apply_dll_strings.ps1` применяет `translated/dll_strings.json` к уже пропатченной DLL (только строки,
+оставшиеся английскими; повторный запуск ничего не меняет).
 Сборка: `powershell -File tools/runtime_fix/build.ps1 -Managed <game>\Ignorance_Data\Managed -Out <dir>`
 (csc из .NET Framework 4 + Mono.Cecil ≥ 0.10).
 

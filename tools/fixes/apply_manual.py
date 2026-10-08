@@ -25,6 +25,8 @@
 - Bookmark list: site names and the counter keep the game's Ubuntu Light (FONT_FROM_ORIGINAL restores it
   where an earlier version of this script had put Ubuntu Medium); «сохранено» gets STORED_SIZE.
 - TEXT_REPLACE: phrases replaced inside Russian texts (TMP texts and podcast transcripts).
+- DEBRIEF_EDITS: end-of-day summary (NewDebriefingElementState in resources.assets): untranslated entries and
+  sentences where a name placeholder ({CHAR_…} is replaced by the name in the nominative) broke the grammar.
 
 Usage: apply_manual.py <in_dir> <out_dir> <file> [<file> ...]
 (in_dir must contain globalgamemanagers.assets, the *.resS files, the font-patched sharedassets and level3;
@@ -95,6 +97,23 @@ LINE_FIXES = {
 
 SUBTITLE_SIZE = 34.0
 
+# resources.assets NewDebriefingElementState path_id -> {field: new value}
+DEBRIEF_EDITS = {
+    1510: {"_text": "Наш агент {CHAR_BAYTE} пропал. Незадолго до исчезновения он говорил по телефону, и запись "
+                    "этого звонка попала в онлайн-газету «Национальный обозреватель». Его собеседник — "
+                    "{CHAR_RABAN}. Управление решило вмешаться и с помощью Orwell найти пропавшего агента."},
+    1495: {"_globalHeadlineText": "Вмешательство",
+           "_text": "Когда мы установили, где находится {CHAR_BAYTE}, мы отправили группу вмешательства. "
+                    "Он был обнаружен в руинах Правской средней школы."},
+    1493: {"_text": "Казалось, его обрадовало, что {CHAR_BAYTE} исчез."},
+    1509: {"_text": "Казалось, его расстроило, что {CHAR_BAYTE} исчез."},
+    1494: {"_text": "Он иммигрировал в Нацию вместе со своим братом — {CHAR_ILYA}."},
+    1500: {"_text": "Он, вероятно, причастен к нападению на школу, которой руководил {CHAR_RABAN}."},
+    1501: {"_text": "По результатам расследования мы заключили, что он не мог быть причастен к нападению на "
+                    "школу, которой руководил {CHAR_RABAN}."},
+    1504: {"_text": "По его словам, в нападении на школу, директором которой он был, виновен {CHAR_BAYTE}."},
+}
+
 # file -> {TMP path_id: text appended at the end (once)}: the translators in the main menu credits
 # (earlier wordings of the line are replaced)
 OLD_APPENDS = ("\n\n\n \r\nНад русской локализацией работали <b>esave007</b> и <b>StimDesu</b>.",)
@@ -139,6 +158,8 @@ TEXT_EDITS = {
         39951: (("Защита, Сохранение и Стойкость",), "Защита, сохранение" + chr(10) + "и стойкость", None),
         # one line on the banner like the English one
         39773: (("Горжусь тем, что служу народу Паргеса.",), "Горжусь служить народу Паргеса.", 76.0),
+        # end-of-day summary: «ГЛАВНОЕ МЕНЮ» in one line on its button
+        36483: (("Главное меню",), "Главное меню", 42.0),
         # site logos
         40917: (("Открыть Soteria",), "Open Soteria", None),
         39856: (("Светский человек",), "Socialite", None),
@@ -176,6 +197,7 @@ RECT_EDITS = {
     "level3": {
         7236: {"w": 700.0},  # txt_outgoingsession, free bar up to the date
         5006: {"w": 700.0},  # txt_incomingsession
+        1330: {"x": 492.0, "w": 340.0},  # txt_mainmenu_over (end-of-day summary)
     },
     "level1": {
         53: {"x": 1760.0},   # «НАЗАД» ran over the right edge of the button: closer to the arrow
@@ -516,6 +538,13 @@ def main(in_dir, out_dir, files):
                         n["history"] += 1
                 if changed:
                     o.save_typetree(t)
+            elif cls == "NewDebriefingElementState" and f == "resources.assets" and o.path_id in DEBRIEF_EDITS:
+                t = o.read_typetree()
+                edit = {k: v for k, v in DEBRIEF_EDITS[o.path_id].items() if t.get(k) != v}
+                if edit:
+                    t.update(edit)
+                    o.save_typetree(t)
+                    n["texts"] += 1
             elif cls == "PodcastTranscript":
                 t = o.read_typetree()
                 if replace_phrases(t["Text"]) != t["Text"]:

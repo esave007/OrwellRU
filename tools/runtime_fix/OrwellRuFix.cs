@@ -8,13 +8,16 @@
 //   1. shrinks the font of Cyrillic texts that no longer fit their rect,
 //   2. moves the chunk highlight boxes onto the actual position of the linked words, the same way
 //      the game builds them at runtime (ChunkBoxDrawing.CreateBoxesForChunk / CreateBox),
-//   3. translates the Listener tab caption, which the game fills with CommunicationType.ToString()
-//      ("Chat", "Mail", "Call") in ListenerTabHeader.SetDocumentIconAndText.
+//   3. translates captions the game fills with an enum name (ToString()): the Listener tab caption
+//      (CommunicationType: Chat/Mail/Call), the Insider tab caption and the device headers in the
+//      Insider bookmarks (InsiderDevice.DeviceType: PC/Notebook/Phone). The labels are found through the
+//      fields of the components that own them.
 // Everything is wrapped in try/catch: a failure is written to OrwellRuFix.log and never reaches the game.
 
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,10 +79,37 @@ namespace OrwellRuFix
             public float OriginalSize;
         }
 
-        static readonly Dictionary<string, string> TabCaptions = new Dictionary<string, string>
+        static readonly Dictionary<string, string> EnumCaptions = new Dictionary<string, string>
         {
             { "Chat", "Чат" }, { "Mail", "Почта" }, { "Call", "Звонок" },
+            { "PC", "ПК" }, { "Notebook", "Ноутбук" }, { "Phone", "Телефон" },
         };
+
+        // component type -> its TextMeshProUGUI field that receives the enum name
+        static readonly KeyValuePair<Type, string>[] CaptionFields =
+        {
+            new KeyValuePair<Type, string>(typeof(Orwell.Applications.ListenerTabHeader), "_contentTabCaption"),
+            new KeyValuePair<Type, string>(typeof(Orwell.Applications.InsiderTabHeader), "_contentTabCaption"),
+            new KeyValuePair<Type, string>(typeof(InsiderDeviceHeader), "_nameLabel"),
+        };
+
+        static void TranslateEnumCaptions()
+        {
+            const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+            foreach (var cf in CaptionFields)
+            {
+                FieldInfo field = cf.Key.GetField(cf.Value, flags);
+                if (field == null)
+                    continue;
+                foreach (UnityEngine.Object owner in FindObjectsOfType(cf.Key))
+                {
+                    var label = field.GetValue(owner) as TextMeshProUGUI;
+                    string ru;
+                    if (label != null && label.text != null && EnumCaptions.TryGetValue(label.text, out ru))
+                        label.text = ru;
+                }
+            }
+        }
 
         readonly Dictionary<int, State> _states = new Dictionary<int, State>();
         float _nextScan;
@@ -89,6 +119,14 @@ namespace OrwellRuFix
             if (Time.unscaledTime < _nextScan)
                 return;
             _nextScan = Time.unscaledTime + ScanInterval;
+            try
+            {
+                TranslateEnumCaptions();
+            }
+            catch (Exception e)
+            {
+                Log.Write("captions failed: " + e.Message);
+            }
             TextMeshProUGUI[] texts;
             try
             {
@@ -119,13 +157,6 @@ namespace OrwellRuFix
             string text = t.text;
             if (string.IsNullOrEmpty(text))
                 return;
-            string caption;
-            if (TabCaptions.TryGetValue(text, out caption)
-                && t.GetComponentInParent<Orwell.Applications.ListenerTabHeader>() != null)
-            {
-                t.text = caption;
-                text = caption;
-            }
             Rect r = t.rectTransform.rect;
             int id = t.GetInstanceID();
             State st;

@@ -1140,6 +1140,11 @@
       "original_chars": 18,
       "translation_chars": 18,
       "length_ratio_pct": 100
+    },
+    "Are you sure you want to end the session and quit to the main menu?": {
+      "original": "Are you sure you want to end the session and quit to the main menu?",
+      "translation": "Вы уверены, что хотите завершить сеанс и выйти в главное меню?",
+      "note": "LogoutTool.OnMainMenuButtonClick; added in v0.6.1"
     }
   }
 }
