@@ -22,7 +22,9 @@
 - Podcast subtitles (TMP with PodcastSubtitles): the box shows two lines of the English font; the Russian
   replacement fonts have taller lines, so the text gets SUBTITLE_SIZE.
 - Voice-over word timings of podcasts and calls are recomputed for the Russian words (retime_vo.py).
-- Bookmark list: site names and the counter use Ubuntu Medium instead of Light (MEDIUM_*).
+- Bookmark list: site names and the counter keep the game's Ubuntu Light (FONT_FROM_ORIGINAL restores it
+  where an earlier version of this script had put Ubuntu Medium); «сохранено» gets STORED_SIZE.
+- TEXT_REPLACE: phrases replaced inside Russian texts (TMP texts and podcast transcripts).
 
 Usage: apply_manual.py <in_dir> <out_dir> <file> [<file> ...]
 (in_dir must contain globalgamemanagers.assets, the *.resS files, the font-patched sharedassets and level3;
@@ -102,11 +104,26 @@ TEXT_APPEND = {
 
 # Bookmark list: site names and the «N сохранено» counter are Ubuntu Light, which looks too thin in
 # Cyrillic next to the bold page names -> Ubuntu Medium (font asset, material) from sharedassets1.
-MEDIUM_FONT = ("sharedassets1.assets", 241, 4)
-MEDIUM_TMP = {"sharedassets3.assets": {3068}}  # OnlinePresenceBookmark._caption of the website list
-MEDIUM_GO_NAMES = ("bookmarks_found",)         # «сохранено» next to the counter
-MEDIUM_COUNTERS = ("WebsiteBookmarkPresenter", "InsiderDocumentBookmarkPresenter")
-STORED_SIZE = 18.0
+# Bookmark list texts that get the font asset / material of the original file back (the game uses the
+# thin Ubuntu Light there; v0.6.0 had switched them to Ubuntu Medium)
+FONT_FROM_ORIGINAL_TMP = {"sharedassets3.assets": {3068}}  # OnlinePresenceBookmark._caption (site names)
+FONT_FROM_ORIGINAL_GO_NAMES = ("bookmarks_found",)         # «сохранено» next to the counter
+FONT_FROM_ORIGINAL_COUNTERS = ("WebsiteBookmarkPresenter", "InsiderDocumentBookmarkPresenter")
+STORED_SIZE = 19.1  # «сохранено» in Light fits its 118-wide rect at this size (the mod's value)
+
+# phrases inside Russian texts: the mod left the newspaper name in English in a few places
+TEXT_REPLACE = [
+    ("под названием The National Beholder", "под названием «Национальный обозреватель»"),
+    ("с коррупцией The National Beholder", "с коррупцией «Национального обозревателя»"),
+    ("www.the-national-beholder.tna - The National Beholder - ",
+     "www.the-national-beholder.tna - «Национальный обозреватель» - "),
+]
+
+
+def replace_phrases(text):
+    for old, new in TEXT_REPLACE:
+        text = text.replace(old, new)
+    return text
 
 # file -> {TMP path_id: (accepted current texts, new text, new font size or None)}
 TEXT_EDITS = {
@@ -228,9 +245,10 @@ def replace_strings(t, table):
 
 
 def english_originals(path, scripts):
-    """From the original game file: TMP path_id -> (text, font size), page GameObject -> scroll height.
+    """From the original game file: TMP path_id -> (text, font size), page GameObject -> scroll height,
+    TMP path_id -> (font asset, material).
     All size decisions are based on these, so running the script again changes nothing."""
-    texts, heights = {}, {}
+    texts, heights, fonts = {}, {}, {}
     if os.path.exists(path):
         env = load(path)
         objs = {o.path_id: o for o in env.objects}
@@ -241,13 +259,14 @@ def english_originals(path, scripts):
             if cls in ("TextMeshProUGUI", "TextMeshPro"):
                 t = o.read_typetree()
                 texts[o.path_id] = (t.get("m_text"), t["m_fontSize"])
+                fonts[o.path_id] = (t["m_fontAsset"], t["m_sharedMaterial"])
             elif cls == "TabbedWindowPresenter":
                 t = o.read_typetree()
                 for c, h in zip(t.get("_tabCanvases") or [], t.get("_tabCanvasesHeight") or []):
                     rt = objs.get(c["m_PathID"])
                     if rt is not None:
                         heights[rt.read_typetree()["m_GameObject"]["m_PathID"]] = h
-    return texts, heights
+    return texts, heights, fonts
 
 
 def fit_lines(t, width, english, font):
@@ -360,7 +379,7 @@ def voice_texts(in_dir, scripts):
         if o.type.name == "MonoBehaviour" and mono_class(o, scripts) == "PodcastTranscript":
             t = o.read_typetree()
             if o.path_id in org:
-                out.setdefault(t["PodcastId"], (org[o.path_id].read_typetree()["Text"], t["Text"], True))
+                out.setdefault(t["PodcastId"], (org[o.path_id].read_typetree()["Text"], replace_phrases(t["Text"]), True))
     return out
 
 
@@ -389,8 +408,7 @@ def main(in_dir, out_dir, files):
         for g, rt in rt_of.items():
             parent_go[g] = rt_go.get(rt["m_Father"]["m_PathID"])
         history_docs, subtitle_gos = set(), set()
-        medium_tmp = set(MEDIUM_TMP.get(f, ()))
-        medium_file_id = 1 + externals.index(MEDIUM_FONT[0]) if MEDIUM_FONT[0] in externals else None
+        restore_tmp = set(FONT_FROM_ORIGINAL_TMP.get(f, ()))
         for o in env.objects:
             if o.type.name == "MonoBehaviour":
                 cls = mono_class(o, scripts)
@@ -400,10 +418,10 @@ def main(in_dir, out_dir, files):
                         history_docs.add(t["m_GameObject"]["m_PathID"])
                 elif cls == "PodcastSubtitles":
                     subtitle_gos.add(o.read_typetree()["m_GameObject"]["m_PathID"])
-                elif cls in MEDIUM_COUNTERS:
+                elif cls in FONT_FROM_ORIGINAL_COUNTERS:
                     ref = o.read_typetree().get("_bookmarkCounterText")
                     if ref and ref["m_FileID"] == 0:
-                        medium_tmp.add(ref["m_PathID"])
+                        restore_tmp.add(ref["m_PathID"])
 
         def in_history(g):
             for _ in range(4):
@@ -415,7 +433,9 @@ def main(in_dir, out_dir, files):
             return False
 
         originals = original_textures(os.path.join(ORIG_DIR, f))
-        english, en_heights = english_originals(os.path.join(ORIG_DIR, f), scripts)             if f.startswith("level") else ({}, {})
+        english, en_heights, orig_fonts = english_originals(os.path.join(ORIG_DIR, f), scripts)
+        if not f.startswith("level"):
+            english, en_heights = {}, {}
         page_need = auto_page_heights(env, objs, scripts, rt_of, parent_go, english, en_heights, metrics,
                                       externals, f) if english else {}
         voices = voice_texts(in_dir, scripts) if f == "resources.assets" else {}
@@ -460,15 +480,19 @@ def main(in_dir, out_dir, files):
                         changed = True
                         n["texts"] += 1
                 go_name = objs[g].read_typetree()["m_Name"] if g in objs else ""
-                if medium_file_id and (o.path_id in medium_tmp or go_name in MEDIUM_GO_NAMES):
-                    if t["m_fontAsset"] != {"m_FileID": medium_file_id, "m_PathID": MEDIUM_FONT[1]}:
-                        t["m_fontAsset"] = {"m_FileID": medium_file_id, "m_PathID": MEDIUM_FONT[1]}
-                        t["m_sharedMaterial"] = {"m_FileID": medium_file_id, "m_PathID": MEDIUM_FONT[2]}
+                if (o.path_id in restore_tmp or go_name in FONT_FROM_ORIGINAL_GO_NAMES) and o.path_id in orig_fonts:
+                    asset, material = orig_fonts[o.path_id]
+                    if t["m_fontAsset"] != asset or t["m_sharedMaterial"] != material:
+                        t["m_fontAsset"], t["m_sharedMaterial"] = asset, material
                         changed = True
                         n["fonts"] = n.get("fonts", 0) + 1
-                    if go_name in MEDIUM_GO_NAMES and t["m_fontSize"] != STORED_SIZE:
+                    if go_name in FONT_FROM_ORIGINAL_GO_NAMES and t["m_fontSize"] != STORED_SIZE:
                         t["m_fontSize"] = t["m_fontSizeBase"] = STORED_SIZE  # «СОХРАНЕНО» in its 118-wide rect
                         changed = True
+                if t.get("m_text") and replace_phrases(t["m_text"]) != t["m_text"]:
+                    t["m_text"] = replace_phrases(t["m_text"])
+                    changed = True
+                    n["texts"] += 1
                 suffix = TEXT_APPEND.get(f, {}).get(o.path_id)
                 if suffix and not (t.get("m_text") or "").endswith(suffix):
                     base = t.get("m_text") or ""
@@ -492,6 +516,12 @@ def main(in_dir, out_dir, files):
                         n["history"] += 1
                 if changed:
                     o.save_typetree(t)
+            elif cls == "PodcastTranscript":
+                t = o.read_typetree()
+                if replace_phrases(t["Text"]) != t["Text"]:
+                    t["Text"] = replace_phrases(t["Text"])
+                    o.save_typetree(t)
+                    n["texts"] += 1
             elif cls == "OnlinePresence":
                 t = o.read_typetree()
                 name = PRESENCE_NAMES.get(t.get("_id"))
