@@ -80,8 +80,20 @@ class FontMetrics:
         return self.cache[key]
 
 
-# "13 отметок «Нравится»" (English "13 Likes") is three times longer than the box: "Нравится: 13"
+# "13 отметок «Нравится»" (English "13 Likes") is three times longer than the box: "13 лайков"
 LIKES = re.compile(r"(?:(\d+)\s+отмет\w*|Отметки)\s+«Нравится»:?")
+
+
+def likes_ru(n):
+    """13 -> "13 лайков", 33 -> "33 лайка", 21 -> "21 лайк"."""
+    n = int(n)
+    if n % 10 == 1 and n % 100 != 11:
+        return f"{n} лайк"
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
+        return f"{n} лайка"
+    return f"{n} лайков"
+
+
 LINE_BREAK = re.compile(r"\r\n|\r|\n|<br>")
 
 
@@ -329,7 +341,7 @@ def main(in_dir, out_dir, files):
                 changed = False
                 ru = TMP_TEXT.get(t.get("m_text"))
                 if ru is None and t.get("m_text") and LIKES.search(t["m_text"]):
-                    ru = LIKES.sub(lambda m: "Нравится: " + m.group(1) if m.group(1) else "Нравится:", t["m_text"])
+                    ru = LIKES.sub(lambda m: likes_ru(m.group(1)) if m.group(1) else "Нравится:", t["m_text"])
                 if ru is None and t.get("m_text"):
                     m = DASHED_LABEL.match(t["m_text"].strip())
                     if m and re.search("[А-Яа-яЁё]", m.group(1)):

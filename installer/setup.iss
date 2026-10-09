@@ -3,7 +3,7 @@
 ; Author: eSave
 
 #define MyAppName "Orwell:IS_RUS"
-#define MyAppVersion "0.6.0 (beta)"
+#define MyAppVersion "0.6.2 (beta)"
 #define MyAppPublisher "eSave"
 #define MyAppURL "https://steamcommunity.com/app/633060"
 #define SteamAppID "633060"
@@ -18,7 +18,7 @@ DefaultDirName={code:GetGameDir}
 DirExistsWarning=no
 DisableProgramGroupPage=yes
 OutputDir=..\dist
-OutputBaseFilename=Orwell_IS_RUS_v0.6.0_beta
+OutputBaseFilename=Orwell_IS_RUS_v0.6.2_beta
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern
@@ -31,7 +31,7 @@ PrivilegesRequired=lowest
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Messages]
-russian.BeveledLabel=Orwell: Ignorance is Strength — Русификатор v0.6.0 (beta)
+russian.BeveledLabel=Orwell: Ignorance is Strength — Русификатор v0.6.2 (beta)
 
 [CustomMessages]
 russian.GameNotFound=Игра Orwell: Ignorance is Strength не найдена!%n%nУкажите папку с игрой вручную (где находится Ignorance.exe).

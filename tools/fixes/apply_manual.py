@@ -25,6 +25,10 @@
 - Bookmark list: site names and the counter keep the game's Ubuntu Light (FONT_FROM_ORIGINAL restores it
   where an earlier version of this script had put Ubuntu Medium); «сохранено» gets STORED_SIZE.
 - TEXT_REPLACE: phrases replaced inside Russian texts (TMP texts and podcast transcripts).
+- Timelines profiles, «… нравится» tiles: the light plate under each caption was cut to the English word
+  (bg_like_text_N). interest_tiles() sets the caption to one or two centred lines (as large as the English
+  40 allows, at most TILE_MAX_W wide) and puts the plate and the text rect around it.
+- Like counters «Нравится: 13» (made by apply_scenes from the mod's «13 отметок «Нравится»») -> «13 лайков».
 - DEBRIEF_EDITS: end-of-day summary (NewDebriefingElementState in resources.assets): untranslated entries and
   sentences where a name placeholder ({CHAR_…} is replaced by the name in the nominative) broke the grammar.
 
@@ -35,7 +39,8 @@ English originals are read from ORWELL_ORIG, default <repo>/backup)
 import os, sys, struct
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ttg import load
-from apply_scenes import FontMetrics, count_lines, text_height
+import re
+from apply_scenes import FontMetrics, count_lines, text_height, likes_ru
 from retime_vo import retime
 from ui_images import RENDERERS
 import UnityPy
@@ -136,7 +141,147 @@ TEXT_REPLACE = [
     ("с коррупцией The National Beholder", "с коррупцией «Национального обозревателя»"),
     ("www.the-national-beholder.tna - The National Beholder - ",
      "www.the-national-beholder.tna - «Национальный обозреватель» - "),
+    # TNB: the mod writes «НО:» before the newspaper's questions in interviews (and in the ticker)
+    ("в стиле привычной нам подачи ТНО", "в стиле привычной нам подачи «Национального обозревателя»"),
+    ("Ни слова от TNB о последнем СКАНДАЛЕ", "«Обозреватель» молчит о последнем СКАНДАЛЕ"),
+    ("Куча последователей TNB", "Куча поклонников «Национального обозревателя»"),
+    ("TNB: Что именно", "НО: Что именно"),
+    ("TNB: Миссис Левин", "НО: Миссис Левин"),
+    ("TNB: Итак, чем", "НО: Итак, чем"),
+    # Karen's calendar: the appointments ran out of their cells (four lines instead of three)
+    ("Сеанс с пациентом — София Радич", "Сеанс: София Радич"),
+    ("Сеанс пациента Алексея Ковачи", "Сеанс: Алексей Ковачи"),
+    ("Сеанс пациента Ильи Вхарта", "Сеанс: Илья Вхарт"),
+    # Singular chat: Ilya answers Mary
+    ("Ты прав. Раньше всё было ради благородства.", "Ты права. Раньше всё было ради благородства."),
+    # Rita Grayham and Ana Milova are women
+    ("Очень хотел бы к вам присоединиться", "Очень хотела бы к вам присоединиться"),
+    ("Согласен, и говорю это как гражданин Паргеса.", "Согласна, и говорю это как гражданка Паргеса."),
+    # «… MEDIA LAMBS»: the article and its link say «МЕДИА-ЯГНЯТ», one link said «МЕДИА-ОВЕЦ»
+    ("МОЛЧАНИЕ правительственных МЕДИА-ОВЕЦ", "МОЛЧАНИЕ правительственных МЕДИА-ЯГНЯТ"),
+    ("#BestCoworkersEver", "#ЛучшиеКоллегиНаСвете"),
+    # Karen's album: she writes it
+    ("Никогда бы тогда не угадал, что нас ждёт.", "Никогда бы тогда не угадала, что нас ждёт."),
+    # Penn St Apartments: one name, Russian like in the addresses
+    ("Управляющий жилого комплекса Пенн-стрит", "Управляющий жилым комплексом «Пенн-стрит»"),
+    ("Спасибо за аренду в Penn St Apartments.", "Спасибо, что арендуете жильё в комплексе «Пенн-стрит»."),
+    # Watergate intranet: the company keeps its Latin name (like everywhere else); Matt is a name
+    ("последнее, чего хотят Уотергейты — это чтобы", "последнее, что нужно Watergate, — это чтобы"),
+    ("но мэтт уволит нас обоих", "но Мэтт уволит нас обоих"),
+    # the company is Watergate (the family keeps «Уотергейт», the «скандал «Уотергейт»» pun stays)
+    ("произошло в «Уотергейт».", "произошло в Watergate."),
+    ("@PeoplesVoice В «Уотергейт» ведётся", "@PeoplesVoice В Watergate ведётся"),
+    # The People's Voice (TPV): the hashtag had four spellings -> #ГНЛжецыИВоры (ГН = «Голос Народа», like НО
+    # for the National Beholder); in sentences the name itself
+    ("#TPVareLiarsAndThieves", "#ГНЛжецыИВоры"),
+    ("#TPVЛжецыИВоры", "#ГНЛжецыИВоры"),
+    ("#ГНС_лжецыИворы", "#ГНЛжецыИВоры"),
+    ("#ПрощайTPV", "#ПрощайГН"),
+    ("что TPV отстаивает мои ценности", "что «Голос Народа» отстаивает мои ценности"),
+    ("редактора TPV.", "редактора «Голоса Народа»."),
+    ("Теперь понятно, как TPV финансируется.", "Теперь понятно, как финансируется «Голос Народа»."),
+    ("что касается TPV,", "что касается «Голоса Народа»,"),
+    ("ИЗБАВИТЬСЯ ОТ НЕГО И TPV!", "ИЗБАВИТЬСЯ ОТ НЕГО И «ГОЛОСА НАРОДА»!"),
+    ("если бы ты не вышвырнул меня из TPV,", "если бы ты не вышвырнул меня из «Голоса Народа»,"),
+    # Blabber hashtags the mod left in English (the mod's own Russian ones: #КоррупцияСМИ, #НациональныйЛжец)
+    ("#SaveKarenAndIlya", "#СпаситеКаренИИлью"),
+    ("#LiarsGetLiedTo", "#ЛжецамВрут"),
+    ("#LiarsGetLeftBehind", "#ЛжецовБросают"),
+    ("#ThePeoplesSilencing", "#МолчаниеНарода"),
+    ("#CowardBrother", "#БратТрус"),
+    ("#TraitorOfThePeople", "#ПредательНарода"),
+    ("#SaveBakay", "#СпаситеБакая"),
+    ("#SAVEPARGES", "#СПАСЁМПАРГЕС"),
+    ("#saveparges", "#спасёмпаргес"),
+    ("#TRIFLITHRIOTS", "#БУНТЫВТРИФЛИТЕ"),
+    ("#BlameOnVhart", "#ВиноватВхарт"),
+    ("#BlameOnRaban", "#ВиноватРабан"),
+    ("#MediaCorruption", "#КоррупцияСМИ"),
+    ("#LiesLiesLies", "#ЛожьЛожьЛожь"),
+    ("#TheNationalLiar", "#НациональныйЛжец"),
+    ("#TRUTH", "#ПРАВДА"),
+    ("#FakeMarriage", "#ФиктивныйБрак"),
+    ("#PargesianHero", "#ГеройПаргеса"),
+    ("#refugee", "#беженец"),
+    # mail subject: too long for the mail list row (also MAIL_SUBJECTS and the Mail objects in level3)
+    ("Подпишитесь на Singular Pro уже сегодня!", "Оформите Singular Pro сегодня!"),
 ]
+
+# Blabber display names (the @handles stay as they are); keys: the English name and the mod's variants
+BLABBER_NAMES = {
+    "PeoplesVoice": "Голос Народа",
+    "Not your average weirdo": "Не простой чудак", "Не обычный чудак": "Не простой чудак",
+    "Backp0int": "Бэкп0инт",
+    "Raging Ralf": "Бешеный Ральф",
+    "B. Leaver": "Б. Ливер",
+    "Moonrise Hell": "Лунный Ад",
+    "Liam Love": "Лиам Лав",
+    "Brain Stu": "Брейн Стю",
+    "Kanzto": "Канзто",
+    "Tyler Durden": "Тайлер Дёрден",
+    "FightBack999": "ДайОтпор999",
+    "Jon Doe": "Джон Доу",
+    "Единственный выживший в Трифлите": "Единственный выживший из Трифлита",
+    "Beequeen": "Пчелиная Королева",
+    "Terence H": "Теренс Х",
+    "Resist The Gov": "Против Власти",
+    "Henriette_K": "Генриетта_К",
+    "Guacamole": "Гуакамоле",
+}
+BLABBER_NAME = re.compile(r"(?<![\w@])(" + "|".join(sorted(map(re.escape, BLABBER_NAMES), key=len, reverse=True)) +
+                          r")(?=\s*\(?@)")
+BLABBER_COUNTER = re.compile(r"^[\d,]+ (re-blabbers|replies|votes)\s*$")
+
+# resources.assets NewMailState path_id -> (accepted subjects, new subject): too long for the mail list row
+MAIL_SUBJECTS = {2662: (("Подпишитесь на Singular Pro уже сегодня!",), "Оформите Singular Pro сегодня!")}
+
+# Watergate intranet
+WATERGATE_DATE_SIZE = 41.8     # message list: the dates like the subjects next to them
+WATERGATE_BUTTON_SIZE = 50.0   # «Ваш профиль» / «Ваши сообщения» (36 in a 67 high box)
+# chats laid out block under block (see restack_messages): the Watergate intranet and the phones' messengers
+MESSAGE_PAGES = ("website_watergate_ilyamessage", "insider_karensphone_messagehistory", "insider_ilyasphone_message",
+                 "insider_baytephone_message")
+
+# resources.assets UpdateProfileState path_id -> (English value, Russian value): dossier values the mod missed
+PROFILE_VALUES = {
+    1638: ("deceased", "скончался"),
+    4363: ("deceased", "скончалась"),
+    2892: ("athletic", "спортивного телосложения"),
+    2896: ("heterosexual", "гетеросексуал"),
+    2903: ("single", "холост"),
+    2904: ("unreliable", "ненадёжный работник"),  # the opposite of «надёжный работник»
+    4334: ("optimistic", "оптимист"),
+}
+
+# SmartBank account page: «13 апреля 2017 г.» wrapped into two/three lines in the narrow date column
+BANK_DATE = re.compile(r"^(January|February|March|April|May|June|July|August|September|October|November|December) "
+                       r"(\d{1,2}), (\d{4})\s*$")
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+          "November", "December")
+BANK_DATE_SIZE = 33.5
+# the transaction column: one size for every row (the mod's texts had 34..40), boxes as wide as the widest
+BANK_TEXT_SIZE = 36.0
+BANK_TEXT_WIDTH = 702.0
+
+# Website._displayName (the page title in the address bar)
+PAGE_TITLES = {"Молчание ПРАВИТЕЛЬСТВЕННЫХ ОВЕЦ": "Молчание ПРАВИТЕЛЬСТВЕННЫХ МЕДИА-ЯГНЯТ"}
+
+# resources.assets UpdateProfileState path_id -> (value, drop text, drag start, drag end): dossier entries
+# that did not fit their two-line field
+PROFILE_EDITS = {
+    # Karen, occupation (refugee counselor at Rehabilitation Council)
+    2960: ("консультант по беженцам в Реабилитационном совете", "консультант по беженцам", 0, 22),
+}
+
+LIKES_LABEL = re.compile(r"^Нравится: (\d+)(\s*)$")
+
+# Timelines «… нравится» tiles
+TILE_MAX_W = 300.0     # caption width (the pictures are ~370 wide)
+TILE_PAD = 34.0        # plate = caption + this (the English plates: 32..37)
+TILE_MIN_ONE_LINE = 32.0  # a one-line caption smaller than this is set in two lines
+TILE_DROP = 0.1        # the centred text sits high on the plate: moved down by this × size / lines
+TILE_ONE_LINE_GROW = 6.0  # one-line plates grow upwards by this (room for «Й»)
+TILE_LINE_SPACING = -20.0  # two-line captions: lines closer together
 
 
 def replace_phrases(text):
@@ -144,10 +289,33 @@ def replace_phrases(text):
         text = text.replace(old, new)
     return text
 
+
+# resources.assets NewChatMessageState path_id -> (mod text, new text): single chat lines too short for TEXT_REPLACE
+CHAT_EDITS = {
+    2041: ("НОЛЬ", "НИ МАЛЕЙШЕГО"),  # «You have NO IDEA what it's like» / «ZERO»
+    2063: ("Ты прав.", "Ты права."),  # Karen answers Molly
+}
+
+
+def chat_text(pid, text):
+    old, new = CHAT_EDITS.get(pid, (None, None))
+    return replace_phrases(new if text == old else text)
+
 # file -> {TMP path_id: (accepted current texts, new text, new font size or None)}
 TEXT_EDITS = {
     "sharedassets3.assets": {
         2838: (("соединение установлено",), "связь установлена", 32.0),  # call: 2nd line was cut off
+        # profile update tooltip: «ОТКЛЮЧИТЬ»/«ВКЛЮЧИТЬ» ran into the icon after them
+        3205: (("Отключить",), "Отключить", 30.0),
+        3252: (("Отключить",), "Отключить", 30.0),
+        3355: (("Включить",), "Включить", 30.0),
+        # conflict tooltip: «ПОКАЗАТЬ КОНФЛИКТ» ran out of its button; the picture button says «КОНФЛИКТ ▸»
+        # (same size and place as on the picture, RECT_EDITS)
+        3244: (("ПОКАЗАТЬ КОНФЛИКТ", "КОНФЛИКТ"), "КОНФЛИКТ", 34.0),
+        3363: (("ПОКАЗАТЬ КОНФЛИКТ", "КОНФЛИКТ"), "КОНФЛИКТ", 34.0),
+        # connections graph: the selected person's name, «Левин-Вхарт» did not fit and broke at the hyphen
+        2486: (("Mary Bligh",), "Mary Bligh", 27.0),
+        2720: (("Karen Levine-Vhart",), "Karen Levine-Vhart", 27.0),
     },
     "level3": {
         39316: (("Исходящая сессия",), "Исходящий сеанс", None),  # Listener: 'Session' is «Сеанс»
@@ -160,6 +328,52 @@ TEXT_EDITS = {
         39773: (("Горжусь тем, что служу народу Паргеса.",), "Горжусь служить народу Паргеса.", 76.0),
         # end-of-day summary: «ГЛАВНОЕ МЕНЮ» in one line on its button
         36483: (("Главное меню",), "Главное меню", 42.0),
+        # Karen's Timelines status in one line (the second line went under the header)
+        36099: (("Статус: «Всем не помочь, но каждый может помочь кому-то».\r", "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r"), "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r", 49.0),
+        36186: (("Статус: «Всем не помочь, но каждый может помочь кому-то».\r", "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r"), "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r", 49.0),
+        37637: (("Статус: «Всем не помочь, но каждый может помочь кому-то».\r", "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r"), "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r", 49.0),
+        39769: (("Статус: «Всем не помочь, но каждый может помочь кому-то».\r", "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r"), "Статус: «Мы не можем помочь каждому, но каждый может помочь кому-то».\r", 49.0),
+        # Karen's site: Diane is «Диана» in the letters and the sidebar
+        35863: (("Дайан Коулман",), "Диана Коулман", None),
+        36749: (("Дайан Коулман",), "Диана Коулман", None),
+        # Karen's site: «Назад к входящим» ran into the arrow (text moved right of it, RECT_EDITS)
+        38354: (("Назад к входящим",), "Назад к входящим", 36.0),
+        39651: (("Назад к входящим",), "Назад к входящим", 36.0),
+        40812: (("Назад к входящим",), "Назад к входящим", 36.0),
+        41038: (("Назад к входящим",), "Назад к входящим", 36.0),
+        # Karen's calendar: «CW 15» is the calendar week
+        36144: (("КН\r\n15\r",), "Нед.\r\n15\r", None),
+        # Singular questionnaire: answers that fit the questions
+        40336: (("Кот\r\nСобака\r\nНикого\r\nНе люблю животных",),
+                "Кошек\r\nСобак\r\nНи тех, ни других\r\nНе люблю животных", None),
+        38090: (("... левая рука.\r\n... правая рука.\r\nЧто это за вопрос?!",),
+                "... на левую руку.\r\n... на правую руку.\r\nЧто это за вопрос?!", None),
+        # Blabber: the profile name and the slogan (shrunk to 22 in its box: the box grows, the size of the
+        # English text)
+        40297: (("PeoplesVoice",), "Голос Народа", None),
+        37993: (("Blabber. Говори, что думаешь.\r",), "Blabber. Говори, что думаешь.\r", 30.0),
+        # Blabber: followers / following (the mod had «Прослушка», i.e. wiretapping)
+        36238: (("Прослушка",), "Слушатели", None),
+        38995: (("Прослушка",), "Слушатели", None),
+        39870: (("Прослушивание", "Слушает"), "Слушает", 42.4),  # the same size as «Слушатели»
+        # Hologram (an Instagram parody) keeps its name, like in the bookmark list
+        35894: (("Голограмма",), "Hologram", None),
+        # patient database: the hint ran out of its box
+        36389: (("Введите полное имя пациента или номер социального страхования.\r",),
+                "Введите полное имя пациента или номер соцстрахования.\r", 34.0),
+        40352: (("Введите полное имя пациента или номер социального страхования.\r",),
+                "Введите полное имя пациента или номер соцстрахования.\r", 34.0),
+        # Hologram: search hint in one line
+        41260: (("Введите название места или адрес для поиска по вашему альбому.\r",),
+                "Введите название места или адрес для поиска по альбому.\r", None),
+        # Karen's album: the place under the photo in one line (the city is named after the comma)
+        39041: (("Внешний приёмный лагерь Бонтона, Бонтон",), "Внешний приёмный лагерь, Бонтон", None),
+        # SmartBank: two lines at the common size (BANK_TEXT_SIZE)
+        38023: (("Национальный транспорт Бонтона — Ваш месячный проездной на апрель 2017 г.",),
+                "Национальный транспорт Бонтона — проездной на апрель 2017 г.", None),
+        # weather photo caption in one line (the second line ran below the picture)
+        38566: (("Надвигаются тяжёлые дождевые тучи! Фото: stock-overflow.tna\r",),
+                "Надвигаются грозовые тучи! Фото: stock-overflow.tna\r", 37.0),
         # site logos
         40917: (("Открыть Soteria",), "Open Soteria", None),
         39856: (("Светский человек",), "Socialite", None),
@@ -193,11 +407,41 @@ RECT_EDITS = {
     "sharedassets3.assets": {
         856: {"x": 1152.0},  # icon_phone_to: after «КОМУ» (was after «TO»)
         923: {"x": 72.0},    # icon_phone_from: after «ОТ» (was after «FROM»)
+        # «Отключить» / «Включить» buttons (260 wide, LAYOUT_EDITS): text and icon spaced out
+        1177: {"x": -24.0}, 1167: {"x": -24.0}, 1166: {"x": -24.0},
+        1109: {"x": 95.0}, 1207: {"x": 95.0}, 1205: {"x": 95.0},
+        1232: {"x": 137.0}, 1135: {"x": 137.0},  # «КОНФЛИКТ» where the picture button has it
+        1136: {"x": 154.0}, 1226: {"x": 154.0},  # and its arrow
     },
     "level3": {
         7236: {"w": 700.0},  # txt_outgoingsession, free bar up to the date
         5006: {"w": 700.0},  # txt_incomingsession
-        1330: {"x": 492.0, "w": 340.0},  # txt_mainmenu_over (end-of-day summary)
+        # end-of-day summary: «◂ ГЛАВНОЕ МЕНЮ» moves left, the end of the text was under the slanted edge
+        1330: {"x": 447.0, "w": 340.0},  # txt_mainmenu_over
+        2777: {"x": 400.0},              # its arrow
+        # Singular profile of Ilya: labels on the baseline of their values, values in two columns after the
+        # longest label («Телосложение:», «Препараты:» at 36)
+        8249: {"y": -2224.0, "w": 280.0, "h": 61.0}, 6384: {"y": -2314.7, "w": 280.0, "h": 61.0},
+        5092: {"y": -2398.9, "w": 280.0, "h": 61.0},
+        5771: {"y": -2224.9, "w": 220.0, "h": 61.0}, 10719: {"x": 1235.0, "y": -2317.2, "w": 220.0, "h": 61.0},
+        9073: {"y": -2407.4, "w": 220.0, "h": 61.0},
+        8368: {"x": 845.0, "w": 370.0}, 10344: {"x": 845.0, "w": 370.0}, 7158: {"x": 845.0, "w": 370.0},
+        4994: {"x": 1461.0, "w": 369.0}, 6954: {"x": 1461.0, "w": 369.0}, 7666: {"x": 1461.0, "w": 369.0},
+        # Karen's site: «Назад к входящим» between the arrow and the right edge of the button
+        5153: {"x": 335.0, "w": 345.0}, 7931: {"x": 335.0, "w": 345.0},
+        10494: {"x": 335.0, "w": 345.0}, 11012: {"x": 335.0, "w": 345.0},
+        # Karen's site: the sender under the picture broke inside «Паттисон,» / «Коулман,» (to the letter text)
+        406: {"w": 195.0}, 483: {"w": 195.0}, 1563: {"w": 195.0}, 4599: {"w": 195.0}, 5338: {"w": 195.0},
+        # rehabilitation council (logged in): the two-line logo ran into «О нас» below it
+        7244: {"y": -43.0},
+        # SmartBank slogan in one line: the box grows to the left
+        6585: {"x": 971.0, "w": 760.0},
+        # Ampleford's remarks / objectives: a 4th Russian line ran into «ПРОДОЛЖИТЬ». The text keeps three
+        # lines of room (a longer one gets a smaller font from the runtime fix), the button moves down a bit
+        11231: {"h": 178.0},  # comment text
+        2321: {"h": 178.0},   # objective text
+        6671: {"x": 2370.0, "y": -505.0},  # continue text (its end touched the arrow)
+        8921: {"y": -496.0},  # continue arrow
     },
     "level1": {
         53: {"x": 1760.0},   # «НАЗАД» ran over the right edge of the button: closer to the arrow
@@ -210,10 +454,30 @@ RECT_EDITS = {
     },
 }
 
+# file -> {GameObject path_id: {layout field: value}}: fields of the LayoutElement / LayoutGroup on it
+LAYOUT_EDITS = {
+    "sharedassets3.assets": {
+        # «Отключить» / «Включить» buttons in the profile update tooltip: 220 -> 260 wide, growing to the
+        # left (row padding 317 -> 277), so the right edge stays where it was
+        1186: {"m_PreferredWidth": 260.0}, 1206: {"m_PreferredWidth": 260.0}, 1138: {"m_PreferredWidth": 260.0},
+        1188: {"m_Padding.m_Left": 277}, 1228: {"m_Padding.m_Left": 277}, 1116: {"m_Padding.m_Left": 277},
+    },
+}
+
+# file -> {TMP path_id: font size} whatever the text is
+SIZE_EDITS = {
+    "level3": {
+        # Singular profile of Ilya: labels (the mod had 27..46) and values (44..46)
+        39799: 36.0, 38940: 36.0, 38324: 36.0, 38655: 36.0, 40912: 36.0, 40169: 36.0,
+        39857: 39.0, 40736: 39.0, 39283: 39.0, 38270: 39.0, 39199: 39.0, 39526: 39.0,
+    },
+}
+
 # OnlinePresence id -> OnlinePresence._displayName (level3), only where the mod's name is wrong
 PRESENCE_NAMES = {
     "website_karenssite": "Open Soteria",
     "website_socialite": "Socialite",
+    "website_album": "Hologram",
     "website_medical": "Центральная медицинская база данных",
     "website_pvadmin": "«Голос Народа» — панель управления",
 }
@@ -371,6 +635,152 @@ def auto_page_heights(env, objs, scripts, rt_of, parent_go, english, en_heights,
     return need
 
 
+def tile_layout(env, objs, scripts, metrics, externals, f):
+    """Timelines «… нравится» tiles. Returns ({GameObject: rect edit}, {TMP path_id: (text, size)}).
+    Plates and English captions are taken from the original file, so the result does not depend on an
+    earlier run."""
+    org = {o.path_id: o for o in load(os.path.join(ORIG_DIR, f)).objects}
+    names = {o.path_id: o.read_typetree()["m_Name"] for o in env.objects if o.type.name == "GameObject"}
+    rect = lambda r: (r["m_AnchoredPosition"]["x"], r["m_AnchoredPosition"]["y"], r["m_SizeDelta"]["x"],
+                      r["m_SizeDelta"]["y"])
+    rt_go, children, tmp_of = {}, {}, {}
+    for o in env.objects:
+        if o.type.name == "RectTransform" and o.path_id in org:
+            r = org[o.path_id].read_typetree()
+            rt_go[o.path_id] = r["m_GameObject"]["m_PathID"]
+            children[r["m_GameObject"]["m_PathID"]] = r
+        elif o.type.name == "MonoBehaviour" and mono_class(o, scripts) == "TextMeshProUGUI":
+            tmp_of[o.read_typetree()["m_GameObject"]["m_PathID"]] = o
+    rect_edits, text_edits = {}, {}
+    for g, name in names.items():
+        if not name.startswith("bg_like_text") or g not in children:
+            continue
+        px, py, pw, ph = rect(children[g])
+        parent = children.get(rt_go.get(children[g]["m_Father"]["m_PathID"]))
+        caption = None
+        for c in parent["m_Children"] if parent else ():
+            cg = rt_go.get(c["m_PathID"])
+            if cg in tmp_of:
+                x, y, w, h = rect(children[cg])
+                if x <= px + pw / 2 <= x + w and -50 < y - py < 0 and abs(x + w / 2 - (px + pw / 2)) < 20:
+                    caption = cg
+        if caption is None:
+            continue
+        o = tmp_of[caption]
+        t = o.read_typetree()
+        en = org[o.path_id].read_typetree()
+        fa = t["m_fontAsset"]
+        font = metrics.get(f if fa["m_FileID"] == 0 else externals[fa["m_FileID"] - 1], fa["m_PathID"])
+        if not font or not re.search("[А-Яа-яЁё]", t["m_text"] or ""):
+            continue
+        pt, adv, asc, desc, lh = font[0], font[1], font[3], font[4], font[5]
+        en_size = en["m_fontSize"]
+        width = lambda s, size: max(sum(adv.get(ord(ch), pt * 0.55) for ch in line) for line in s.split("\n")) * size / pt
+        height = lambda n, size: (asc - desc + (n - 1) * lh) * size / pt
+        ru = re.sub(r"\s*\n\s*", "\n", (t["m_text"] or "").replace("\r", "").strip())
+        one = ru.replace("\n", " ")
+        two = ru if "\n" in ru else None
+        if two is None:  # break at the space / hyphen that gives the shortest lines
+            cuts = [i + 1 if one[i] == "-" else i for i in range(1, len(one) - 1) if one[i] in " -"]
+            if cuts:
+                i = min(cuts, key=lambda i: width(one[:i].strip() + "\n" + one[i:].strip(), en_size))
+                two = one[:i].strip() + "\n" + one[i:].strip()
+        fit = lambda s, n: min(en_size, en_size * TILE_MAX_W / width(s, en_size),
+                               en_size * (ph if n == 2 and ph > 80 else 100.0) / height(n, en_size))
+        lines_en = 2 if ph > 80 else 1
+        if lines_en == 1:
+            text, n = (one, 1) if two is None or fit(one, 1) >= TILE_MIN_ONE_LINE else (two, 2)
+        else:
+            text, n = (two, 2) if two else (one, 1)
+        size = round(fit(text, n) if n == 2 else min(fit(text, 1), en_size), 2)
+        w = round(width(text, size) + TILE_PAD)
+        if n == lines_en:
+            y, h = py, ph
+            if n == 1:
+                y, h = y + TILE_ONE_LINE_GROW, h + TILE_ONE_LINE_GROW
+        elif n == 2:   # a one-line plate grows upwards to the two-line height of the neighbours
+            y, h = py + 57.0, ph + 57.0
+        else:
+            y, h = py - 57.0 + TILE_ONE_LINE_GROW, ph - 57.0 + TILE_ONE_LINE_GROW
+        x = round(px + pw / 2 - w / 2, 1)
+        rect_edits[g] = {"x": x, "y": y, "w": w, "h": h}
+        rect_edits[caption] = {"x": x, "y": round(y - TILE_DROP * size / n, 2), "w": w, "h": h}
+        text_edits[o.path_id] = (text, size, TILE_LINE_SPACING if n == 2 else en["m_lineSpacing"])
+    return rect_edits, text_edits
+
+
+def restack_messages(env, objs, scripts, metrics, externals, f, english):
+    """Chat pages (MESSAGE_PAGES) are laid out block under block for the English text; the scenes pass shrank
+    Russian messages that needed a line more (sizes 42..55 in one chat), or the text ran out of its bubble.
+    Here every text on a message background (bg_message*) gets its English size back and needs as many lines
+    as it does: everything below moves down by the extra height, a background grows by the extra height of
+    the texts on it, the page by the total. Positions come from the original file.
+    Returns ({GameObject: rect edit}, {TMP path_id: size}, {page GameObject: extra height})."""
+    org = {o.path_id: o for o in load(os.path.join(ORIG_DIR, f)).objects}
+    rect_of, kids, name = {}, {}, {}
+    for o in env.objects:
+        if o.type.name == "RectTransform" and o.path_id in org:
+            r = org[o.path_id].read_typetree()
+            rect_of[r["m_GameObject"]["m_PathID"]] = r
+        elif o.type.name == "GameObject":
+            name[o.path_id] = o.read_typetree()["m_Name"]
+    rt_go = {o.path_id: o.read_typetree()["m_GameObject"]["m_PathID"] for o in env.objects
+             if o.type.name == "RectTransform" and o.path_id in org}
+    tmp_of = {}
+    for o in env.objects:
+        if o.type.name == "MonoBehaviour" and mono_class(o, scripts) == "TextMeshProUGUI":
+            tmp_of[o.read_typetree()["m_GameObject"]["m_PathID"]] = o
+    rect_edits, sizes, extra = {}, {}, {}
+    for page, page_name in name.items():
+        if not page_name.startswith(MESSAGE_PAGES) or page not in rect_of:
+            continue
+        children = [rt_go[c["m_PathID"]] for c in rect_of[page]["m_Children"] if c["m_PathID"] in rt_go]
+        backgrounds = [g for g in children if name.get(g, "").startswith("bg_message")]
+        if not backgrounds:
+            continue
+        top = max(rect_of[g]["m_AnchoredPosition"]["y"] for g in backgrounds)
+        y_of = lambda g: rect_of[g]["m_AnchoredPosition"]["y"]
+        x_of = lambda g: rect_of[g]["m_AnchoredPosition"]["x"]
+        h_of = lambda g: rect_of[g]["m_SizeDelta"]["y"]
+        on_bg = lambda g: any(x_of(b) <= x_of(g) <= x_of(b) + rect_of[b]["m_SizeDelta"]["x"] and
+                              y_of(b) - h_of(b) < y_of(g) <= y_of(b) for b in backgrounds)
+        grow = {}
+        for g in children:
+            if g in backgrounds or y_of(g) > top or g not in tmp_of or not on_bg(g):
+                continue
+            o = tmp_of[g]
+            t = o.read_typetree()
+            en_text, en_size = english.get(o.path_id, (None, None))
+            if not en_text:
+                continue
+            fa = t["m_fontAsset"]
+            font = metrics.get(f if fa["m_FileID"] == 0 else externals[fa["m_FileID"] - 1], fa["m_PathID"])
+            if not font:
+                continue
+            width = rect_of[g]["m_SizeDelta"]["x"]
+            h_en = text_height(en_text, en_size, font, width, t)[1]
+            h_ru = text_height(t["m_text"] or "", en_size, font, width * 0.94, t)[1]
+            sizes[o.path_id] = en_size
+            grow[g] = max(0.0, round(h_ru - h_en, 1))
+        total = sum(grow.values())
+        if not total:
+            continue
+        for g in children:
+            if y_of(g) > top:
+                continue
+            shift = sum(d for g2, d in grow.items() if y_of(g2) > y_of(g))
+            inside = (sum(d for g2, d in grow.items() if y_of(g) - h_of(g) < y_of(g2) <= y_of(g))
+                      if g in backgrounds else grow.get(g, 0))
+            edit = {}
+            if shift:
+                edit["y"] = round(y_of(g) - shift, 1)
+            if inside:
+                edit["h"] = round(h_of(g) + inside, 1)
+            rect_edits[g] = edit
+        extra[page] = total
+    return rect_edits, sizes, extra
+
+
 def original_textures(path):
     """Texture2D name -> image from the original game file, for the textures redrawn by ui_images.py."""
     out = {}
@@ -394,7 +804,7 @@ def voice_texts(in_dir, scripts):
             vid = t.get("_voiceOverIdFull")
             if vid and o.path_id in org:
                 en = org[o.path_id].read_typetree()["_text"]["_text"][1]
-                out.setdefault(vid, (en, t["_text"]["_text"][1], False))
+                out.setdefault(vid, (en, chat_text(o.path_id, t["_text"]["_text"][1]), False))
     cur = load(os.path.join(in_dir, "level3"))
     org = {o.path_id: o for o in load(os.path.join(ORIG_DIR, "level3")).objects}
     for o in cur.objects:
@@ -418,7 +828,7 @@ def main(in_dir, out_dir, files):
         n = dict(heights=0, images=0, texts=0, rects=0, sites=0, persons=0, docs=0, lines=0, history=0,
                  subtitles=0, timings=0)
         texts = TEXT_EDITS.get(f, {})
-        rects = RECT_EDITS.get(f, {})
+        rects = dict(RECT_EDITS.get(f, {}))
 
         # layout (GameObject -> RectTransform, parent) for the browser history and subtitle passes
         rt_of, parent_go, rt_go = {}, {}, {}
@@ -454,21 +864,111 @@ def main(in_dir, out_dir, files):
                     return True
             return False
 
+        def site_of(g):
+            """name of the website page the GameObject is on ("" if none)"""
+            for _ in range(6):
+                g = parent_go.get(g)
+                if g is None or g not in objs:
+                    return ""
+                name = objs[g].read_typetree()["m_Name"]
+                if name.startswith("website_"):
+                    return name
+            return ""
+
+        def in_bank(g):
+            return site_of(g).startswith("website_bank")
+
+        bank_texts = set()
+        if f.startswith("level"):
+            for o in env.objects:
+                if o.type.name == "MonoBehaviour" and mono_class(o, scripts) == "TextMeshProUGUI":
+                    g = o.read_typetree()["m_GameObject"]["m_PathID"]
+                    rt = rt_of.get(g)
+                    if (rt and 525 < rt["m_AnchoredPosition"]["x"] < 540 and rt["m_AnchoredPosition"]["y"] < -1300
+                            and in_bank(g)):
+                        bank_texts.add(o.path_id)
+                        rects[g] = dict(rects.get(g, {}), w=BANK_TEXT_WIDTH)
+
         originals = original_textures(os.path.join(ORIG_DIR, f))
         english, en_heights, orig_fonts = english_originals(os.path.join(ORIG_DIR, f), scripts)
         if not f.startswith("level"):
             english, en_heights = {}, {}
+        # Blabber: the counters «N переблаблов / ответов / голосов» in one line; the follower numbers right
+        # after their (shorter or longer) Russian labels, with the English gap
+        blabber_fit, slogan = {}, {}
+        if f == "level3":
+            org_rt = {}
+            for o in load(os.path.join(ORIG_DIR, f)).objects:
+                if o.type.name == "RectTransform":
+                    r = o.read_typetree()
+                    org_rt[r["m_GameObject"]["m_PathID"]] = r
+            labels, numbers = [], []
+            for o in env.objects:
+                if o.type.name != "MonoBehaviour" or mono_class(o, scripts) != "TextMeshProUGUI":
+                    continue
+                t = o.read_typetree()
+                g = t["m_GameObject"]["m_PathID"]
+                en = (english.get(o.path_id) or ("",))[0] or ""
+                if en.strip() in ("Listeners", "Listening to") or re.match(r"^[\d,]+\s*$", en):
+                    if site_of(g).startswith("website_blabber") and g in org_rt:
+                        (labels if not en.strip()[0].isdigit() else numbers).append((o, t, g, en))
+                if BLABBER_COUNTER.match(en) and g in rt_of and site_of(g).startswith("website_blabber"):
+                    blabber_fit[o.path_id] = rt_of[g]["m_SizeDelta"]["x"]
+                if en == "Blabber. Speak your mind.\r" and g in org_rt:
+                    r = org_rt[g]
+                    slogan[g] = {"x": r["m_AnchoredPosition"]["x"] - 150.0, "w": r["m_SizeDelta"]["x"] + 300.0}
+            rects.update(slogan)
+
+            def font_of(t):
+                fa = t["m_fontAsset"]
+                return metrics.get(f if fa["m_FileID"] == 0 else externals[fa["m_FileID"] - 1], fa["m_PathID"])
+
+            def text_width(t, text, size):
+                fa = t["m_fontAsset"]
+                font = metrics.get(f if fa["m_FileID"] == 0 else externals[fa["m_FileID"] - 1], fa["m_PathID"])
+                return sum(font[1].get(ord(c), font[0] * 0.55) for c in text.strip()) * size / font[0] if font else None
+
+            for o, t, g, en in labels:
+                lr = org_rt[g]
+                lx, ly, lw = lr["m_AnchoredPosition"]["x"], lr["m_AnchoredPosition"]["y"], lr["m_SizeDelta"]["x"]
+                w_en = text_width(t, en, english[o.path_id][1])
+                edit = texts.get(o.path_id)
+                label_size = (edit and edit[2]) or t["m_fontSize"]
+                w_ru = text_width(t, edit[1] if edit else t["m_text"], label_size)
+                fl = font_of(t)
+                if w_en is None or w_ru is None:
+                    continue
+                for o2, t2, g2, en2 in numbers:
+                    nr = org_rt[g2]
+                    nx, ny = nr["m_AnchoredPosition"]["x"], nr["m_AnchoredPosition"]["y"]
+                    if parent_go.get(g2) == parent_go.get(g) and abs(ny - ly) < 30 and lx < nx < lx + lw + 120:
+                        # the same baseline as the label (both top aligned: baseline = top - ascender); in the
+                        # game the numbers still sat ~5 units lower than the bold labels
+                        fn = font_of(t2)
+                        y = ly - fl[3] * label_size / fl[0] + fn[3] * t2["m_fontSize"] / fn[0] + 5.0
+                        rects[g2] = dict(rects.get(g2, {}), x=round(lx + w_ru + (nx - (lx + w_en)), 1), y=round(y, 1))
+
         page_need = auto_page_heights(env, objs, scripts, rt_of, parent_go, english, en_heights, metrics,
                                       externals, f) if english else {}
         voices = voice_texts(in_dir, scripts) if f == "resources.assets" else {}
+        tile_rects, tile_texts = tile_layout(env, objs, scripts, metrics, externals, f) if f == "level3" else ({}, {})
+        rects.update(tile_rects)
+        msg_rects, msg_sizes, msg_extra = (restack_messages(env, objs, scripts, metrics, externals, f, english)
+                                           if f == "level3" else ({}, {}, {}))
+        rects.update(msg_rects)
 
         for o in env.objects:
             if o.type.name == "RectTransform":
                 rt = o.read_typetree()
                 edit = rects.get(rt["m_GameObject"]["m_PathID"])
-                if edit:
+                if edit and any(rt["m_AnchoredPosition"]["x"] != edit.get("x", rt["m_AnchoredPosition"]["x"]) or
+                                rt["m_AnchoredPosition"]["y"] != edit.get("y", rt["m_AnchoredPosition"]["y"]) or
+                                rt["m_SizeDelta"]["x"] != edit.get("w", rt["m_SizeDelta"]["x"]) or
+                                rt["m_SizeDelta"]["y"] != edit.get("h", rt["m_SizeDelta"]["y"]) for _ in (0,)):
                     if "x" in edit:
                         rt["m_AnchoredPosition"]["x"] = edit["x"]
+                    if "y" in edit:
+                        rt["m_AnchoredPosition"]["y"] = edit["y"]
                     if "w" in edit:
                         rt["m_SizeDelta"]["x"] = edit["w"]
                     if "h" in edit:
@@ -487,6 +987,21 @@ def main(in_dir, out_dir, files):
             if o.type.name != "MonoBehaviour":
                 continue
             cls = mono_class(o, scripts)
+            if cls in ("LayoutElement", "HorizontalLayoutGroup", "VerticalLayoutGroup"):
+                t = o.read_typetree()
+                edit = LAYOUT_EDITS.get(f, {}).get(t["m_GameObject"]["m_PathID"], {})
+                changed = False
+                for key, value in edit.items():
+                    *path, last = key.split(".")
+                    node = t
+                    for k in path:
+                        node = node.get(k) if isinstance(node, dict) else None
+                    if isinstance(node, dict) and last in node and node[last] != value:
+                        node[last] = value
+                        changed = True
+                if changed:
+                    o.save_typetree(t)
+                    n["rects"] += 1
             if cls in ("TextMeshProUGUI", "TextMeshPro"):
                 t = o.read_typetree()
                 g = t["m_GameObject"]["m_PathID"]
@@ -511,6 +1026,65 @@ def main(in_dir, out_dir, files):
                     if go_name in FONT_FROM_ORIGINAL_GO_NAMES and t["m_fontSize"] != STORED_SIZE:
                         t["m_fontSize"] = t["m_fontSizeBase"] = STORED_SIZE  # «СОХРАНЕНО» in its 118-wide rect
                         changed = True
+                size = SIZE_EDITS.get(f, {}).get(o.path_id)
+                if size and abs(t["m_fontSize"] - size) > 0.01:
+                    t["m_fontSize"] = t["m_fontSizeBase"] = size
+                    changed = True
+                    n["texts"] += 1
+                if o.path_id in tile_texts:
+                    text, size, spacing = tile_texts[o.path_id]
+                    if ((t["m_text"], t["m_textAlignment"], t["m_enableWordWrapping"], t["m_lineSpacing"])
+                            != (text, 514, 0, spacing) or abs(t["m_fontSize"] - size) > 0.01):
+                        t["m_text"], t["m_textAlignment"], t["m_enableWordWrapping"] = text, 514, 0  # middle centre
+                        t["m_lineSpacing"] = spacing
+                        t["m_fontSize"] = t["m_fontSizeBase"] = size
+                        changed = True
+                        n["tiles"] = n.get("tiles", 0) + 1
+                en_text = (english.get(o.path_id) or ("",))[0] or ""
+                m = BANK_DATE.match(en_text)
+                site = site_of(g) if m or en_text in ("Your profile\r", "Your messages\r") else ""
+                date_size = (BANK_DATE_SIZE if site.startswith("website_bank") else
+                             WATERGATE_DATE_SIZE if site.startswith("website_watergate") else None)
+                if m and date_size:
+                    date = f"{int(m.group(2)):02}.{MONTHS.index(m.group(1)) + 1:02}.{m.group(3)}"
+                    if t["m_text"] != date or abs(t["m_fontSize"] - date_size) > 0.01:
+                        t["m_text"] = date
+                        t["m_fontSize"] = t["m_fontSizeBase"] = date_size
+                        changed = True
+                        n["dates"] = n.get("dates", 0) + 1
+                if (site.startswith("website_watergate") and not m
+                        and abs(t["m_fontSize"] - WATERGATE_BUTTON_SIZE) > 0.01):
+                    t["m_fontSize"] = t["m_fontSizeBase"] = WATERGATE_BUTTON_SIZE
+                    changed = True
+                    n["texts"] += 1
+                if o.path_id in msg_sizes and abs(t["m_fontSize"] - msg_sizes[o.path_id]) > 0.01:
+                    t["m_fontSize"] = t["m_fontSizeBase"] = msg_sizes[o.path_id]
+                    changed = True
+                    n["messages"] = n.get("messages", 0) + 1
+                if o.path_id in blabber_fit and t.get("m_text"):
+                    fa = t["m_fontAsset"]
+                    font = metrics.get(f if fa["m_FileID"] == 0 else externals[fa["m_FileID"] - 1], fa["m_PathID"])
+                    if font:
+                        w = sum(font[1].get(ord(c), font[0] * 0.55) for c in t["m_text"].strip()) / font[0]
+                        size = round(min(t["m_fontSize"], blabber_fit[o.path_id] * 0.95 / w), 2)
+                        if t["m_enableWordWrapping"] or abs(t["m_fontSize"] - size) > 0.01:
+                            t["m_enableWordWrapping"] = 0
+                            t["m_fontSize"] = t["m_fontSizeBase"] = size
+                            changed = True
+                            n["counters"] = n.get("counters", 0) + 1
+                if t.get("m_text") and BLABBER_NAME.search(t["m_text"]) and site_of(g).startswith("website_blabber"):
+                    t["m_text"] = BLABBER_NAME.sub(lambda m: BLABBER_NAMES[m.group(1)], t["m_text"])
+                    changed = True
+                    n["names"] = n.get("names", 0) + 1
+                if o.path_id in bank_texts and abs(t["m_fontSize"] - BANK_TEXT_SIZE) > 0.01:
+                    t["m_fontSize"] = t["m_fontSizeBase"] = BANK_TEXT_SIZE
+                    changed = True
+                    n["bank"] = n.get("bank", 0) + 1
+                m = LIKES_LABEL.match(t.get("m_text") or "")
+                if m:
+                    t["m_text"] = likes_ru(m.group(1)) + m.group(2)
+                    changed = True
+                    n["likes"] = n.get("likes", 0) + 1
                 if t.get("m_text") and replace_phrases(t["m_text"]) != t["m_text"]:
                     t["m_text"] = replace_phrases(t["m_text"])
                     changed = True
@@ -545,6 +1119,55 @@ def main(in_dir, out_dir, files):
                     t.update(edit)
                     o.save_typetree(t)
                     n["texts"] += 1
+            elif cls == "Website" and f.startswith("level"):
+                t = o.read_typetree()
+                title = PAGE_TITLES.get(t.get("_displayName"), t.get("_displayName"))
+                title = replace_phrases(title) if title else title
+                if title != t.get("_displayName"):
+                    t["_displayName"] = title
+                    o.save_typetree(t)
+                    n["sites"] += 1
+            elif cls == "UpdateProfileState" and f == "resources.assets" and o.path_id in PROFILE_VALUES:
+                t = o.read_typetree()
+                en, ru = PROFILE_VALUES[o.path_id]
+                if t["_data"]["value"]["_text"][1] == en:
+                    t["_data"]["value"]["_text"][1] = ru
+                    o.save_typetree(t)
+                    n["texts"] += 1
+            elif cls == "UpdateProfileState" and f == "resources.assets" and o.path_id in PROFILE_EDITS:
+                t = o.read_typetree()
+                value, drop, start, end = PROFILE_EDITS[o.path_id]
+                d = t["_data"]
+                if (d["value"]["_text"][1], d["DropTextLocalized"]["_text"][1], d["DragTextStartIndex"]["_textIndex"][1],
+                        d["DragTextEndIndex"]["_textIndex"][1]) != (value, drop, start, end):
+                    d["value"]["_text"][1], d["DropTextLocalized"]["_text"][1] = value, drop
+                    d["DragTextStartIndex"]["_textIndex"][1], d["DragTextEndIndex"]["_textIndex"][1] = start, end
+                    o.save_typetree(t)
+                    n["texts"] += 1
+            elif cls == "Mail":
+                t = o.read_typetree()
+                changed = False
+                for key in ("_subject", "_displayName"):
+                    if t.get(key) and replace_phrases(t[key]) != t[key]:
+                        t[key] = replace_phrases(t[key])
+                        changed = True
+                if changed:
+                    o.save_typetree(t)
+                    n["texts"] += 1
+            elif cls == "NewMailState" and f == "resources.assets" and o.path_id in MAIL_SUBJECTS:
+                t = o.read_typetree()
+                accepted, new = MAIL_SUBJECTS[o.path_id]
+                if t.get("_subject") in accepted:
+                    t["_subject"] = new
+                    o.save_typetree(t)
+                    n["texts"] += 1
+            elif cls == "NewChatMessageState" and f == "resources.assets":
+                t = o.read_typetree()
+                txt = t["_text"]["_text"][1]
+                if txt and chat_text(o.path_id, txt) != txt:
+                    t["_text"]["_text"][1] = chat_text(o.path_id, txt)
+                    o.save_typetree(t)
+                    n["texts"] += 1
             elif cls == "PodcastTranscript":
                 t = o.read_typetree()
                 if replace_phrases(t["Text"]) != t["Text"]:
@@ -562,10 +1185,18 @@ def main(in_dir, out_dir, files):
                 t = o.read_typetree()
                 b = t["_bookmark"]
                 name = SITE_NAMES.get(b.get("_parentId"))
+                changed = False
                 if name and b.get("_captionOnlinepresence") != name:
                     b["_captionOnlinepresence"] = name
-                    o.save_typetree(t)
+                    changed = True
                     n["sites"] += 1
+                cap = (b.get("_captionsDocument") or {}).get("_text")
+                if cap and len(cap) > 1 and cap[1] and replace_phrases(cap[1]) != cap[1]:
+                    cap[1] = replace_phrases(cap[1])
+                    changed = True
+                    n["texts"] += 1
+                if changed:
+                    o.save_typetree(t)
             elif cls == "Cosmos":
                 t = o.read_typetree()
                 changed = False
@@ -633,11 +1264,29 @@ def main(in_dir, out_dir, files):
                     page = rt.read_typetree()["m_GameObject"]["m_PathID"]
                     name = objs[page].read_typetree()["m_Name"]
                     want = max(PAGE_HEIGHTS.get(name, 0), page_need.get(page, 0))
+                    if page in msg_extra:
+                        want = max(want, round(en_heights.get(page, hs[i]) + msg_extra[page]))
                     if hs[i] < want:
                         print(f, "page height", name, round(hs[i]), "->", want)
                         hs[i] = want
                         changed = True
                         n["heights"] += 1
+                en_max = max([en_heights.get(objs[c["m_PathID"]].read_typetree()["m_GameObject"]["m_PathID"], h)
+                               for c, h in zip(t.get("_tabCanvases") or [], hs) if c["m_PathID"] in objs] or [0])
+                dev = objs[t["m_GameObject"]["m_PathID"]].read_typetree()
+                for comp in dev["m_Component"]:
+                    dev_rt = objs.get(comp["component"]["m_PathID"])
+                    if dev_rt is None or dev_rt.type.name != "RectTransform":
+                        continue
+                    for ch in dev_rt.read_typetree()["m_Children"]:
+                        cro = objs.get(ch["m_PathID"])
+                        cr = cro.read_typetree() if cro else None
+                        if (cr and objs[cr["m_GameObject"]["m_PathID"]].read_typetree()["m_Name"] == "background"
+                                and abs(cr["m_SizeDelta"]["y"] - en_max) < 1 and cr["m_SizeDelta"]["y"] < max(hs)):
+                            print(f, "background", dev["m_Name"], round(cr["m_SizeDelta"]["y"]), "->", max(hs))
+                            cr["m_SizeDelta"]["y"] = max(hs)
+                            cro.save_typetree(cr)
+                            n["heights"] += 1
                 if changed:
                     o.save_typetree(t)
         data = list(env.files.values())[0].save()

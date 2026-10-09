@@ -8,7 +8,9 @@
 //   1. shrinks the font of Cyrillic texts that no longer fit their rect,
 //   2. moves the chunk highlight boxes onto the actual position of the linked words, the same way
 //      the game builds them at runtime (ChunkBoxDrawing.CreateBoxesForChunk / CreateBox),
-//   3. translates captions the game fills with an enum name (ToString()): the Listener tab caption
+//   3. moves the profile update boxes (the purple frame around new data in the dossier, drawn once by
+//      UpdateBoxDrawing from the character positions at that moment) after point 1 changed the font size,
+//   4. translates captions the game fills with an enum name (ToString()): the Listener tab caption
 //      (CommunicationType: Chat/Mail/Call), the Insider tab caption and the device headers in the
 //      Insider bookmarks (InsiderDevice.DeviceType: PC/Notebook/Phone). The labels are found through the
 //      fields of the components that own them.
@@ -173,6 +175,7 @@ namespace OrwellRuFix
             if (HasCyrillic(text))
                 Fit(t, st, r);
             FixChunkBoxes(t);
+            FixUpdateBoxes(t);
         }
 
         static bool HasCyrillic(string s)
@@ -238,6 +241,69 @@ namespace OrwellRuFix
             return s.Length > 60 ? s.Substring(0, 60) + "..." : s;
         }
 
+        // ---- profile update boxes ---------------------------------------------------------------
+
+        static readonly FieldInfo UpdateBoxesField =
+            typeof(UpdateDrag).GetField("_backgroundBoxes", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        static void FixUpdateBoxes(TextMeshProUGUI t)
+        {
+            UpdateBoxDrawing drawing = t.GetComponent<UpdateBoxDrawing>();
+            if (drawing == null || drawing.UpdateDrag == null || UpdateBoxesField == null)
+                return;
+            var boxes = UpdateBoxesField.GetValue(drawing.UpdateDrag) as List<Selectable>;
+            if (boxes == null || boxes.Count == 0)
+                return;
+            t.ForceMeshUpdate();
+            TMP_TextInfo ti = t.textInfo;
+            int first = Math.Max(0, drawing.UpdateDrag.DragTextStartIndex);
+            int last = Math.Min(drawing.UpdateDrag.DragTextEndIndex, ti.characterCount - 1);
+            if (last < first)
+                return;
+            // one box per line, from the line's ascender to its descender (as UpdateBoxDrawing does it)
+            var segments = new List<Vector3[]>();
+            int line = -1;
+            float x0 = 0f, x1 = 0f;
+            for (int i = first; i <= last + 1; i++)
+            {
+                bool end = i > last;
+                TMP_CharacterInfo ci = end ? default(TMP_CharacterInfo) : ti.characterInfo[i];
+                if (end || ci.lineNumber != line)
+                {
+                    if (line >= 0 && x1 > x0)
+                    {
+                        TMP_LineInfo li = ti.lineInfo[line];
+                        Vector3 bl = t.transform.TransformPoint(new Vector3(x0, li.descender, 0f));
+                        Vector3 tr = t.transform.TransformPoint(new Vector3(x1, li.ascender, 0f));
+                        bl.x -= 2f;
+                        bl.y -= 2.5f;
+                        tr.x += 2f;
+                        tr.y += 3.75f;
+                        segments.Add(new[] { bl, tr });
+                    }
+                    if (end)
+                        break;
+                    line = ci.lineNumber;
+                    x0 = x1 = 0f;
+                }
+                if (char.IsWhiteSpace(ci.character))
+                    continue;
+                if (x1 <= x0)
+                    x0 = ci.bottomLeft.x;
+                x1 = ci.bottomRight.x;
+            }
+            for (int i = 0; i < boxes.Count; i++)
+            {
+                if (boxes[i] == null)
+                    continue;
+                var rt = (RectTransform)boxes[i].transform;
+                if (i < segments.Count)
+                    Place(rt, segments[i][0], segments[i][1]);
+                else
+                    rt.sizeDelta = Vector2.zero;
+            }
+        }
+
         // ---- data chunk highlight boxes -------------------------------------------------------
 
         static void FixChunkBoxes(TextMeshProUGUI t)
@@ -288,13 +354,16 @@ namespace OrwellRuFix
             return -1;
         }
 
-        // World-space (bottom-left, top-right) of the link text on every line it occupies, with the
-        // same padding the game uses for non-chat boxes (5 left/right, 10 on top).
+        // World-space (bottom-left, top-right) of the link text on every line it occupies. The game puts
+        // the box from the font's descender to its ascender + 10; the Cyrillic font assets have a taller
+        // ascender, so the box sat too high. Here it is measured from the baseline: 0.3 em below,
+        // 0.9 em + 4 above, 5 left/right.
         static List<Vector3[]> LineSegments(TextMeshProUGUI t, TMP_TextInfo ti, TMP_LinkInfo li)
         {
             var result = new List<Vector3[]>();
             int line = -1;
             float x0 = 0f, x1 = 0f, top = float.MinValue, bottom = float.MaxValue;
+            const float Above = 0.9f, Below = 0.3f;
             bool any = false;
             int end = Math.Min(li.linkTextfirstCharacterIndex + li.linkTextLength, ti.characterCount);
             for (int i = li.linkTextfirstCharacterIndex; i < end; i++)
@@ -315,8 +384,8 @@ namespace OrwellRuFix
                     x0 = ci.bottomLeft.x;
                 any = true;
                 x1 = ci.topRight.x;
-                top = Mathf.Max(top, ci.ascender);
-                bottom = Mathf.Min(bottom, ci.descender);
+                top = Mathf.Max(top, ci.baseLine + Above * ci.pointSize);
+                bottom = Mathf.Min(bottom, ci.baseLine - Below * ci.pointSize);
             }
             if (any)
                 result.Add(Segment(t, x0, x1, top, bottom));
@@ -329,7 +398,7 @@ namespace OrwellRuFix
             Vector3 tr = t.transform.TransformPoint(new Vector3(x1, top, 0f));
             bl.x -= 5f;
             tr.x += 5f;
-            tr.y += 10f;
+            tr.y += 4f;
             return new[] { bl, tr };
         }
 

@@ -612,7 +612,8 @@
     },
     "Read Messages": {
       "original": "Read Messages",
-      "translation": "Читать сообщения",
+      "translation": "Читать",
+      "previous_translation": "Читать сообщения",
       "heap_offset": "0x4fd1",
       "byte_length": 27,
       "original_chars": 13,

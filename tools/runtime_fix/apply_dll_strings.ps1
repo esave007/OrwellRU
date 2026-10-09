@@ -1,6 +1,7 @@
 # Applies translated/dll_strings.json to an Assembly-CSharp.dll that is already patched (e.g. the installed
-# one): every ldstr that still holds an English original from the json gets its translation. Strings that
-# are translated already are left alone, so the script can be run again safely.
+# one): every ldstr that still holds an English original from the json (or an earlier translation given as
+# "previous_translation") gets its translation. Strings that are translated already are left alone, so the
+# script can be run again safely.
 # (tools/PatchDll does the same starting from the original DLL.)
 #
 #   powershell -File apply_dll_strings.ps1 -Dll <Assembly-CSharp.dll> -Cecil <Mono.Cecil.dll> [-Out <file>]
@@ -22,6 +23,8 @@ $map = New-Object 'System.Collections.Generic.Dictionary[string,string]'
 foreach ($v in $json["translations"].Values) {
     $en = [string]$v["original"]; $ru = [string]$v["translation"]
     if ($en -and $ru -and $en -cne $ru) { $map[$en] = $ru }
+    $prev = [string]$v["previous_translation"]
+    if ($prev -and $ru -and $prev -cne $ru) { $map[$prev] = $ru }
 }
 $resolver = New-Object Mono.Cecil.DefaultAssemblyResolver
 $resolver.AddSearchDirectory((Split-Path -Parent (Resolve-Path $Dll)))
