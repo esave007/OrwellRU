@@ -658,7 +658,8 @@
     },
     "Text": {
       "original": "Text",
-      "translation": "Text",
+      "translation": "Текст",
+      "only_in": ["Orwell.Applications.Presenter.InsiderDocumentBookmarkPresenter::CreateBookmark"],
       "heap_offset": "0x5d27",
       "byte_length": 9,
       "original_chars": 4,
@@ -695,6 +696,8 @@
     "Picture": {
       "original": "Picture",
       "translation": "Изображение",
+      "previous_translation": "Картинка",
+      "only_in": ["Orwell.Applications.Presenter.InsiderDocumentBookmarkPresenter::CreateBookmark"],
       "heap_offset": "0x5d53",
       "byte_length": 15,
       "original_chars": 7,

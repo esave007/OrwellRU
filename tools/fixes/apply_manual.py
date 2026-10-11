@@ -64,11 +64,25 @@ PERSON_NAMES = {
 PERSON_FIELDS = ("_realName", "_displayName", "_defaultTelephoneName")
 
 # InsiderDocument._id -> _displayName (shown in the breadcrumb); file names like «browser.hist» stay
-DOC_NAMES = {"insider_rabanpc_unfinishedimage": "Площадь Свободы (СДЕЛАТЬ)"}
+DOC_NAMES = {"insider_rabanpc_unfinishedimage": "Площадь Свободы (СДЕЛАТЬ)",
+             # the map app: «Карты» (English: Quo Tracking, the icon on Oleg's phone: iTrace; the mod had
+             # «Отслеживание Quo»)
+             **{"insider_" + d: "Карты" for d in ("ilyasphone_geo", "ilyasphone_geoupdate1", "ilyasphone_geoupdate2",
+                                                          "ilyasphone_geodisabled", "baytephone_geo")},
+             # e-ticket wallet: as the empty wallet says (the mod: «Кошелёк e-ticket»)
+             **{"insider_ilyasphone_" + d: "Кошелёк электронных билетов" for d in ("eticket", "eticketupdate",
+                                                                                   "eticketempty")},
+             "insider_ilyasphone_gallery3": "Касси_Уотергейт_Рождество",  # Cassi_Watergate_Christmasparty
+             "insider_rabanpc_rugbycoach": "Правская_школа_команда_регби.jpg",  # PravaSecondary_RugbyTeam.jpg
+             # the folder «Sys» stays as in the game (the mod: «Сис»); David's document in the breadcrumb
+             **{"insider_" + d: "Sys" for d in ("ilyaspc_folder_sys", "davidspc_folder_sys", "rabanpc_folder_sys")},
+             **{"insider_davidspc_" + d: "О моей новой работе.dcmnt" for d in ("confession", "confessionencrypted")}}
 # exact strings replaced anywhere in the scenario states (document captions in resources.assets)
 CAPTION_REPLACE = {"Площадь Свободы (TO DO)": "Площадь Свободы (СДЕЛАТЬ)",
                    "Площадь Свободы (доделать)": "Площадь Свободы (СДЕЛАТЬ)",
-                   "Площадь Свободы (ДОДЕЛАТЬ)": "Площадь Свободы (СДЕЛАТЬ)"}
+                   "Площадь Свободы (ДОДЕЛАТЬ)": "Площадь Свободы (СДЕЛАТЬ)",
+                   "Отслеживание Quo": "Карты", "Quo Tracking": "Карты",
+                   "PravaSecondary_RugbyTeam.jpg": "Правская_школа_команда_регби.jpg"}
 
 # resources.assets NewCommentaryLineState path_id -> [(old, new)] in _text._text[1]: Ampleford is a woman
 LINE_FIXES = {
@@ -101,6 +115,8 @@ LINE_FIXES = {
 }
 
 SUBTITLE_SIZE = 34.0
+# subtitle fonts (sharedassets3 TMP font assets) that keep the English size: Arvo-Italic, Arvo-BoldItalic
+SUBTITLE_ORIGINAL_SIZE_FONTS = {2354, 2353}
 
 # resources.assets NewDebriefingElementState path_id -> {field: new value}
 DEBRIEF_EDITS = {
@@ -117,6 +133,14 @@ DEBRIEF_EDITS = {
     1501: {"_text": "По результатам расследования мы заключили, что он не мог быть причастен к нападению на "
                     "школу, которой руководил {CHAR_RABAN}."},
     1504: {"_text": "По его словам, в нападении на школу, директором которой он был, виновен {CHAR_BAYTE}."},
+    # Karen, day 2: the Russian entries took 20 lines, the column holds ~18 and the last entry went into a
+    # second column over the next person -> shorter wordings (one or two lines each)
+    2639: {"_text": "Соцработник Реабилитационного совета, помогает беженцам из Паргеса."},
+    2640: {"_text": "Она консультирует ветерана-дезертира."},
+    2637: {"_text": "На вчера у неё был назначен сеанс с Ильёй Вхартом."},  # scheduled, not held
+    2642: {"_text": "Видимо, сеансами Ильи она прикрывала встречи с ветераном."},
+    2643: {"_text": "Она ведёт сайт психологической помощи Open Soteria."},
+    2641: {"_text": "Наводка оказалась пустышкой: она помогала ветерану бесплатно."},
 }
 
 # file -> {TMP path_id: text appended at the end (once)}: the translators in the main menu credits
@@ -124,7 +148,13 @@ DEBRIEF_EDITS = {
 OLD_APPENDS = ("\n\n\n \r\nНад русской локализацией работали <b>esave007</b> и <b>StimDesu</b>.",)
 TEXT_APPEND = {
     "level1": {1333: "\n\n\n \r\nНад русской локализацией работали <b>eSave</b> и <b>StimDesu</b>."},
+    # end credits (after an episode): after the copyright line (RECT_EDITS 7091: the rect grows downwards)
+    "level3": {39258: "\n\n\n \r\nНад русской локализацией работали <b>eSave</b> и <b>StimDesu</b>."},
 }
+
+# file -> {TMP path_id: separator or None}: end credits, the people's names as in the game (the mod had transliterated
+# part of them, «feeding | ear» became «кормление | ухо»): the English text (up to the separator; the Russian rest)
+NAMES_FROM_ORIGINAL = {"level3": {38399: None, 37673: None, 39258: "\n \r\n\r\n"}}
 
 # Bookmark list: site names and the «N сохранено» counter are Ubuntu Light, which looks too thin in
 # Cyrillic next to the bold page names -> Ubuntu Medium (font asset, material) from sharedassets1.
@@ -162,6 +192,34 @@ TEXT_REPLACE = [
     ("#BestCoworkersEver", "#ЛучшиеКоллегиНаСвете"),
     # Karen's album: she writes it
     ("Никогда бы тогда не угадал, что нас ждёт.", "Никогда бы тогда не угадала, что нас ждёт."),
+    # «Молли (32), из Бонтона»: a woman tells her story
+    ("командовал собственным отделением, был уважаемым военным инженером",
+     "командовала собственным отделением, была уважаемым военным инженером"),
+    ("Спустя годы я осознал, что «идеалы», за которые я воевал", "Спустя годы я осознала, что «идеалы», за которые я воевала"),
+    # calls: the mod mixed up who is speaking to whom
+    ("Я... я... Я думала, мы договорились", "Я... я... Я думал, мы договорились"),  # Ilya
+    ("Я позвонил сказать, что приду домой поздно.", "Я позвонила сказать, что приду домой поздно."),  # Karen
+    ("Ходят слухи, что ты разговаривала с ним в момент ареста. Откуда бы ты иначе узнала?",
+     "Ходят слухи, что ты разговаривал с ним в момент ареста. Откуда бы ты иначе узнал?"),  # Karen to Raban
+    ("Да. Я разговаривала с ним. Он попросил меня о помощи. Полиция добралась до него раньше, чем я успела",
+     "Да. Я разговаривал с ним. Он попросил меня о помощи. Полиция добралась до него раньше, чем я успел"),  # Raban
+    ("хочешь сказать, что я причастна к его аресту?", "хочешь сказать, что я причастен к его аресту?"),  # Raban
+    ("и я никогда не понимал, почему ты вечно", "и я никогда не понимала, почему ты вечно"),  # Karen
+    # the Circle Mall: «ТЦ «Круг»» like in the conversations and the dossier (the mod also had Circle Mall and
+    # «Сёркл Молл»; the sign on the picture stays, the caption under it says «ТЦ «Круг»»)
+    ("торговом центре «Сёркл Молл»", "торговом центре «Круг»"),
+    ("«Сёркл Молл»", "ТЦ «Круг»"),
+    ("торгового центра Circle Mall", "торгового центра «Круг»"),
+    ("пойти в Circle Mall", "пойти в «Круг»"),
+    ("Circle Mall", "ТЦ «Круг»"),
+    # The People's Voice podcast: one title (the mod had three); the teaser's subtitle in one line, as in English
+    ("Я НЕ БОЮСЬ ВАС И НИКУДА НЕ УЙДУ", "Я ВАС НЕ БОЮСЬ И НИКУДА НЕ УЙДУ"),
+    ("Я НЕ БОЮСЬ ВАС И НЕ УЙДУ", "Я ВАС НЕ БОЮСЬ И НИКУДА НЕ УЙДУ"),
+    ("«Я НЕ БОЮСЬ ВАС...", "«Я ВАС НЕ БОЮСЬ..."),
+    ("Медийные манипуляторы пытаются на меня НАПАСТЬ!", "Медиаманипуляторы хотят на меня НАПАСТЬ!"),
+    # The People's Voice, editors and donations: words longer than the narrow columns were broken in the middle
+    ("Шеннон Карильо, медиа-наблюдатель", "Шеннон Карильо, критик СМИ"),  # media watchdog
+    ("Дэниел Бьюкенен, полевой корреспондент в Паргесе", "Дэниел Бьюкенен, репортёр в Паргесе"),
     # Penn St Apartments: one name, Russian like in the addresses
     ("Управляющий жилого комплекса Пенн-стрит", "Управляющий жилым комплексом «Пенн-стрит»"),
     ("Спасибо за аренду в Penn St Apartments.", "Спасибо, что арендуете жильё в комплексе «Пенн-стрит»."),
@@ -203,6 +261,65 @@ TEXT_REPLACE = [
     ("#FakeMarriage", "#ФиктивныйБрак"),
     ("#PargesianHero", "#ГеройПаргеса"),
     ("#refugee", "#беженец"),
+    ("#DOWNwithTheGov", "#ДолойПравительство"),
+    ("#ThisisWar", "#ЭтоВойна"),
+    # The National Opinion (column of the National Beholder): «Мнение Нации», like the links to the article
+    ("Национальное мнение: Будьте бдительны", "Мнение Нации: Будьте бдительны"),
+    ("В прошлонедельной статье для NO", "В прошлонедельной статье для «Мнения Нации»"),
+    # Karen's PC: the report icons' captions as the documents are named (two lines each, one size)
+    ("Отчёт по делу пациента № ", "Отчёт по пациенту № "),
+    # phones: the map app has one name, «Карты» (English: «iTrace» on Oleg's icon, Quo Tracking everywhere else);
+    # the messenger «СкайЧат» like «КриптоЧат» on Oleg's phone; the e-ticket icon: «Электронный билет» broke
+    # inside the word
+    ("<#FFFFFF>iTrace</color>", "<#FFFFFF>Карты</color>"),
+    ("<#FFFFFF>Quo Tracking</color>", "<#FFFFFF>Карты</color>"),
+    (">SkyChat</color>", ">СкайЧат</color>"),
+    ("<#FFFFFF>Электронный билет</color>", "<#FFFFFF>Билеты</color>"),
+    ("Устройство не в сети", "Не в сети"),
+    ("<#FFFFFF>PravaSecondary_RugbyTeam.jpg</color>", "<#FFFFFF>Правская_школа_команда_регби.jpg</color>"),  # Raban's PC  # device header: «Device offline» in one line
+    # Ilya's notes: three lines in a two-line box; Captain Janeway is «Ilya» here, so masculine
+    ("«Назад в будущее 2» отдал Златко — напомнить ему снова!", "«Назад в будущее 2» отдал Златко — напомнить ему!"),
+    ("«Назад в будущее 2» у Златко — напомнить ему!", "«Назад в будущее 2» отдал Златко — напомнить ему!"),
+    ("про капитана Илью Джейнуэй!", "про капитана Илью Джейнуэя!"),
+    # Raban to Ilya (who wrote that Karen likes Raban): «Karen fancies me?! She doesn't like me one bit. She doesn't
+    # like you one bit.» The mod had «И тебе ни капли не нравишься.»
+    ("Я ей ни капли не нравлюсь.</color></link> И тебе ни капли не нравишься.",
+     "Я ей ни капли не нравлюсь.</color></link> И ты ей тоже ни капли не нравишься."),
+    # upload overlay (level3, level4): the warning in three lines on its 565 wide plate, like the English one (30);
+    # «Это действие нельзя отменить» in one line on a wider plate, the icon and the text centred on it
+    ("Не все конфликтующие фрагменты данных \r\nбыли найдены. \r\nЗагрузка настоятельно не рекомендуется.",
+     "Найдены не все конфликтующие\r\nфрагменты данных.\r\nЗагрузка не рекомендуется."),
+    ("Не все конфликтующие блоки\r\nданных найдены.\r\nЗагрузка не рекомендуется.",
+     "Найдены не все конфликтующие\r\nфрагменты данных.\r\nЗагрузка не рекомендуется."),
+    ("Это нельзя отменить", "Это действие нельзя отменить"),  # level4 (level3: plate wider, RECT_EDITS)
+    # Ilya's mother says «chatter rooms», he corrects her: «It's called a CHAT ROOM, mother.»
+    ("Это тот, который ты используешь в своих чатах целыми днями?",
+     "Это тот, под которым ты целыми днями сидишь в своих болталках?"),
+    ("#TraitorsAgainstOwnPeople", "#ПредателиСвоегоНарода"),
+    ("#FakeRiot", "#ФейковыйБунт"),
+    # the last podcast: one title (the page headings and the article say «обращение»)
+    ("ЭТО МОЁ ПОСЛЕДНЕЕ ОБЪЯВЛЕНИЕ", "ЭТО МОЁ ПОСЛЕДНЕЕ ОБРАЩЕНИЕ"),
+    # end credits: names in the original spelling; the longest role in one line (RECT_EDITS 2750)
+    ("Трейлеры: Дерек Льё", "Трейлеры: Derek Lieu"),
+    ("Ведущий художник, бизнес-менеджер и сценарист", "Ведущий художник, бизнес-менеджер, сценарист"),
+    # Influencer thesis «The Nation bombed Prava Secondary»: the school as in the other texts
+    ("Нация разбомбила школу «Права Секондари».", "Нация разбомбила Правскую среднюю школу."),
+    # Forces of True Parges: the mod has «Силы Истинного Паргеса» and «СИП», but left «FTP» in several texts
+    ("FTP", "СИП"),
+    # Prava school forum: Hariz Busić (a father) about his daughter
+    ("Я не спала, меня тошнит", "Я не спал, меня тошнит"),
+    # browser history (Lookup searches): the names in Russian like everywhere else
+    ("Lookup: «Nina Maternova»", "Lookup: «Нина Матернова»"),
+    ("Lookup: «Juliet Kerrington»", "Lookup: «Джульетта Керрингтон»"),
+    ("Lookup: «Abraham Goldfels»", "Lookup: «Абрахам Голдфелс»"),
+    ("Lookup: «Cassandra Watergate»", "Lookup: «Кассандра Уотергейт»"),
+    ("Профайлер недоступен\nво время использования Инфлюенсера", "Профайлер недоступен\nво время использования\nИнфлюенсера"),
+    # TNB, the Trifleet visit: the teaser said «встречу», the article «совещание» (crisis meeting)
+    ("Блейн отменяет встречу ради", "Блейн отменяет совещание ради"),
+    # Dewhurst: «Дьюхёрст» like in the dossier (the mod wrote it both ways)
+    ("Дьюхерст", "Дьюхёрст"),
+    # putti (the cherubs of baroque fountains): a word few players know
+    ("Фонтан танцующих путти", "Фонтан танцующих амуров"),
     # mail subject: too long for the mail list row (also MAIL_SUBJECTS and the Mail objects in level3)
     ("Подпишитесь на Singular Pro уже сегодня!", "Оформите Singular Pro сегодня!"),
 ]
@@ -238,9 +355,13 @@ MAIL_SUBJECTS = {2662: (("Подпишитесь на Singular Pro уже сег
 # Watergate intranet
 WATERGATE_DATE_SIZE = 41.8     # message list: the dates like the subjects next to them
 WATERGATE_BUTTON_SIZE = 50.0   # «Ваш профиль» / «Ваши сообщения» (36 in a 67 high box)
-# chats laid out block under block (see restack_messages): the Watergate intranet and the phones' messengers
+# chats laid out block under block (see restack_messages): the Watergate intranet, the phones' messengers and the
+# discussions in The People's Voice admin area (posts on bg1..bg9)
 MESSAGE_PAGES = ("website_watergate_ilyamessage", "insider_karensphone_messagehistory", "insider_ilyasphone_message",
-                 "insider_baytephone_message")
+                 "insider_baytephone_message", "website_pvadmin_bakaydiscussion", "website_pvadmin_discussionencampment",
+                 "website_pvadmin_discussionremoval", "website_pvadmin_rabansavedstudentsdiscussion",
+                 "website_government_transcript")  # the call transcript: lines on bg_o1 / bg_r14 ...
+MESSAGE_BG = re.compile(r"^(bg_message|bg\d+$|bg_[or]\d+$)")
 
 # resources.assets UpdateProfileState path_id -> (English value, Russian value): dossier values the mod missed
 PROFILE_VALUES = {
@@ -264,13 +385,18 @@ BANK_TEXT_SIZE = 36.0
 BANK_TEXT_WIDTH = 702.0
 
 # Website._displayName (the page title in the address bar)
-PAGE_TITLES = {"Молчание ПРАВИТЕЛЬСТВЕННЫХ ОВЕЦ": "Молчание ПРАВИТЕЛЬСТВЕННЫХ МЕДИА-ЯГНЯТ"}
+PAGE_TITLES = {"Молчание ПРАВИТЕЛЬСТВЕННЫХ ОВЕЦ": "Молчание ПРАВИТЕЛЬСТВЕННЫХ МЕДИА-ЯГНЯТ",
+               "Файл QD9-O-54 — «X2_think»": "Дело QD9-O-54 — «X2_think»"}  # like the heading on the page
 
 # resources.assets UpdateProfileState path_id -> (value, drop text, drag start, drag end): dossier entries
 # that did not fit their two-line field
 PROFILE_EDITS = {
     # Karen, occupation (refugee counselor at Rehabilitation Council)
     2960: ("консультант по беженцам в Реабилитационном совете", "консультант по беженцам", 0, 22),
+    # David's password: the drop text was left English («disappear»); the slot checks the update, not the text
+    4307: ("угрожает устранить других людей", "устранить", 9, 17),
+    # dossier entry with «СИП» in the text: its drop text was left «FTP»
+    1717: ("потерял способность ходить, оказавшись под бетонными блоками после атаки СИП на его школу", "СИП", 73, 75),
 }
 
 LIKES_LABEL = re.compile(r"^Нравится: (\d+)(\s*)$")
@@ -305,19 +431,31 @@ def chat_text(pid, text):
 TEXT_EDITS = {
     "sharedassets3.assets": {
         2838: (("соединение установлено",), "связь установлена", 32.0),  # call: 2nd line was cut off
+        # update drop window («Drag here / Insert Data»): «Вставить данные» in two lines at 58, closer together
+        # (TMP_LINE_SPACING) and moved up with «Перетащите сюда» (RECT_EDITS 1162, 1225) to fit the 215 high plate
+        3233: (("Вставить данные", "Вставить"), "Вставить данные", None),
         # profile update tooltip: «ОТКЛЮЧИТЬ»/«ВКЛЮЧИТЬ» ran into the icon after them
         3205: (("Отключить",), "Отключить", 30.0),
         3252: (("Отключить",), "Отключить", 30.0),
         3355: (("Включить",), "Включить", 30.0),
         # conflict tooltip: «ПОКАЗАТЬ КОНФЛИКТ» ran out of its button; the picture button says «КОНФЛИКТ ▸»
         # (same size and place as on the picture, RECT_EDITS)
-        3244: (("ПОКАЗАТЬ КОНФЛИКТ", "КОНФЛИКТ"), "КОНФЛИКТ", 34.0),
-        3363: (("ПОКАЗАТЬ КОНФЛИКТ", "КОНФЛИКТ"), "КОНФЛИКТ", 34.0),
+        3244: (("ПОКАЗАТЬ КОНФЛИКТ", "КОНФЛИКТ"), "КОНФЛИКТ", 35.0),
+        3363: (("ПОКАЗАТЬ КОНФЛИКТ", "КОНФЛИКТ"), "КОНФЛИКТ", 35.0),
         # connections graph: the selected person's name, «Левин-Вхарт» did not fit and broke at the hyphen
         2486: (("Mary Bligh",), "Mary Bligh", 27.0),
         2720: (("Karen Levine-Vhart",), "Karen Levine-Vhart", 27.0),
     },
     "level3": {
+        # Dewhurst travel site, the tiles: «Sightseeing» was «Достопримечательности» squeezed to 30 and broken
+        # in the middle -> «Что посмотреть» in two lines (55 like the others, RECT_EDITS: up to the next tile)
+        39449: (("Достопримечательности",), "Что посмотреть", 55.0),
+        # end-of-day summary: «на следующий день» was squeezed into two small lines (31 instead of 48)
+        # -> «новый день» in one line (36; «Главное меню» on the left: 42, «следующий день» does not fit before the arrow)
+        39293: (("на следующий день", "далее"), "новый день", 36.0),
+        # spread data window: the «Spread ▸» button (English 38; the mod's «Распространение»: 24.7) -> «Распространить»
+        # at 34 on a wider button (RECT_EDITS 4295, 10429)
+        40780: (("Распространение", "Отправить"), "Распространить", 34.0),
         39316: (("Исходящая сессия",), "Исходящий сеанс", None),  # Listener: 'Session' is «Сеанс»
         38276: (("Входящая сессия",), "Входящий сеанс", None),
         39760: (("Сессия в процессе ...",), "Идёт сеанс ...", None),
@@ -406,18 +544,67 @@ TEXT_EDITS = {
 RECT_EDITS = {
     "sharedassets3.assets": {
         856: {"x": 1152.0},  # icon_phone_to: after «КОМУ» (was after «TO»)
+        # update drop window: «Перетащите сюда» + «Вставить данные» (two lines, step 58) centred on the arrow
+        # (centre -108): caps of the small line from -33.5, the second big line ends at -182 (plate: 0..-215)
+        1225: {"y": -26.8}, 1162: {"y": -70.2},
         923: {"x": 72.0},    # icon_phone_from: after «ОТ» (was after «FROM»)
         # «Отключить» / «Включить» buttons (260 wide, LAYOUT_EDITS): text and icon spaced out
         1177: {"x": -24.0}, 1167: {"x": -24.0}, 1166: {"x": -24.0},
         1109: {"x": 95.0}, 1207: {"x": 95.0}, 1205: {"x": 95.0},
-        1232: {"x": 137.0}, 1135: {"x": 137.0},  # «КОНФЛИКТ» where the picture button has it
-        1136: {"x": 154.0}, 1226: {"x": 154.0},  # and its arrow
+        # (the 340 wide picture, ui_images.show_conflict: text from x 56, arrow centre at x 277; the text rect
+        # stretches over the button + 80, so its left edge is x - 40; the arrow is anchored at the centre, 170)
+        1232: {"x": 96.0}, 1135: {"x": 96.0},    # «КОНФЛИКТ» where the picture button has it
+        1136: {"x": 107.0}, 1226: {"x": 107.0},  # and its arrow
     },
     "level3": {
         7236: {"w": 700.0},  # txt_outgoingsession, free bar up to the date
+        3316: {"w": 832.0},
+        2525: {"x": 199.8, "w": 225.0},  # chart: «Преступлений» (217) in one line, right aligned
+        5185: {"x": 809.8, "w": 245.0},  # «правительство» (236), centred under the logo as before
+        1930: {"x": 1026.0, "w": 212.0},  # «безопасности» (207), centred on the 2011 line as before
+        9011: {"x": 134.6, "w": 726.0},  # values: «иностранные дела» at 74 (right aligned, the plate has room)
+        # upload overlay: «Это действие нельзя отменить» (510 at 30) + the icon (39.6, gap 6) centred on a plate
+        # 591 wide (was 450, centre 1193.85 kept, padding 17.7 as before)
+        6649: {"x": 898.35, "w": 591.0}, 2314: {"x": 916.05}, 11313: {"x": 961.65, "w": 520.0},
+        # Elizabeth Levine's site, the quotes (80): the closing «“» right after the Russian text (as after the
+        # English one) and the plate under it with the English right margin (139)
+        718: {"w": 1240.0}, 11387: {"x": 1427.0}, 8133: {"w": 1566.0},   # «Я отстаиваю ценности Нации» (1220)
+        4541: {"w": 1150.0}, 9074: {"x": 1336.0}, 7790: {"w": 1475.0},   # «Наши дети — наше будущее» (1128)
+        6251: {"x": 1089.0}, 6786: {"w": 1228.0},                        # «Семья — основа всего.» (874)
+        # spread data button: 66 wider to the left (sliced, SPRITE_BORDERS; 60 left to the icon before it), the text
+        # rect with it; «Распространить» at 34 (top aligned): the middle of the capitals where it was at 38
+        4295: {"x": 2708.0, "w": 366.0},
+        10429: {"x": 2707.0, "y": -1496.4, "w": 312.0},
+        # Vhart family site: the topic bars (44, SIZE_EDITS) as wide as the others; the update headings (46) all 780
+        # wide (all start at x 804); «Капитан Илья Джейнуэй» (442 at 33) in one line above «в сети» (sidebar, 4 pages)
+        774: {"w": 899.0},
+        4816: {"w": 780.0}, 5366: {"w": 780.0}, 10708: {"w": 780.0}, 10751: {"w": 780.0},
+        1601: {"w": 397.0}, 2610: {"w": 397.0}, 5261: {"w": 397.0}, 6419: {"w": 397.0},  # up to the buttons' edge (500)
+        # spread data overlay: «Профайлер недоступен / во время использования / Инфлюенсера» (three lines at 34): the
+        # plate higher (100 for two English lines at 30, margins 13.6)
+        6184: {"h": 160.0},
+        # Socialite, David's profile: «Дэвид Джонс» (548 at 75) in one line, still centred under the photo; the bio a
+        # little wider («Свободомыслящий,» is 352, the rect was too: the comma went to the next line)
+        9911: {"x": 94.1, "w": 565.0},
+        # end credits: the role columns as wide as the screen allows (a role in two lines moved all the roles
+        # below it away from their names); the last text grows downwards by the translators' line (TEXT_APPEND)
+        2750: {"w": 1900.0}, 5606: {"w": 1900.0},
+        # People's Voice teaser (box -1164..-1545): the title 35 and the two-line subtitle 40 higher, the subtitle's
+        # second line ran out of the box
+        6022: {"y": -1191.0}, 4736: {"y": -1400.0},
+        7091: {"y": -13904.6, "h": 3363.5},
+        2623: {"w": 1276.0},  # government case heading (70, SIZE_EDITS): up to 50 before the panel's edge
+        3120: {"w": 390.0},
+        6243: {"w": 345.0},  # Dewhurst tiles: «Образ жизни» in one line (room up to the next circle: ~400)
+        7494: {"w": 337.0},  # «Что посмотреть»: «посмотреть» (302) in one line  # thesis panel: listener count (right aligned) ends 10 before «Слушатели» (was 855.9)
+        # Singular profile of Ilya: «Регистрация:» / «Последний вход:» in one line at the size of the other labels
+        # (SIZE_EDITS), the dates after them
+        5578: {"w": 300.0}, 10723: {"x": 1351.0, "w": 472.0},
+        7301: {"w": 380.0}, 5010: {"x": 1429.0, "w": 394.0},
         5006: {"w": 700.0},  # txt_incomingsession
         # end-of-day summary: «◂ ГЛАВНОЕ МЕНЮ» moves left, the end of the text was under the slanted edge
         1330: {"x": 447.0, "w": 340.0},  # txt_mainmenu_over
+        7186: {"x": 3310.0, "y": -190.4},  # txt_nextday: «новый день» ends ~20 before the arrow, centred like «Главное меню»
         2777: {"x": 400.0},              # its arrow
         # Singular profile of Ilya: labels on the baseline of their values, values in two columns after the
         # longest label («Телосложение:», «Препараты:» at 36)
@@ -443,6 +630,9 @@ RECT_EDITS = {
         6671: {"x": 2370.0, "y": -505.0},  # continue text (its end touched the arrow)
         8921: {"y": -496.0},  # continue arrow
     },
+    "level4": {
+        190: {"x": 698.35, "w": 591.0}, 51: {"x": 716.05}, 314: {"x": 761.65, "w": 520.0},  # as in level3 (-200)
+    },
     "level1": {
         53: {"x": 1760.0},   # «НАЗАД» ran over the right edge of the button: closer to the arrow
         264: {"x": 1760.0},
@@ -464,13 +654,59 @@ LAYOUT_EDITS = {
     },
 }
 
+# file -> {Sprite path_id: (left, bottom, right, top)}: borders for 9-slicing, and file -> {Image path_id: m_Type}
+# (1 = Sliced): the spread data button (influencer_ibtn_createprofile_2, 300 x 81, the chevron in the right 75 px)
+# is made wider without stretching its arrow
+SPRITE_BORDERS = {"sharedassets3.assets": {598: (2.0, 0.0, 75.0, 0.0)}}
+IMAGE_TYPES = {"level3": {46130: 1}}
+
 # file -> {TMP path_id: font size} whatever the text is
+# file -> {TMP path_id: m_lineSpacing}
+TMP_LINE_SPACING = {"sharedassets3.assets": {3233: 0.0},  # «Вставить данные»: 21.5 -> 0 (line step 90 -> 58)
+                    "level3": {38140: 0.0}}  # People's Voice teaser: the subtitle's two lines closer (RECT_EDITS 4736)
+
 SIZE_EDITS = {
+    "sharedassets3.assets": {
+        # Insider breadcrumb labels: 40 -> 34, the Russian path is as long as the English one at 40 (all labels of
+        # a long path wrapped into two lines)
+        3180: 34.0,
+    },
+    "level4": {
+        1005: 30.0, 1025: 30.0,  # upload overlay texts, as in level3
+    },
     "level3": {
         # Singular profile of Ilya: labels (the mod had 27..46) and values (44..46)
         39799: 36.0, 38940: 36.0, 38324: 36.0, 38655: 36.0, 40912: 36.0, 40169: 36.0,
         39857: 39.0, 40736: 39.0, 39283: 39.0, 38270: 39.0, 39199: 39.0, 39526: 39.0,
+        38548: 46.0, 39348: 46.0,
+        39718: 40.0,  # «Отчёт по пациенту № PR-34207» like the other report icons (the mod: 35.6)
+        36238: 27.0,
+        # The Party, crime rate chart: the labels were made 34 (English 30) and broke inside the words in their
+        # narrow rects (RECT_EDITS: a little wider, the same right edge / centre)
+        37058: 30.0, 38367: 30.0, 36767: 30.0,
+        39888: 30.0, 41193: 30.0,  # upload overlay texts (English: 30, the mod: 34)
+        # Vhart family site: «Новости» like «Форум» (the mod: 32.5 / 50); the forum topics one size (the mod: 32.5..50,
+        # the longest ran out of its bar); the update headings one size (the mod: 35.9..50)
+        39151: 50.0,
+        36212: 44.0, 37852: 44.0, 39713: 44.0,
+        38182: 46.0, 38451: 46.0, 40908: 46.0, 40929: 46.0,
+        36614: 29.0, 37105: 29.0, 38402: 29.0, 38954: 29.0,  # «Капитан Илья Джейнуэй» (389) in the sidebar (EN 33)
+        37173: 70.0,  # end credits roles: the size of the names next to them (the mod: 69.4, the rows drifted apart)
+        37111: 70.0,  # «Дело QD9-O-54 — «X2_think»» in one line (1350 at 75; it ran over the photo)
+        38883: 34.0,  # spread data overlay (English 30; 34 like the mod, three lines on a higher plate)
+        41215: 80.0,  # Elizabeth Levine's site: «Семья — основа всего.» like the other quotes (the mod: 74.8)
+        40140: 74.0,  # The Party, values: «Миграция и иностранные дела» (the mod: 65.4, the others 88; RECT_EDITS)  # thesis panel: «Слушатели» (TopRight) ran into the listener count (RECT_EDITS 3316)  # «Регистрация:» (the mod: 22.8), «Последний вход:» (39.7, two lines)
     },
+}
+
+# TMP text (after TEXT_REPLACE) -> (font size, rect width), in every copy of the page
+TEXT_FIT = {
+    # The People's Voice, caption on the photo plate: two lines ran out of the plate -> one line
+    "Рабан Вхарт, главный редактор": (42.0, 735.0),
+    # TNB slogan in one line (845 -> 890 wide; the English one had two lines)
+    "Ведущая газета Нации. Быстро. Точно. Честно.": (38.0, 890.0),
+    # donations box: «пожертвования» as one word (rect 379 -> 425, size 55 -> 48; English: 63)
+    "Существует на пожертвования": (48.0, 425.0),
 }
 
 # OnlinePresence id -> OnlinePresence._displayName (level3), only where the mod's name is wrong
@@ -527,6 +763,21 @@ def replace_strings(t, table):
             n += 1
         elif isinstance(v, (dict, list)):
             n += replace_strings(v, table)
+    return n
+
+
+def replace_phrases_in(t, inside=False):
+    """TEXT_REPLACE in the strings under _textLocalized / _captionsDocument of a typetree (not in ids or state
+    names). Returns the number of changed strings."""
+    n = 0
+    items = t.items() if isinstance(t, dict) else enumerate(t) if isinstance(t, list) else ()
+    for k, v in list(items):
+        here = inside or k in ("_textLocalized", "_captionsDocument")
+        if here and isinstance(v, str) and replace_phrases(v) != v:
+            t[k] = replace_phrases(v)
+            n += 1
+        elif isinstance(v, (dict, list)):
+            n += replace_phrases_in(v, here)
     return n
 
 
@@ -735,7 +986,7 @@ def restack_messages(env, objs, scripts, metrics, externals, f, english):
         if not page_name.startswith(MESSAGE_PAGES) or page not in rect_of:
             continue
         children = [rt_go[c["m_PathID"]] for c in rect_of[page]["m_Children"] if c["m_PathID"] in rt_go]
-        backgrounds = [g for g in children if name.get(g, "").startswith("bg_message")]
+        backgrounds = [g for g in children if MESSAGE_BG.match(name.get(g, ""))]
         if not backgrounds:
             continue
         top = max(rect_of[g]["m_AnchoredPosition"]["y"] for g in backgrounds)
@@ -888,6 +1139,16 @@ def main(in_dir, out_dir, files):
                             and in_bank(g)):
                         bank_texts.add(o.path_id)
                         rects[g] = dict(rects.get(g, {}), w=BANK_TEXT_WIDTH)
+        size_edits = dict(SIZE_EDITS.get(f, {}))
+        if f.startswith("level"):
+            for o in env.objects:
+                if o.type.name == "MonoBehaviour" and mono_class(o, scripts) == "TextMeshProUGUI":
+                    t = o.read_typetree()
+                    fit = TEXT_FIT.get(replace_phrases(t.get("m_text") or "").strip())
+                    if fit:
+                        size_edits[o.path_id] = fit[0]
+                        rects[t["m_GameObject"]["m_PathID"]] = dict(rects.get(t["m_GameObject"]["m_PathID"], {}),
+                                                                    w=fit[1])
 
         originals = original_textures(os.path.join(ORIG_DIR, f))
         english, en_heights, orig_fonts = english_originals(os.path.join(ORIG_DIR, f), scripts)
@@ -984,9 +1245,22 @@ def main(in_dir, out_dir, files):
                     tex.set_image(img.convert("RGB" if fmt == 3 else "RGBA"), target_format=fmt)
                     tex.save()
                     n["images"] += 1
+            elif o.type.name == "Sprite" and o.path_id in SPRITE_BORDERS.get(f, {}):
+                t = o.read_typetree()
+                border = dict(zip("xyzw", SPRITE_BORDERS[f][o.path_id]))
+                if t["m_Border"] != border:
+                    t["m_Border"] = border
+                    o.save_typetree(t)
+                    n["images"] += 1
             if o.type.name != "MonoBehaviour":
                 continue
             cls = mono_class(o, scripts)
+            if o.path_id in IMAGE_TYPES.get(f, {}):
+                t = o.read_typetree()
+                if t["m_Type"] != IMAGE_TYPES[f][o.path_id]:
+                    t["m_Type"] = IMAGE_TYPES[f][o.path_id]
+                    o.save_typetree(t)
+                    n["images"] += 1
             if cls in ("LayoutElement", "HorizontalLayoutGroup", "VerticalLayoutGroup"):
                 t = o.read_typetree()
                 edit = LAYOUT_EDITS.get(f, {}).get(t["m_GameObject"]["m_PathID"], {})
@@ -1026,7 +1300,12 @@ def main(in_dir, out_dir, files):
                     if go_name in FONT_FROM_ORIGINAL_GO_NAMES and t["m_fontSize"] != STORED_SIZE:
                         t["m_fontSize"] = t["m_fontSizeBase"] = STORED_SIZE  # «СОХРАНЕНО» in its 118-wide rect
                         changed = True
-                size = SIZE_EDITS.get(f, {}).get(o.path_id)
+                spacing = TMP_LINE_SPACING.get(f, {}).get(o.path_id)
+                if spacing is not None and abs(t["m_lineSpacing"] - spacing) > 0.01:
+                    t["m_lineSpacing"] = spacing
+                    changed = True
+                    n["texts"] += 1
+                size = size_edits.get(o.path_id)
                 if size and abs(t["m_fontSize"] - size) > 0.01:
                     t["m_fontSize"] = t["m_fontSizeBase"] = size
                     changed = True
@@ -1085,6 +1364,14 @@ def main(in_dir, out_dir, files):
                     t["m_text"] = likes_ru(m.group(1)) + m.group(2)
                     changed = True
                     n["likes"] = n.get("likes", 0) + 1
+                if o.path_id in NAMES_FROM_ORIGINAL.get(f, {}) and english.get(o.path_id) and t.get("m_text"):
+                    sep = NAMES_FROM_ORIGINAL[f][o.path_id]
+                    en = english[o.path_id][0]
+                    new = en if sep is None else en.split(sep)[0] + sep + t["m_text"].split(sep, 1)[1]
+                    if new != t["m_text"]:
+                        t["m_text"] = new
+                        changed = True
+                        n["texts"] += 1
                 if t.get("m_text") and replace_phrases(t["m_text"]) != t["m_text"]:
                     t["m_text"] = replace_phrases(t["m_text"])
                     changed = True
@@ -1098,10 +1385,17 @@ def main(in_dir, out_dir, files):
                     t["m_text"] = base + suffix
                     changed = True
                     n["texts"] += 1
-                if g in subtitle_gos and t["m_fontSize"] > SUBTITLE_SIZE:
-                    t["m_fontSize"] = t["m_fontSizeBase"] = SUBTITLE_SIZE
-                    changed = True
-                    n["subtitles"] += 1
+                if g in subtitle_gos:
+                    # the Arvo fonts have the original line metrics: the English size fills the two-line window
+                    # exactly (at 34 it showed ~2.3 lines, half lines at the paragraph breaks)
+                    if t["m_fontAsset"]["m_PathID"] in SUBTITLE_ORIGINAL_SIZE_FONTS and english.get(o.path_id):
+                        want = english[o.path_id][1]
+                    else:
+                        want = min(t["m_fontSize"], SUBTITLE_SIZE)
+                    if abs(t["m_fontSize"] - want) > 0.01:
+                        t["m_fontSize"] = t["m_fontSizeBase"] = want
+                        changed = True
+                        n["subtitles"] += 1
                 if g in rt_of and in_history(g):
                     fa = t["m_fontAsset"]
                     font_file = f if fa["m_FileID"] == 0 else externals[fa["m_FileID"] - 1]
@@ -1168,6 +1462,19 @@ def main(in_dir, out_dir, files):
                     t["_text"]["_text"][1] = chat_text(o.path_id, txt)
                     o.save_typetree(t)
                     n["texts"] += 1
+            elif cls == "InfluencerThesisState" and f == "resources.assets":
+                t = o.read_typetree()
+                if t.get("_thesisText") and replace_phrases(t["_thesisText"]) != t["_thesisText"]:
+                    t["_thesisText"] = replace_phrases(t["_thesisText"])
+                    o.save_typetree(t)
+                    n["texts"] += 1
+            elif cls == "NewTickerReportState" and f == "resources.assets":
+                t = o.read_typetree()
+                txt = t["_text"]["_text"][1]
+                if txt and replace_phrases(txt) != txt:
+                    t["_text"]["_text"][1] = replace_phrases(txt)
+                    o.save_typetree(t)
+                    n["texts"] += 1
             elif cls == "PodcastTranscript":
                 t = o.read_typetree()
                 if replace_phrases(t["Text"]) != t["Text"]:
@@ -1218,7 +1525,8 @@ def main(in_dir, out_dir, files):
                     n["docs"] += 1
             elif cls == "InsiderDocumentUpdateState":
                 t = o.read_typetree()
-                if replace_strings(t, CAPTION_REPLACE):
+                # captions (exact) and the documents' texts (TEXT_REPLACE, as in the TMP texts they show)
+                if replace_strings(t, CAPTION_REPLACE) + replace_phrases_in(t):
                     o.save_typetree(t)
                     n["docs"] += 1
             elif cls == "NewCommentaryLineState" and f == "resources.assets" and o.path_id in LINE_FIXES:

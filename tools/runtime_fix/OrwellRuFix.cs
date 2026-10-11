@@ -201,6 +201,9 @@ namespace OrwellRuFix
         {
             if (t.enableAutoSizing || r.width < 4f || r.height < 4f || IsDynamic(t))
                 return;
+            // the game cuts these texts itself (bookmark list: «…»); a smaller font would only make the rows uneven
+            if (t.overflowMode == TextOverflowModes.Ellipsis || t.overflowMode == TextOverflowModes.Truncate)
+                return;
             if (Mathf.Abs(t.fontSize - st.OriginalSize) > 0.01f)
                 t.fontSize = st.OriginalSize;
             if (!Overflows(t, r, st.OriginalSize))

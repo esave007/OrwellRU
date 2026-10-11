@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -79,6 +80,8 @@ class Program
                     if (instruction.OpCode != OpCodes.Ldstr) continue;
 
                     string original = (string)instruction.Operand;
+                    if (onlyIn.TryGetValue(original, out var methods) && !methods.Contains(type.FullName + "::" + method.Name))
+                        continue;  // e.g. "Text": also a GameObject name for Transform.Find
                     if (translations.TryGetValue(original, out string? translation))
                     {
                         instruction.Operand = translation;
@@ -143,6 +146,9 @@ class Program
         return 0;
     }
 
+    // original -> "Namespace.Type::Method" names the translation is limited to ("only_in" in the json)
+    static readonly Dictionary<string, HashSet<string>> onlyIn = new Dictionary<string, HashSet<string>>();
+
     static Dictionary<string, string> LoadTranslations(string jsonPath)
     {
         var result = new Dictionary<string, string>();
@@ -165,6 +171,8 @@ class Program
             if (original == translation) continue;
 
             result[original] = translation;
+            if (entry.TryGetProperty("only_in", out var only))
+                onlyIn[original] = new HashSet<string>(only.EnumerateArray().Select(m => m.GetString()!));
         }
 
         return result;

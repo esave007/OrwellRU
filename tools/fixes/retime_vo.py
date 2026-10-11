@@ -2,7 +2,7 @@
 
 Podcasts (PodcastPlayButton.StartSubtitles) and phone calls (CallPresenter.AnimatePhoneCallText) reveal the
 text word by word: word i appears at VoiceOverTimings[id][i] seconds (podcasts skip the pause tokens
-"...", "--", "-" when counting). The table (VoiceOverTimingsCollectionObject in resources.assets) was
+"...", "--", "–" when counting). The table (VoiceOverTimingsCollectionObject in resources.assets) was
 made for the English words, so with a translated text the words run out of sync with the voice.
 
 retime() builds a table for the Russian words, anchored on sentences: when a paragraph has the same number
@@ -14,24 +14,25 @@ not match are timed as a whole, and texts whose paragraphs do not match as one b
 import bisect
 import re
 
-PAUSES = ("...", "--", "-")
+# the tokens the game skips (PodcastPlayButton: "...", "--" and the en dash U+2013; a plain "-" is a word)
+PAUSES = ("...", "--", "–")
 TAG = re.compile(r"<[^>]+>")
 SENTENCE_END = re.compile(r"[.!?…]+[\"»”)\]]*$")
 
 
-def split_words(text, podcast):
+def split_words(text, podcast, pauses=PAUSES):
     """[(char offset, paragraph, sentence in paragraph, counted)] for the words the game iterates over."""
     out = []
     pos = para = sent = 0
     for w in text.split(" "):
         core = w[2:] if podcast and (w.startswith("\n") or "\n\n" in w) else w
-        counted = not (podcast and core in PAUSES)
+        counted = not (podcast and core in pauses)
         out.append([pos, para, sent, counted])
         pos += len(w) + 1
         if "\n" in w:
             para += 1
             sent = 0
-        elif SENTENCE_END.search(w.strip()) and w.strip() not in PAUSES:
+        elif SENTENCE_END.search(w.strip()) and w.strip() not in pauses:
             sent += 1
     return out, pos
 
@@ -78,12 +79,12 @@ def _spans(words, keys, total):
     return g
 
 
-def retime(en_text, ru_text, times, podcast):
+def retime(en_text, ru_text, times, podcast, pauses=PAUSES):
     """New timing list for ru_text, or None if there is nothing to time."""
     if not podcast:  # calls: the game splits the paragraph text after parsing the <d …> markup
         en_text, ru_text = TAG.sub("", en_text), TAG.sub("", ru_text)
-    en, en_len = split_words(en_text, podcast)
-    ru, ru_len = split_words(ru_text, podcast)
+    en, en_len = split_words(en_text, podcast, pauses)
+    ru, ru_len = split_words(ru_text, podcast, pauses)
     if not times or not any(w[3] for w in ru):
         return None
     if 0 < sum(w[3] for w in en) - len(times) <= 2:
