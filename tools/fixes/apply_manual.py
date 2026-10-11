@@ -7,6 +7,9 @@
   (keeping the English bottom margin); PAGE_HEIGHTS can force a minimum for single pages.
 - UI images with English text are redrawn by ui_images.py from the original textures (ORWELL_ORIG)
   and replace the Texture2D of the same name; no game artwork is stored in the repository.
+  ORWELL_IMAGES=base leaves out the optional pictures (ui_images.OPTIONAL: text inside logos, banners,
+  posters) and puts their original textures back; the installer offers both builds. The asset bundles
+  are patched by apply_bundles.py.
 - Single labels that do not fit (TEXT_EDITS: new wording / size) and rects that have to move
   (RECT_EDITS: the arrow after «Кому» on the call screen, wider session captions).
 - Website names. The bookmark list shows NewBookmarkState._bookmark._captionOnlinepresence
@@ -42,7 +45,7 @@ from ttg import load
 import re
 from apply_scenes import FontMetrics, count_lines, text_height, likes_ru
 from retime_vo import retime
-from ui_images import RENDERERS
+from ui_images import OPTIONAL, RENDERERS, selected
 import UnityPy
 from PIL import Image
 
@@ -51,7 +54,7 @@ REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 
 # page GameObject name -> new height (English text ends ~120 units above the original height)
 PAGE_HEIGHTS = {
-    "website_peoplesvoice_crimerate": 3010.0,   # was 2735.5
+    "website_peoplesvoice_crimerate": 3299.0,   # was 2735.5; 3245 (auto) + 54 for the two-line hashtags (RECT_EDITS)
     "website_beholder_school": 3520.0,          # was 3239.7
 }
 ORIG_DIR = os.environ.get("ORWELL_ORIG", os.path.join(REPO, "backup"))
@@ -65,6 +68,8 @@ PERSON_FIELDS = ("_realName", "_displayName", "_defaultTelephoneName")
 
 # InsiderDocument._id -> _displayName (shown in the breadcrumb); file names like «browser.hist» stay
 DOC_NAMES = {"insider_rabanpc_unfinishedimage": "Площадь Свободы (СДЕЛАТЬ)",
+             # Raban's Pictures folder: the desktop icon says «Изображения», the folder itself was «Фотографии»
+             "insider_rabanpc_folder_pictures": "Изображения",
              # the map app: «Карты» (English: Quo Tracking, the icon on Oleg's phone: iTrace; the mod had
              # «Отслеживание Quo»)
              **{"insider_" + d: "Карты" for d in ("ilyasphone_geo", "ilyasphone_geoupdate1", "ilyasphone_geoupdate2",
@@ -297,6 +302,16 @@ TEXT_REPLACE = [
      "Это тот, под которым ты целыми днями сидишь в своих болталках?"),
     ("#TraitorsAgainstOwnPeople", "#ПредателиСвоегоНарода"),
     ("#FakeRiot", "#ФейковыйБунт"),
+    # two lines: «#НастоящиеПреступники» wraps to the second one (RECT_EDITS 1416 and the blocks below)
+    ("#FakeStatistics #RealCriminals", "#ЛжеСтатистика #НастоящиеПреступники"),
+    # The People's Voice admin log: one spelling of Shannon (as in most texts), «Журнал» for every day, one wording
+    # for the same entry (the mod had three)
+    ("Шэннон", "Шеннон"),
+    ("Лог 14 апреля 2017 г.:", "Журнал 14 апреля 2017 г.:"),
+    ("Лог 15 апреля 2017 г.:", "Журнал 15 апреля 2017 г.:"),
+    ("Статус редактора пользователя «Илья» удалён", "Пользователь Илья лишён статуса автора"),
+    ("Удалён статус автора у пользователя Daniel", "Пользователь Дэниел лишён статуса автора"),
+    ("Статус автора снят с пользователя Shan", "Пользователь Шен лишён статуса автора"),
     # the last podcast: one title (the page headings and the article say «обращение»)
     ("ЭТО МОЁ ПОСЛЕДНЕЕ ОБЪЯВЛЕНИЕ", "ЭТО МОЁ ПОСЛЕДНЕЕ ОБРАЩЕНИЕ"),
     # end credits: names in the original spelling; the longest role in one line (RECT_EDITS 2750)
@@ -360,7 +375,8 @@ WATERGATE_BUTTON_SIZE = 50.0   # «Ваш профиль» / «Ваши сооб
 MESSAGE_PAGES = ("website_watergate_ilyamessage", "insider_karensphone_messagehistory", "insider_ilyasphone_message",
                  "insider_baytephone_message", "website_pvadmin_bakaydiscussion", "website_pvadmin_discussionencampment",
                  "website_pvadmin_discussionremoval", "website_pvadmin_rabansavedstudentsdiscussion",
-                 "website_government_transcript")  # the call transcript: lines on bg_o1 / bg_r14 ...
+                 "website_government_transcript",  # the call transcript: lines on bg_o1 / bg_r14 ...
+                 "website_pvadmin_log")  # admin log (logday1..3, logupdate2): rows on bg1 / bg2
 MESSAGE_BG = re.compile(r"^(bg_message|bg\d+$|bg_[or]\d+$)")
 
 # resources.assets UpdateProfileState path_id -> (English value, Russian value): dossier values the mod missed
@@ -431,6 +447,10 @@ def chat_text(pid, text):
 TEXT_EDITS = {
     "sharedassets3.assets": {
         2838: (("соединение установлено",), "связь установлена", 32.0),  # call: 2nd line was cut off
+        # bookmark date placeholders (the game writes the date over them, RuDate «MMM dd» -> «13 апр.»)
+        2992: (("Apr 13",), "13 апр.", None),
+        2926: (("12.04.",), "13 апр.", None),
+        3196: (("12.04.",), "13 апр.", None),
         # update drop window («Drag here / Insert Data»): «Вставить данные» in two lines at 58, closer together
         # (TMP_LINE_SPACING) and moved up with «Перетащите сюда» (RECT_EDITS 1162, 1225) to fit the 215 high plate
         3233: (("Вставить данные", "Вставить"), "Вставить данные", None),
@@ -447,6 +467,9 @@ TEXT_EDITS = {
         2720: (("Karen Levine-Vhart",), "Karen Levine-Vhart", 27.0),
     },
     "level3": {
+        # top bar date before the first day starts: DateTool reads it back (DateTime.Parse -> OrwellRuFix.RuDate.Parse,
+        # which takes the Russian format it writes itself); needs the patched Assembly-CSharp.dll
+        36332: (("April 12, 2017",), "12 апреля 2017", None),
         # Dewhurst travel site, the tiles: «Sightseeing» was «Достопримечательности» squeezed to 30 and broken
         # in the middle -> «Что посмотреть» in two lines (55 like the others, RECT_EDITS: up to the next tile)
         39449: (("Достопримечательности",), "Что посмотреть", 55.0),
@@ -544,6 +567,9 @@ TEXT_EDITS = {
 RECT_EDITS = {
     "sharedassets3.assets": {
         856: {"x": 1152.0},  # icon_phone_to: after «КОМУ» (was after «TO»)
+        # Insider bookmarks, the folder column (SIZE_EDITS 3011): starts after «Изображение» (the type column, 167 wide,
+        # squeezed to 30 by OrwellRuFix still reaches 197)
+        982: {"x": 210.0, "w": 250.0},  # up to the name column (467)
         # update drop window: «Перетащите сюда» + «Вставить данные» (two lines, step 58) centred on the arrow
         # (centre -108): caps of the small line from -33.5, the second big line ends at -182 (plate: 0..-215)
         1225: {"y": -26.8}, 1162: {"y": -70.2},
@@ -589,6 +615,9 @@ RECT_EDITS = {
         # end credits: the role columns as wide as the screen allows (a role in two lines moved all the roles
         # below it away from their names); the last text grows downwards by the translators' line (TEXT_APPEND)
         2750: {"w": 1900.0}, 5606: {"w": 1900.0},
+        # People's Voice crime rate article: the meta line in two lines (+54, its line step), everything below lower
+        1416: {"h": 100.0}, 1387: {"y": -864.0}, 7555: {"y": -1001.0}, 519: {"y": -1740.0},
+        11253: {"w": 400.0}, 10934: {"w": 400.0}, 4192: {"w": 400.0}, 3819: {"w": 400.0},  # «Обновление» at 40
         # People's Voice teaser (box -1164..-1545): the title 35 and the two-line subtitle 40 higher, the subtitle's
         # second line ran out of the box
         6022: {"y": -1191.0}, 4736: {"y": -1400.0},
@@ -662,6 +691,9 @@ IMAGE_TYPES = {"level3": {46130: 1}}
 
 # file -> {TMP path_id: font size} whatever the text is
 # file -> {TMP path_id: m_lineSpacing}
+# the folder column of the Insider bookmarks: Ellipsis -> Overflow (with the Cyrillic text wider than the rect the
+# label could stay empty after loading a save)
+TMP_OVERFLOW = {"sharedassets3.assets": {3011: 0}}
 TMP_LINE_SPACING = {"sharedassets3.assets": {3233: 0.0},  # «Вставить данные»: 21.5 -> 0 (line step 90 -> 58)
                     "level3": {38140: 0.0}}  # People's Voice teaser: the subtitle's two lines closer (RECT_EDITS 4736)
 
@@ -670,6 +702,9 @@ SIZE_EDITS = {
         # Insider breadcrumb labels: 40 -> 34, the Russian path is as long as the English one at 40 (all labels of
         # a long path wrapped into two lines)
         3180: 34.0,
+        # Insider bookmarks, the folder column («Фотографии», «Рабочий стол», «Все контакты», «Тема»): 40 -> 34, so it
+        # ends before the name column (467) after moving right of the type column (RECT_EDITS 982)
+        3011: 34.0,
     },
     "level4": {
         1005: 30.0, 1025: 30.0,  # upload overlay texts, as in level3
@@ -691,6 +726,9 @@ SIZE_EDITS = {
         36212: 44.0, 37852: 44.0, 39713: 44.0,
         38182: 46.0, 38451: 46.0, 40908: 46.0, 40929: 46.0,
         36614: 29.0, 37105: 29.0, 38402: 29.0, 38954: 29.0,  # «Капитан Илья Джейнуэй» (389) in the sidebar (EN 33)
+        38770: 77.0,  # People's Voice teaser: «Правительство» (709 at 83) in one piece in its 685 wide rect
+        40208: 72.0,  # People's Voice teaser: «ОСТАНАВЛИВАЕТ» (694 at 75.6) in one piece in its 672 wide rect
+        41161: 40.0, 41002: 40.0, 37866: 40.0, 37688: 40.0,  # admin log header «Обновление» (the mod: 26.4)
         37173: 70.0,  # end credits roles: the size of the names next to them (the mod: 69.4, the rows drifted apart)
         37111: 70.0,  # «Дело QD9-O-54 — «X2_think»» in one line (1350 at 75; it ran over the photo)
         38883: 34.0,  # spread data overlay (English 30; 34 like the mod, three lines on a higher plate)
@@ -1010,7 +1048,8 @@ def restack_messages(env, objs, scripts, metrics, externals, f, english):
                 continue
             width = rect_of[g]["m_SizeDelta"]["x"]
             h_en = text_height(en_text, en_size, font, width, t)[1]
-            h_ru = text_height(t["m_text"] or "", en_size, font, width * 0.94, t)[1]
+            # the text as the TMP pass will leave it (TEXT_REPLACE), so a second run gives the same layout
+            h_ru = text_height(replace_phrases(t["m_text"] or ""), en_size, font, width * 0.94, t)[1]
             sizes[o.path_id] = en_size
             grow[g] = max(0.0, round(h_ru - h_en, 1))
         total = sum(grow.values())
@@ -1019,7 +1058,8 @@ def restack_messages(env, objs, scripts, metrics, externals, f, english):
         for g in children:
             if y_of(g) > top:
                 continue
-            shift = sum(d for g2, d in grow.items() if y_of(g2) > y_of(g))
+            # (0.5: texts of one row may differ in the last digits, e.g. -1017.00006 / -1017.0)
+            shift = sum(d for g2, d in grow.items() if y_of(g2) > y_of(g) + 0.5)
             inside = (sum(d for g2, d in grow.items() if y_of(g) - h_of(g) < y_of(g2) <= y_of(g))
                       if g in backgrounds else grow.get(g, 0))
             edit = {}
@@ -1032,16 +1072,55 @@ def restack_messages(env, objs, scripts, metrics, externals, f, english):
     return rect_edits, sizes, extra
 
 
+def relative_timestamps(env, objs, scripts, english, f):
+    """Comment time stamps («15 апреля 2017 г. в 10:25»): the game replaces StampLength characters at
+    StampStartIndex of the text with the current time minus MinutesAgo (RelativeTimestamp.UpdateTimeStampText).
+    The positions were set for the English text («10:25 am»), so in the Russian one the game overwrote other
+    characters. With OrwellRuFix.RuDate the new stamp is «HH:mm», always 5 characters: point every stamp at its
+    time in the Russian text (the same occurrence as in the English one) and drop « am»/« pm».
+    Returns the number of changed objects."""
+    changed = 0
+    for o in load(os.path.join(ORIG_DIR, f)).objects:
+        if o.type.name != "MonoBehaviour" or mono_class(o, scripts) != "RelativeTimestamp":
+            continue
+        org = o.read_typetree()
+        t = objs[o.path_id].read_typetree()
+        field = objs[t["TextField"]["m_PathID"]]
+        tt = field.read_typetree()
+        en = english[field.path_id][0]
+        start, length = org["StampStartIndex"], org["StampLength"]
+        stamp = en[start:start + length]  # "10:25 am"
+        assert re.fullmatch(r"\d\d:\d\d [ap]m", stamp), (o.path_id, stamp)
+        text = re.sub(r"(\d\d:\d\d) [ap]m", r"\1", tt["m_text"])
+        assert text.count(stamp[:5]) == en.count(stamp), (o.path_id, text)
+        pos = -1
+        for _ in range(en[:start].count(stamp) + 1):
+            pos = text.find(stamp[:5], pos + 1)
+        if tt["m_text"] != text:
+            tt["m_text"] = text
+            field.save_typetree(tt)
+            changed += 1
+        if (t["StampStartIndex"], t["StampLength"]) != (pos, 5):
+            t["StampStartIndex"], t["StampLength"] = pos, 5
+            objs[o.path_id].save_typetree(t)
+            changed += 1
+    return changed
+
+
 def original_textures(path):
-    """Texture2D name -> image from the original game file, for the textures redrawn by ui_images.py."""
-    out = {}
+    """Texture2D name -> image from the original game file, for the textures redrawn by ui_images.py; and
+    path id -> raw original object for the optional pictures left out of this build (ORWELL_IMAGES=base), so
+    a build without them also takes them back out of files that had them."""
+    out, raw = {}, {}
     if os.path.exists(path):
         for o in UnityPy.load(path).objects:
             if o.type.name == "Texture2D":
                 tex = o.read()
-                if tex.m_Name in RENDERERS:
+                if selected(tex.m_Name):
                     out[tex.m_Name] = tex.image
-    return out
+                elif tex.m_Name in OPTIONAL:
+                    raw[o.path_id] = o.get_raw_data()
+    return out, raw
 
 
 def voice_texts(in_dir, scripts):
@@ -1150,7 +1229,7 @@ def main(in_dir, out_dir, files):
                         rects[t["m_GameObject"]["m_PathID"]] = dict(rects.get(t["m_GameObject"]["m_PathID"], {}),
                                                                     w=fit[1])
 
-        originals = original_textures(os.path.join(ORIG_DIR, f))
+        originals, original_raw = original_textures(os.path.join(ORIG_DIR, f))
         english, en_heights, orig_fonts = english_originals(os.path.join(ORIG_DIR, f), scripts)
         if not f.startswith("level"):
             english, en_heights = {}, {}
@@ -1238,12 +1317,15 @@ def main(in_dir, out_dir, files):
                     n["rects"] += 1
             elif o.type.name == "Texture2D":
                 tex = o.read()
-                if tex.m_Name in RENDERERS and tex.m_Name in originals:
+                if selected(tex.m_Name) and tex.m_Name in originals:
                     img = RENDERERS[tex.m_Name](originals[tex.m_Name])
                     assert img.size == (tex.m_Width, tex.m_Height), tex.m_Name
                     fmt = int(tex.m_TextureFormat)  # 3 = RGB24, 4 = RGBA32
                     tex.set_image(img.convert("RGB" if fmt == 3 else "RGBA"), target_format=fmt)
                     tex.save()
+                    n["images"] += 1
+                elif o.path_id in original_raw and o.get_raw_data() != original_raw[o.path_id]:
+                    o.set_raw_data(original_raw[o.path_id])
                     n["images"] += 1
             elif o.type.name == "Sprite" and o.path_id in SPRITE_BORDERS.get(f, {}):
                 t = o.read_typetree()
@@ -1300,6 +1382,11 @@ def main(in_dir, out_dir, files):
                     if go_name in FONT_FROM_ORIGINAL_GO_NAMES and t["m_fontSize"] != STORED_SIZE:
                         t["m_fontSize"] = t["m_fontSizeBase"] = STORED_SIZE  # «СОХРАНЕНО» in its 118-wide rect
                         changed = True
+                overflow = TMP_OVERFLOW.get(f, {}).get(o.path_id)
+                if overflow is not None and t["m_overflowMode"] != overflow:
+                    t["m_overflowMode"] = overflow
+                    changed = True
+                    n["texts"] += 1
                 spacing = TMP_LINE_SPACING.get(f, {}).get(o.path_id)
                 if spacing is not None and abs(t["m_lineSpacing"] - spacing) > 0.01:
                     t["m_lineSpacing"] = spacing
@@ -1597,6 +1684,8 @@ def main(in_dir, out_dir, files):
                             n["heights"] += 1
                 if changed:
                     o.save_typetree(t)
+        if f == "level3":
+            n["stamps"] = relative_timestamps(env, objs, scripts, english, f)
         data = list(env.files.values())[0].save()
         open(os.path.join(out_dir, f), "wb").write(data)
         print(f, ", ".join(f"{k} {v}" for k, v in n.items() if v) or "no changes", flush=True)

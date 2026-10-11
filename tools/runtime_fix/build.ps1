@@ -1,5 +1,6 @@
 # Builds OrwellRuFix.dll and injects "OrwellRuFix.Loader.Init()" at the start of
-# TMPro.TextMeshProUGUI.Awake in Assembly-CSharp.dll (idempotent).
+# TMPro.TextMeshProUGUI.Awake in Assembly-CSharp.dll, then points the DateTime.ToString/Parse calls of the
+# game's date/clock code at OrwellRuFix.RuDate (Russian date and 24-hour clock). Idempotent.
 #
 #   powershell -File build.ps1 -Managed "<game>\Ignorance_Data\Managed" [-Cecil <Mono.Cecil.dll>] [-Out <dir>]
 #
@@ -36,15 +37,53 @@ $rp = New-Object Mono.Cecil.ReaderParameters
 $rp.AssemblyResolver = $resolver
 $rp.InMemory = $true
 $asm = [Mono.Cecil.AssemblyDefinition]::ReadAssembly((Join-Path $Managed "Assembly-CSharp.dll"), $rp)
+$pluginAsm = [Mono.Cecil.AssemblyDefinition]::ReadAssembly((Join-Path $Out "OrwellRuFix.dll"))
+$changed = $false
+
 $awake = $asm.MainModule.GetType("TMPro.TextMeshProUGUI").Methods | Where-Object { $_.Name -eq "Awake" }
 $first = $awake.Body.Instructions[0]
 if ($first.OpCode.Code -eq "Call" -and $first.Operand.DeclaringType.FullName -eq "OrwellRuFix.Loader") {
     Write-Host "Assembly-CSharp.dll already has the loader call"
 } else {
-    $pluginAsm = [Mono.Cecil.AssemblyDefinition]::ReadAssembly((Join-Path $Out "OrwellRuFix.dll"))
     $init = $pluginAsm.MainModule.GetType("OrwellRuFix.Loader").Methods | Where-Object { $_.Name -eq "Init" }
     $il = $awake.Body.GetILProcessor()
     $il.InsertBefore($first, $il.Create([Mono.Cecil.Cil.OpCodes]::Call, $asm.MainModule.ImportReference($init)))
-    $asm.Write((Join-Path $Out "Assembly-CSharp.dll"))
+    $changed = $true
     Write-Host "loader call injected into TMPro.TextMeshProUGUI.Awake"
 }
+
+# Russian date and clock: DateTime.ToString(format[, provider]) and DateTime.Parse(string) in the game's
+# date/clock code -> OrwellRuFix.RuDate.Format(ref DateTime, format[, provider]) / RuDate.Parse(string).
+# The stack layout is the same (the instance calls get the DateTime by address), so only the operand changes.
+$ruDate = $pluginAsm.MainModule.GetType("OrwellRuFix.RuDate")
+$fmt2 = $asm.MainModule.ImportReference(($ruDate.Methods | Where-Object { $_.Name -eq "Format" -and $_.Parameters.Count -eq 2 }))
+$fmt3 = $asm.MainModule.ImportReference(($ruDate.Methods | Where-Object { $_.Name -eq "Format" -and $_.Parameters.Count -eq 3 }))
+$parse = $asm.MainModule.ImportReference(($ruDate.Methods | Where-Object { $_.Name -eq "Parse" }))
+$dateMethods = @{
+    "DateTool"                         = "Start", "IncreaseDayIndex", "GetDate"
+    "IngameMenuTool"                   = "SetDate"
+    "TimeTool"                         = "UpdateTimeLabel"
+    "Orwell.Documents.RelativeTimestamp" = "GetNewTimeStampText"
+}
+$redirected = 0
+foreach ($typeName in $dateMethods.Keys) {
+    $type = $asm.MainModule.GetType($typeName)
+    foreach ($m in ($type.Methods | Where-Object { $dateMethods[$typeName] -contains $_.Name })) {
+        foreach ($ins in $m.Body.Instructions) {
+            if ($ins.OpCode.Code -ne "Call" -or $ins.Operand.DeclaringType.FullName -ne "System.DateTime") { continue }
+            $target = $null
+            if ($ins.Operand.Name -eq "ToString" -and $ins.Operand.Parameters.Count -eq 1) { $target = $fmt2 }
+            elseif ($ins.Operand.Name -eq "ToString" -and $ins.Operand.Parameters.Count -eq 2) { $target = $fmt3 }
+            elseif ($ins.Operand.Name -eq "Parse" -and $ins.Operand.Parameters.Count -eq 1) { $target = $parse }
+            if ($target) { $ins.Operand = $target; $redirected++ }
+        }
+    }
+}
+if ($redirected) {
+    $changed = $true
+    Write-Host "$redirected DateTime calls redirected to OrwellRuFix.RuDate"
+} else {
+    Write-Host "Assembly-CSharp.dll already uses OrwellRuFix.RuDate"
+}
+
+if ($changed) { $asm.Write((Join-Path $Out "Assembly-CSharp.dll")) }

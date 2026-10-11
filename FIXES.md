@@ -60,9 +60,16 @@
 - `apply_scenes.py`: названия эпизодов в `_flowLevelNames` (`level3`, `level4`) — строго те же строки,
   что в `dll_strings.json` («Эпизод первый: Тезис»…); «Кому»/«Копия» в письмах, заголовки подкастов и пр.
   в TMP-текстах `level3`, «Активно/Неактивно» в `sharedassets3`.
-- **Нельзя переводить даты/время в TMP-подписях**: `DateTool.GetDate/IncreaseDayIndex` делают
-  `DateTime.Parse(_dateLabel.text)`, а `FileImportTools.AddTimeStamps` ищет метки времени в тексте.
-  Переведённая заглушка «April 12, 2017» в `level3` ломала старт дня (после интро ничего не появлялось).
+- **Даты и время** (с v0.6.4): `DateTool` хранит текущую дату только как текст своей надписи и читает её обратно
+  через `DateTime.Parse` при каждом новом письме/чате и смене дня. С исходной DLL переведённая заглушка
+  «April 12, 2017» ломала старт дня (после интро ничего не появлялось). Теперь `build.ps1` перенаправляет вызовы
+  `DateTime.ToString/Parse` в `DateTool`, `IngameMenuTool.SetDate`, `TimeTool.UpdateTimeLabel` и
+  `RelativeTimestamp.GetNewTimeStampText` на `OrwellRuFix.RuDate` (см. раздел 4), и заглушка переведена
+  («12 апреля 2017»). Работает только вместе с пропатченной `Assembly-CSharp.dll`.
+- Метки времени в комментариях (`RelativeTimestamp`): игра заменяет `StampLength` символов с позиции
+  `StampStartIndex` текущим временем минус `MinutesAgo`. Позиции были заданы под английский текст («10:25 am»),
+  в русском игра затирала соседние символы. `apply_manual.py` (`relative_timestamps`) ставит каждую метку
+  на то же по счёту время в русском тексте, длина 5 («ЧЧ:ММ», как пишет `RuDate`), « am»/« pm» убирается.
 - Однословные подписи, которые не помещаются в свою рамку (TMP рвёт их посреди слова: «СКРЫ/ТЬ»,
   «ПРОДОЛЖ/ИТЬ»), получают уменьшенный размер шрифта; ширина слова считается по метрикам глифов
   пропатченного шрифта с учётом стилей UpperCase/Bold. Растянутые по якорям рамки не трогаются.
@@ -128,11 +135,21 @@
 - уменьшает шрифт кириллических текстов, которые не помещаются в свой прямоугольник (до 75%;
   тексты с ContentSizeFitter/LayoutGroup и чаты не трогаются);
 - переставляет прямоугольники подсветки фрагментов на реальное положение слов (как `ChunkBoxDrawing.CreateBox`:
-  по прямоугольнику на строку, отступы 5/10), добавляя/обнуляя лишние.
+  по прямоугольнику на строку, отступы 5/10), добавляя недостающие. Лишние (строк стало меньше) получают
+  нулевой размер и встают в середину последней строки: игра берёт позицию фрагмента по последней плашке
+  (`TextDataChunk.GetChunkRect`) и «обнаруживает» его, только когда эта точка на экране (`DataChunk.ChunkIsVisible`).
 Ошибки пишутся в `OrwellRuFix.log` рядом с `Ignorance.exe` и не попадают в игру.
 Подписи, которые игра заполняет именем enum (`ToString()`): вкладка Прослушки (`CommunicationType`), вкладка
 и заголовки устройств Взлома (`InsiderDevice.DeviceType`) — модуль находит их через поля `_contentTabCaption` /
 `_nameLabel` соответствующих компонентов и переводит.
+Дата и часы (`RuDate`): `build.ps1` после внедрения загрузчика подменяет 12 вызовов `DateTime.ToString(format[, provider])`
+и `DateTime.Parse(string)` в коде даты/часов на `RuDate.Format(ref DateTime, format[, provider])` / `RuDate.Parse`
+(та же раскладка стека, меняется только операнд). Форматы: «MMM dd» → «13 апр.» (закладки, заголовки писем
+и чатов), «MMMM dd, yyyy» → «13 апреля 2017» (верхняя панель), «MMM dd
+yyyy» → «13 апреля
+2017 г.» (меню паузы),
+«hh:mm tt» → «08:00» (часы и метки в комментариях, 24 ч). `RuDate.Parse` понимает и русский формат, и английский.
+Таймеры звонков и теста («{0:D2}:{1:D2}») и имена файлов сохранений не меняются.
 `apply_dll_strings.ps1` применяет `translated/dll_strings.json` к уже пропатченной DLL (только строки,
 оставшиеся английскими; повторный запуск ничего не меняет).
 Сборка: `powershell -File tools/runtime_fix/build.ps1 -Managed <game>\Ignorance_Data\Managed -Out <dir>`
@@ -153,6 +170,12 @@ ORWELL_FONTS_DIR=OUT1 python tools/fixes/apply_scenes.py OUT1 OUT2 sharedassets3
 # ручные правки: IN2 = OUT1 + OUT2 (все файлы вместе), ORWELL_ORIG = оригиналы игры (+ .resS)
 ORWELL_ORIG=backup python tools/fixes/apply_manual.py IN2 OUT3 level1 level3 level4 sharedassets3.assets resources.assets
 
+# необязательные картинки (ui_images.OPTIONAL): ORWELL_IMAGES=base собирает без них (и возвращает оригиналы);
+# для установщика собираются оба варианта: base -> patches/, all -> patches/images/
+ORWELL_IMAGES=base ORWELL_ORIG=backup python tools/fixes/apply_manual.py IN2 OUT3 ...
+# бандлы сайтов: из оригинальной папки Ignorance_Data/AssetBundles/PCIGN, пишутся только изменённые
+python tools/fixes/apply_bundles.py backup/PCIGN OUT4    # -> patches/images/AssetBundles/PCIGN
+
 # интро-ролик
 python tools/intro_video/intro_io.py extract <game>/Ignorance_Data intro.mp4      # исходный ролик
 python tools/intro_video/render.py                    # русские субтитры и надписи
@@ -163,4 +186,7 @@ powershell -File tools/runtime_fix/build.ps1 -Managed <game>\Ignorance_Data\Mana
 ```
 
 Файлы для установщика (`patches/`): `level0..4`, `resources.assets`, `sharedassets0..3.assets`,
-`sharedassets2.resource`, `Assembly-CSharp.dll`, `OrwellRuFix.dll`.
+`sharedassets2.resource`, `Assembly-CSharp.dll`, `OrwellRuFix.dll`; с картинками
+(задача установщика `images`): `images/resources.assets`, `images/sharedassets3.assets`,
+`images/AssetBundles/PCIGN/*` (3, 16, 17, 23, 101, 103, 104, 107, 109, 116, 151, 154, 155). Обязательны только
+надписи интерфейса (`ui_images.BASE`: кнопка «КОНФЛИКТ ▸», «связь прервана.»), они ставятся всегда.

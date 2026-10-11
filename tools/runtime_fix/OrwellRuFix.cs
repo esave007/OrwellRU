@@ -14,6 +14,8 @@
 //      (CommunicationType: Chat/Mail/Call), the Insider tab caption and the device headers in the
 //      Insider bookmarks (InsiderDevice.DeviceType: PC/Notebook/Phone). The labels are found through the
 //      fields of the components that own them.
+//   5. formats the in-game date and clock in Russian (RuDate): build.ps1 redirects the DateTime.ToString/Parse
+//      calls of DateTool, IngameMenuTool, TimeTool and RelativeTimestamp to RuDate.
 // Everything is wrapped in try/catch: a failure is written to OrwellRuFix.log and never reaches the game.
 
 using System;
@@ -66,6 +68,67 @@ namespace OrwellRuFix
             }
             catch
             {
+            }
+        }
+    }
+
+    // Replacements for the DateTime calls of the game's date/clock code (call sites patched by build.ps1).
+    // DateTool keeps the current date only as the text of its label and reads it back with DateTime.Parse
+    // on every new mail/chat and day change, so Parse must accept whatever Format writes, and also the
+    // English text in case the label still holds one.
+    public static class RuDate
+    {
+        static readonly string[] Genitive = { "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+            "августа", "сентября", "октября", "ноября", "декабря" };
+        static readonly string[] Short = { "янв.", "февр.", "марта", "апр.", "мая", "июня", "июля",
+            "авг.", "сент.", "окт.", "нояб.", "дек." };
+
+        public static string Format(ref DateTime d, string format)
+        {
+            string s = Russian(d, format);
+            return s ?? d.ToString(format);
+        }
+
+        public static string Format(ref DateTime d, string format, IFormatProvider provider)
+        {
+            string s = Russian(d, format);
+            return s ?? d.ToString(format, provider);
+        }
+
+        static string Russian(DateTime d, string format)
+        {
+            switch (format)
+            {
+                case "MMM dd": // bookmarks, chat/mail headers
+                    return d.Day + " " + Short[d.Month - 1];
+                case "MMMM dd, yyyy": // top bar (DateTool label)
+                    return d.Day + " " + Genitive[d.Month - 1] + " " + d.Year;
+                case "MMM dd\nyyyy": // pause menu
+                    return d.Day + " " + Genitive[d.Month - 1] + "\n" + d.Year + " г.";
+                case "hh:mm tt": // clock and the relative time stamps in comments: 24 h, always 5 characters
+                    return d.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            return null;
+        }
+
+        public static DateTime Parse(string s)
+        {
+            string[] p = (s ?? "").Split(new[] { ' ', '\r', '\n', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            if (p.Length >= 3)
+            {
+                int month = Array.IndexOf(Genitive, p[1]) + 1;
+                int day, year;
+                if (month > 0 && int.TryParse(p[0], out day) && int.TryParse(p[2], out year))
+                    return new DateTime(year, month, day);
+            }
+            try
+            {
+                return DateTime.Parse(s, System.Globalization.CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+                Log.Write("RuDate.Parse: unknown date '" + s + "'");
+                return DateTime.Parse(s);
             }
         }
     }
@@ -340,9 +403,19 @@ namespace OrwellRuFix
                         continue;
                     var rt = (RectTransform)boxes[i].transform;
                     if (i < segments.Count)
+                    {
                         Place(rt, segments[i][0], segments[i][1]);
+                    }
                     else
-                        rt.sizeDelta = Vector2.zero;
+                    {
+                        // a box for a line the English text had: zero size, but in the middle of the last line.
+                        // The game takes the LAST box as the chunk's position (TextDataChunk.GetChunkRect) and
+                        // discovers the chunk only once that point is on screen (DataChunk.ChunkIsVisible); left at
+                        // its English place it could lie below the shorter Russian page and never be discovered.
+                        Vector3[] last = segments[segments.Count - 1];
+                        Vector3 mid = (last[0] + last[1]) * 0.5f;
+                        Place(rt, mid, mid);
+                    }
                 }
             }
         }

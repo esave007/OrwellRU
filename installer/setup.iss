@@ -3,7 +3,7 @@
 ; Author: eSave
 
 #define MyAppName "Orwell:IS_RUS"
-#define MyAppVersion "0.6.3 (beta)"
+#define MyAppVersion "1.0"
 #define MyAppPublisher "eSave"
 #define MyAppURL "https://steamcommunity.com/app/633060"
 #define SteamAppID "633060"
@@ -18,7 +18,7 @@ DefaultDirName={code:GetGameDir}
 DirExistsWarning=no
 DisableProgramGroupPage=yes
 OutputDir=..\dist
-OutputBaseFilename=Orwell_IS_RUS_v0.6.3_beta
+OutputBaseFilename=Orwell_IS_RUS_v1.0
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern
@@ -31,11 +31,12 @@ PrivilegesRequired=lowest
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Messages]
-russian.BeveledLabel=Orwell: Ignorance is Strength — Русификатор v0.6.3 (beta)
+russian.BeveledLabel=Orwell: Ignorance is Strength — Русификатор v1.0
 
 [CustomMessages]
 russian.GameNotFound=Игра Orwell: Ignorance is Strength не найдена!%n%nУкажите папку с игрой вручную (где находится Ignorance.exe).
 russian.GameFound=Игра найдена автоматически:
+russian.GogVersion=В указанной папке установлена GOG-версия игры.%n%nРусификатор собран для Steam-версии: файлы GOG-версии отличаются, и установка испортит игру.
 russian.InvalidDir=В указанной папке не найден файл Ignorance.exe!%n%nУбедитесь, что вы выбрали правильную папку с игрой.
 russian.BackupCreated=Резервная копия оригинальных файлов создана в папке _backup_ru
 russian.InstallingFiles=Установка русификатора...
@@ -43,17 +44,25 @@ russian.BackupStep=Создание резервной копии оригина
 russian.AlreadyInstalled=Обнаружена предыдущая установка русификатора.%nОригинальные файлы уже сохранены в _backup_ru.
 russian.RestoreComplete=Оригинальные файлы восстановлены. Русификатор удалён.
 russian.WelcomeLabel=Русификатор Orwell: Ignorance is Strength
-russian.WelcomeDesc=Фан-перевод на русский язык (бета-версия).%n%nПеред установкой закройте игру, если она запущена.%n%nРусификатор работает только с лицензионной Steam-версией игры.
+russian.ImagesTask=Переведённые надписи на картинках: логотипы сайтов, герб Правительства, рекламные баннеры, афиша, карты, вывески
+russian.ImagesGroup=Дополнительно:
+russian.WelcomeDesc=Фан-перевод на русский язык.%n%nПеред установкой закройте игру, если она запущена.%n%nРусификатор работает только с лицензионной Steam-версией игры.
+
+[Tasks]
+; v1.0: the text inside pictures (logos, the government seal, banners, posters, maps) is optional
+Name: "images"; Description: "{cm:ImagesTask}"; GroupDescription: "{cm:ImagesGroup}"
 
 [Files]
 ; Patched game files
-Source: "..\patches\resources.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
+Source: "..\patches\resources.assets"; DestDir: "{app}\Ignorance_Data"; Tasks: not images; Flags: ignoreversion
+Source: "..\patches\images\resources.assets"; DestDir: "{app}\Ignorance_Data"; Tasks: images; Flags: ignoreversion
 Source: "..\patches\level0"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\level1"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\level2"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\level3"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\level4"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
-Source: "..\patches\sharedassets3.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
+Source: "..\patches\sharedassets3.assets"; DestDir: "{app}\Ignorance_Data"; Tasks: not images; Flags: ignoreversion
+Source: "..\patches\images\sharedassets3.assets"; DestDir: "{app}\Ignorance_Data"; Tasks: images; Flags: ignoreversion
 ; v0.6.0: fonts with Cyrillic (sharedassets0/1), Russian intro video (sharedassets2), runtime layout module
 Source: "..\patches\sharedassets0.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\sharedassets1.assets"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
@@ -61,11 +70,51 @@ Source: "..\patches\sharedassets2.assets"; DestDir: "{app}\Ignorance_Data"; Flag
 Source: "..\patches\sharedassets2.resource"; DestDir: "{app}\Ignorance_Data"; Flags: ignoreversion
 Source: "..\patches\Assembly-CSharp.dll"; DestDir: "{app}\Ignorance_Data\Managed"; Flags: ignoreversion
 Source: "..\patches\OrwellRuFix.dll"; DestDir: "{app}\Ignorance_Data\Managed"; Flags: ignoreversion
+; v1.0: asset bundles with the pictures with text (only with the "images" task, OptionalBundles)
+Source: "..\patches\images\AssetBundles\PCIGN\*"; DestDir: "{app}\Ignorance_Data\AssetBundles\PCIGN"; Tasks: images; Flags: ignoreversion
 
 [Code]
+const
+  // the bundles in Ignorance_Data\AssetBundles\PCIGN the installer replaces with the "images" task
+  // (patches\images\AssetBundles\PCIGN); without it they are put back from the backup
+  OptionalBundles = '3,16,17,23,101,103,104,107,109,116,151,154,155';
+  AllBundles = '3,16,17,23,101,103,104,107,109,116,151,154,155';
+
 var
   GameDir: String;
   GameDirFound: Boolean;
+
+// The next name of a comma separated list (removed from it), '' at the end.
+function NextItem(var List: String): String;
+var
+  P: Integer;
+begin
+  P := Pos(',', List);
+  if P = 0 then
+  begin
+    Result := List;
+    List := '';
+  end
+  else
+  begin
+    Result := Copy(List, 1, P - 1);
+    Delete(List, 1, P);
+  end;
+end;
+
+// Copy the backed-up originals of the listed bundles back into the game.
+procedure RestoreBundles(List, BundleDir, BackupBundles: String);
+var
+  Name: String;
+begin
+  Name := NextItem(List);
+  while Name <> '' do
+  begin
+    if FileExists(BackupBundles + '\' + Name) then
+      CopyFile(BackupBundles + '\' + Name, BundleDir + '\' + Name, False);
+    Name := NextItem(List);
+  end;
+end;
 
 function GetSteamPath: String;
 var
@@ -183,21 +232,36 @@ begin
     Result := 'C:\Program Files (x86)\Steam\steamapps\common\Orwell Ignorance is Strength';
 end;
 
-procedure InitializeWizard;
+// The game is looked for before the wizard, so DefaultDirName ({code:GetGameDir}) gets it and a folder
+// given on the command line (/DIR=...) is not replaced by the found one.
+function InitializeSetup: Boolean;
 begin
   GameDir := TryFindGameDir;
   GameDirFound := (GameDir <> '');
+  Result := True;
+end;
 
+procedure InitializeWizard;
+begin
   if GameDirFound then
   begin
-    WizardForm.DirEdit.Text := GameDir;
     // Show info that game was found
-    MsgBox(ExpandConstant('{cm:GameFound}') + #13#10 + GameDir, mbInformation, MB_OK);
+    if not WizardSilent then
+      MsgBox(ExpandConstant('{cm:GameFound}') + #13#10 + GameDir, mbInformation, MB_OK);
   end
   else
   begin
-    MsgBox(ExpandConstant('{cm:GameNotFound}'), mbInformation, MB_OK);
+    if not WizardSilent then
+      MsgBox(ExpandConstant('{cm:GameNotFound}'), mbInformation, MB_OK);
   end;
+end;
+
+// The GOG build of the game has other data files (its own Assembly-CSharp.dll, assets and .resS), the
+// patched Steam files do not fit it.
+function IsGogVersion(Dir: String): Boolean;
+begin
+  Result := FileExists(Dir + '\goggame-1089914798.info') or
+    FileExists(Dir + '\Ignorance_Data\Managed\Facebook.Unity.dll');
 end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
@@ -213,8 +277,23 @@ begin
     begin
       MsgBox(ExpandConstant('{cm:InvalidDir}'), mbError, MB_OK);
       Result := False;
+    end
+    else if IsGogVersion(Dir) then
+    begin
+      MsgBox(ExpandConstant('{cm:GogVersion}'), mbError, MB_OK);
+      Result := False;
     end;
   end;
+end;
+
+// also for silent installs, before anything is changed
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+begin
+  Result := '';
+  if not FileExists(WizardDirValue + '\Ignorance.exe') then
+    Result := ExpandConstant('{cm:InvalidDir}')
+  else if IsGogVersion(WizardDirValue) then
+    Result := ExpandConstant('{cm:GogVersion}');
 end;
 
 procedure BackupFile(SourceDir, FileName, BackupDir: String);
@@ -228,11 +307,13 @@ end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-  AppDir, DataDir, ManagedDir, BackupDir, BackupManaged: String;
+  AppDir, DataDir, ManagedDir, BackupDir, BackupManaged, BundleDir, BackupBundles, List, Name: String;
 begin
+  AppDir := WizardDirValue;
+  BundleDir := AppDir + '\Ignorance_Data\AssetBundles\PCIGN';
+  BackupBundles := AppDir + '\_backup_ru\AssetBundles\PCIGN';
   if CurStep = ssInstall then
   begin
-    AppDir := WizardDirValue;
     DataDir := AppDir + '\Ignorance_Data';
     ManagedDir := DataDir + '\Managed';
     BackupDir := AppDir + '\_backup_ru';
@@ -258,7 +339,20 @@ begin
       BackupFile(DataDir, 'sharedassets3.assets', BackupDir);
       BackupFile(ManagedDir, 'Assembly-CSharp.dll', BackupManaged);
     end;
+
+    // v1.0: the bundles were never changed before, back them up on any install (an existing backup stays)
+    List := AllBundles;
+    Name := NextItem(List);
+    while Name <> '' do
+    begin
+      BackupFile(BundleDir, Name, BackupBundles);
+      Name := NextItem(List);
+    end;
   end;
+
+  // installed without the pictures over an install with them: put the original bundles back
+  if (CurStep = ssPostInstall) and not WizardIsTaskSelected('images') then
+    RestoreBundles(OptionalBundles, BundleDir, BackupBundles);
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
@@ -300,6 +394,7 @@ begin
         CopyFile(BackupDir + '\sharedassets2.assets', DataDir + '\sharedassets2.assets', False);
       if FileExists(BackupDir + '\sharedassets2.resource') then
         CopyFile(BackupDir + '\sharedassets2.resource', DataDir + '\sharedassets2.resource', False);
+      RestoreBundles(AllBundles, DataDir + '\AssetBundles\PCIGN', BackupDir + '\AssetBundles\PCIGN');
       // OrwellRuFix.dll is not part of the game; the restored Assembly-CSharp.dll no longer loads it
       DeleteFile(ManagedDir + '\OrwellRuFix.dll');
       DeleteFile(AppDir + '\OrwellRuFix.log');
@@ -307,7 +402,8 @@ begin
       // Clean up backup folder
       DelTree(BackupDir, True, True, True);
 
-      MsgBox(ExpandConstant('{cm:RestoreComplete}'), mbInformation, MB_OK);
+      if not UninstallSilent then
+        MsgBox(ExpandConstant('{cm:RestoreComplete}'), mbInformation, MB_OK);
     end;
   end;
 end;

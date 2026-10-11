@@ -25,8 +25,9 @@ EPISODES = {  # identical to translated/dll_strings.json
     "Episode Three: Synthesis": "Эпизод третий: Синтез",
 }
 
-# NB: never translate dates/times in TMP labels: DateTool parses its label with DateTime.Parse
-# and FileImportTools.AddTimeStamps searches timestamps in texts (the day flow breaks otherwise).
+# NB: dates/times in TMP labels are not translated here: DateTool parses its label with DateTime.Parse and
+# RelativeTimestamp overwrites fixed character positions. apply_manual.py translates them together with the
+# RuDate patch of Assembly-CSharp.dll (tools/runtime_fix/build.ps1).
 TMP_TEXT = {
     "CC": "Копия",
     "To": "Кому",
