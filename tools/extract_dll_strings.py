@@ -135,7 +135,7 @@ TRANSLATE = {
     "Archive for later": "Отложить",
     "Tune in": "Подключиться",
     " messaging ": " пишет ",
-    "Read Messages": "Читать сообщения",
+    "Read Messages": "Читать",  # «Читать сообщения» broke onto a second line under the button
 
     # === PROFILER ===
     "Physique": "Телосложение",

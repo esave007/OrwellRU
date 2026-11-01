@@ -1,0 +1,494 @@
+// Runtime layout fixes for the Russian translation of Orwell: Ignorance is Strength.
+//
+// The in-game websites/documents are laid out once in the editor for the English text: every
+// text block, background image and data-chunk highlight box ("chunk box ... (Clone)") has a fixed
+// position and size. Russian text is longer, so blocks overflow into each other and the highlight
+// boxes stay where the English words used to be. This component (started from an injected call in
+// TextMeshProUGUI.Awake, see inject.ps1) periodically checks the active TMP texts and
+//   1. shrinks the font of Cyrillic texts that no longer fit their rect,
+//   2. moves the chunk highlight boxes onto the actual position of the linked words, the same way
+//      the game builds them at runtime (ChunkBoxDrawing.CreateBoxesForChunk / CreateBox),
+//   3. moves the profile update boxes (the purple frame around new data in the dossier, drawn once by
+//      UpdateBoxDrawing from the character positions at that moment) after point 1 changed the font size,
+//   4. translates captions the game fills with an enum name (ToString()): the Listener tab caption
+//      (CommunicationType: Chat/Mail/Call), the Insider tab caption and the device headers in the
+//      Insider bookmarks (InsiderDevice.DeviceType: PC/Notebook/Phone). The labels are found through the
+//      fields of the components that own them.
+//   5. formats the in-game date and clock in Russian (RuDate): build.ps1 redirects the DateTime.ToString/Parse
+//      calls of DateTool, IngameMenuTool, TimeTool and RelativeTimestamp to RuDate.
+// Everything is wrapped in try/catch: a failure is written to OrwellRuFix.log and never reaches the game.
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace OrwellRuFix
+{
+    public static class Loader
+    {
+        static bool _started;
+
+        public static void Init()
+        {
+            if (_started)
+                return;
+            _started = true;
+            try
+            {
+                var go = new GameObject("OrwellRuFix");
+                UnityEngine.Object.DontDestroyOnLoad(go);
+                go.AddComponent<TextFixer>();
+                Log.Write("started");
+            }
+            catch (Exception e)
+            {
+                Log.Write("init failed: " + e);
+            }
+        }
+    }
+
+    static class Log
+    {
+        static string _path;
+        static int _lines;
+
+        public static void Write(string s)
+        {
+            if (_lines++ > 2000)
+                return;
+            try
+            {
+                if (_path == null)
+                    _path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "OrwellRuFix.log");
+                File.AppendAllText(_path, DateTime.Now.ToString("HH:mm:ss ") + s + "\n");
+            }
+            catch
+            {
+            }
+        }
+    }
+
+    // Replacements for the DateTime calls of the game's date/clock code (call sites patched by build.ps1).
+    // DateTool keeps the current date only as the text of its label and reads it back with DateTime.Parse
+    // on every new mail/chat and day change, so Parse must accept whatever Format writes, and also the
+    // English text in case the label still holds one.
+    public static class RuDate
+    {
+        static readonly string[] Genitive = { "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+            "августа", "сентября", "октября", "ноября", "декабря" };
+        static readonly string[] Short = { "янв.", "февр.", "марта", "апр.", "мая", "июня", "июля",
+            "авг.", "сент.", "окт.", "нояб.", "дек." };
+
+        public static string Format(ref DateTime d, string format)
+        {
+            string s = Russian(d, format);
+            return s ?? d.ToString(format);
+        }
+
+        public static string Format(ref DateTime d, string format, IFormatProvider provider)
+        {
+            string s = Russian(d, format);
+            return s ?? d.ToString(format, provider);
+        }
+
+        static string Russian(DateTime d, string format)
+        {
+            switch (format)
+            {
+                case "MMM dd": // bookmarks, chat/mail headers
+                    return d.Day + " " + Short[d.Month - 1];
+                case "MMMM dd, yyyy": // top bar (DateTool label)
+                    return d.Day + " " + Genitive[d.Month - 1] + " " + d.Year;
+                case "MMM dd\nyyyy": // pause menu
+                    return d.Day + " " + Genitive[d.Month - 1] + "\n" + d.Year + " г.";
+                case "hh:mm tt": // clock and the relative time stamps in comments: 24 h, always 5 characters
+                    return d.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            return null;
+        }
+
+        public static DateTime Parse(string s)
+        {
+            string[] p = (s ?? "").Split(new[] { ' ', '\r', '\n', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            if (p.Length >= 3)
+            {
+                int month = Array.IndexOf(Genitive, p[1]) + 1;
+                int day, year;
+                if (month > 0 && int.TryParse(p[0], out day) && int.TryParse(p[2], out year))
+                    return new DateTime(year, month, day);
+            }
+            try
+            {
+                return DateTime.Parse(s, System.Globalization.CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+                Log.Write("RuDate.Parse: unknown date '" + s + "'");
+                return DateTime.Parse(s);
+            }
+        }
+    }
+
+    public class TextFixer : MonoBehaviour
+    {
+        const float ScanInterval = 0.25f;
+        const float MinScale = 0.75f;
+
+        class State
+        {
+            public int Signature;
+            public float OriginalSize;
+        }
+
+        static readonly Dictionary<string, string> EnumCaptions = new Dictionary<string, string>
+        {
+            { "Chat", "Чат" }, { "Mail", "Почта" }, { "Call", "Звонок" },
+            { "PC", "ПК" }, { "Notebook", "Ноутбук" }, { "Phone", "Телефон" },
+        };
+
+        // component type -> its TextMeshProUGUI field that receives the enum name
+        static readonly KeyValuePair<Type, string>[] CaptionFields =
+        {
+            new KeyValuePair<Type, string>(typeof(Orwell.Applications.ListenerTabHeader), "_contentTabCaption"),
+            new KeyValuePair<Type, string>(typeof(Orwell.Applications.InsiderTabHeader), "_contentTabCaption"),
+            new KeyValuePair<Type, string>(typeof(InsiderDeviceHeader), "_nameLabel"),
+        };
+
+        static void TranslateEnumCaptions()
+        {
+            const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+            foreach (var cf in CaptionFields)
+            {
+                FieldInfo field = cf.Key.GetField(cf.Value, flags);
+                if (field == null)
+                    continue;
+                foreach (UnityEngine.Object owner in FindObjectsOfType(cf.Key))
+                {
+                    var label = field.GetValue(owner) as TextMeshProUGUI;
+                    string ru;
+                    if (label != null && label.text != null && EnumCaptions.TryGetValue(label.text, out ru))
+                        label.text = ru;
+                }
+            }
+        }
+
+        readonly Dictionary<int, State> _states = new Dictionary<int, State>();
+        float _nextScan;
+
+        void Update()
+        {
+            if (Time.unscaledTime < _nextScan)
+                return;
+            _nextScan = Time.unscaledTime + ScanInterval;
+            try
+            {
+                TranslateEnumCaptions();
+            }
+            catch (Exception e)
+            {
+                Log.Write("captions failed: " + e.Message);
+            }
+            TextMeshProUGUI[] texts;
+            try
+            {
+                texts = FindObjectsOfType<TextMeshProUGUI>();
+            }
+            catch (Exception e)
+            {
+                Log.Write("scan failed: " + e.Message);
+                return;
+            }
+            for (int i = 0; i < texts.Length; i++)
+            {
+                try
+                {
+                    Process(texts[i]);
+                }
+                catch (Exception e)
+                {
+                    Log.Write("error on '" + texts[i].name + "': " + e);
+                }
+            }
+        }
+
+        void Process(TextMeshProUGUI t)
+        {
+            if (!t.isActiveAndEnabled)
+                return;
+            string text = t.text;
+            if (string.IsNullOrEmpty(text))
+                return;
+            Rect r = t.rectTransform.rect;
+            int id = t.GetInstanceID();
+            State st;
+            if (!_states.TryGetValue(id, out st))
+            {
+                st = new State { OriginalSize = t.fontSize };
+                _states[id] = st;
+            }
+            int sig = text.GetHashCode() ^ ((int)(r.width * 8f) * 397) ^ ((int)(r.height * 8f) * 7919);
+            if (sig == st.Signature)
+                return;
+            st.Signature = sig;
+
+            if (HasCyrillic(text))
+                Fit(t, st, r);
+            FixChunkBoxes(t);
+            FixUpdateBoxes(t);
+        }
+
+        static bool HasCyrillic(string s)
+        {
+            for (int i = 0; i < s.Length; i++)
+                if (s[i] >= 'Ѐ' && s[i] <= 'ӿ')
+                    return true;
+            return false;
+        }
+
+        // Texts that grow with their content (chat bubbles, layout groups) are left alone.
+        static bool IsDynamic(TextMeshProUGUI t)
+        {
+            if (t.GetComponent<ContentSizeFitter>() != null || t.GetComponent<LayoutElement>() != null)
+                return true;
+            Transform p = t.transform.parent;
+            if (p != null && (p.GetComponent<LayoutGroup>() != null || p.GetComponent<ContentSizeFitter>() != null))
+                return true;
+            return t.GetComponentInParent<Orwell.Documents.Chat>() != null;
+        }
+
+        static void Fit(TextMeshProUGUI t, State st, Rect r)
+        {
+            if (t.enableAutoSizing || r.width < 4f || r.height < 4f || IsDynamic(t))
+                return;
+            // the game cuts these texts itself (bookmark list: «…»); a smaller font would only make the rows uneven
+            if (t.overflowMode == TextOverflowModes.Ellipsis || t.overflowMode == TextOverflowModes.Truncate)
+                return;
+            if (Mathf.Abs(t.fontSize - st.OriginalSize) > 0.01f)
+                t.fontSize = st.OriginalSize;
+            if (!Overflows(t, r, st.OriginalSize))
+                return;
+            float lo = st.OriginalSize * MinScale, hi = st.OriginalSize;
+            for (int i = 0; i < 8; i++)
+            {
+                float mid = (lo + hi) * 0.5f;
+                t.fontSize = mid;
+                if (Overflows(t, r, st.OriginalSize))
+                    hi = mid;
+                else
+                    lo = mid;
+            }
+            t.fontSize = lo;
+            Log.Write(string.Format("fit '{0}' {1:0.#} -> {2:0.#}: {3}", t.name, st.OriginalSize, lo,
+                Shorten(t.text)));
+        }
+
+        // Wrapped text: more than ~0.4 line taller than its rect. Single-line text: wider than its rect.
+        static bool Overflows(TextMeshProUGUI t, Rect r, float originalSize)
+        {
+            Vector4 m = t.margin;
+            float width = r.width - m.x - m.z;
+            float height = r.height - m.y - m.w;
+            if (t.enableWordWrapping)
+            {
+                Vector2 pv = t.GetPreferredValues(t.text, width, 0f);
+                return pv.y > height + originalSize * 0.4f;
+            }
+            Vector2 one = t.GetPreferredValues(t.text, 0f, 0f);
+            return one.x > width + 2f;
+        }
+
+        static string Shorten(string s)
+        {
+            s = s.Replace("\r", " ").Replace("\n", " ");
+            return s.Length > 60 ? s.Substring(0, 60) + "..." : s;
+        }
+
+        // ---- profile update boxes ---------------------------------------------------------------
+
+        static readonly FieldInfo UpdateBoxesField =
+            typeof(UpdateDrag).GetField("_backgroundBoxes", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        static void FixUpdateBoxes(TextMeshProUGUI t)
+        {
+            UpdateBoxDrawing drawing = t.GetComponent<UpdateBoxDrawing>();
+            if (drawing == null || drawing.UpdateDrag == null || UpdateBoxesField == null)
+                return;
+            var boxes = UpdateBoxesField.GetValue(drawing.UpdateDrag) as List<Selectable>;
+            if (boxes == null || boxes.Count == 0)
+                return;
+            t.ForceMeshUpdate();
+            TMP_TextInfo ti = t.textInfo;
+            int first = Math.Max(0, drawing.UpdateDrag.DragTextStartIndex);
+            int last = Math.Min(drawing.UpdateDrag.DragTextEndIndex, ti.characterCount - 1);
+            if (last < first)
+                return;
+            // one box per line, from the line's ascender to its descender (as UpdateBoxDrawing does it)
+            var segments = new List<Vector3[]>();
+            int line = -1;
+            float x0 = 0f, x1 = 0f;
+            for (int i = first; i <= last + 1; i++)
+            {
+                bool end = i > last;
+                TMP_CharacterInfo ci = end ? default(TMP_CharacterInfo) : ti.characterInfo[i];
+                if (end || ci.lineNumber != line)
+                {
+                    if (line >= 0 && x1 > x0)
+                    {
+                        TMP_LineInfo li = ti.lineInfo[line];
+                        Vector3 bl = t.transform.TransformPoint(new Vector3(x0, li.descender, 0f));
+                        Vector3 tr = t.transform.TransformPoint(new Vector3(x1, li.ascender, 0f));
+                        bl.x -= 2f;
+                        bl.y -= 2.5f;
+                        tr.x += 2f;
+                        tr.y += 3.75f;
+                        segments.Add(new[] { bl, tr });
+                    }
+                    if (end)
+                        break;
+                    line = ci.lineNumber;
+                    x0 = x1 = 0f;
+                }
+                if (char.IsWhiteSpace(ci.character))
+                    continue;
+                if (x1 <= x0)
+                    x0 = ci.bottomLeft.x;
+                x1 = ci.bottomRight.x;
+            }
+            for (int i = 0; i < boxes.Count; i++)
+            {
+                if (boxes[i] == null)
+                    continue;
+                var rt = (RectTransform)boxes[i].transform;
+                if (i < segments.Count)
+                    Place(rt, segments[i][0], segments[i][1]);
+                else
+                    rt.sizeDelta = Vector2.zero;
+            }
+        }
+
+        // ---- data chunk highlight boxes -------------------------------------------------------
+
+        static void FixChunkBoxes(TextMeshProUGUI t)
+        {
+            TextDataChunk[] chunks = t.GetComponents<TextDataChunk>();
+            if (chunks.Length == 0 || t.GetComponentInParent<Orwell.Documents.Chat>() != null)
+                return;
+            t.ForceMeshUpdate();
+            TMP_TextInfo ti = t.textInfo;
+            for (int c = 0; c < chunks.Length; c++)
+            {
+                List<Selectable> boxes = chunks[c].BackgroundButtons;
+                if (boxes == null || boxes.Count == 0 || boxes[0] == null)
+                    continue;
+                int link = FindLink(ti, chunks[c].Id);
+                if (link < 0)
+                    continue;
+                List<Vector3[]> segments = LineSegments(t, ti, ti.linkInfo[link]);
+                if (segments.Count == 0)
+                    continue;
+                while (boxes.Count < segments.Count)
+                {
+                    Selectable proto = boxes[boxes.Count - 1];
+                    var clone = (Selectable)Instantiate(proto, proto.transform.parent);
+                    clone.transform.SetSiblingIndex(proto.transform.GetSiblingIndex() + 1);
+                    boxes.Add(clone);
+                }
+                for (int i = 0; i < boxes.Count; i++)
+                {
+                    if (boxes[i] == null)
+                        continue;
+                    var rt = (RectTransform)boxes[i].transform;
+                    if (i < segments.Count)
+                    {
+                        Place(rt, segments[i][0], segments[i][1]);
+                    }
+                    else
+                    {
+                        // a box for a line the English text had: zero size, but in the middle of the last line.
+                        // The game takes the LAST box as the chunk's position (TextDataChunk.GetChunkRect) and
+                        // discovers the chunk only once that point is on screen (DataChunk.ChunkIsVisible); left at
+                        // its English place it could lie below the shorter Russian page and never be discovered.
+                        Vector3[] last = segments[segments.Count - 1];
+                        Vector3 mid = (last[0] + last[1]) * 0.5f;
+                        Place(rt, mid, mid);
+                    }
+                }
+            }
+        }
+
+        static int FindLink(TMP_TextInfo ti, string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return -1;
+            for (int i = 0; i < ti.linkCount; i++)
+                if (ti.linkInfo[i].GetLinkID() == id)
+                    return i;
+            return -1;
+        }
+
+        // World-space (bottom-left, top-right) of the link text on every line it occupies. The game puts
+        // the box from the font's descender to its ascender + 10; the Cyrillic font assets have a taller
+        // ascender, so the box sat too high. Here it is measured from the baseline: 0.3 em below,
+        // 0.9 em + 4 above, 5 left/right.
+        static List<Vector3[]> LineSegments(TextMeshProUGUI t, TMP_TextInfo ti, TMP_LinkInfo li)
+        {
+            var result = new List<Vector3[]>();
+            int line = -1;
+            float x0 = 0f, x1 = 0f, top = float.MinValue, bottom = float.MaxValue;
+            const float Above = 0.9f, Below = 0.3f;
+            bool any = false;
+            int end = Math.Min(li.linkTextfirstCharacterIndex + li.linkTextLength, ti.characterCount);
+            for (int i = li.linkTextfirstCharacterIndex; i < end; i++)
+            {
+                TMP_CharacterInfo ci = ti.characterInfo[i];
+                if (ci.lineNumber != line)
+                {
+                    if (any)
+                        result.Add(Segment(t, x0, x1, top, bottom));
+                    line = ci.lineNumber;
+                    any = false;
+                    top = float.MinValue;
+                    bottom = float.MaxValue;
+                }
+                if (char.IsWhiteSpace(ci.character))
+                    continue;
+                if (!any)
+                    x0 = ci.bottomLeft.x;
+                any = true;
+                x1 = ci.topRight.x;
+                top = Mathf.Max(top, ci.baseLine + Above * ci.pointSize);
+                bottom = Mathf.Min(bottom, ci.baseLine - Below * ci.pointSize);
+            }
+            if (any)
+                result.Add(Segment(t, x0, x1, top, bottom));
+            return result;
+        }
+
+        static Vector3[] Segment(TextMeshProUGUI t, float x0, float x1, float top, float bottom)
+        {
+            Vector3 bl = t.transform.TransformPoint(new Vector3(x0, bottom, 0f));
+            Vector3 tr = t.transform.TransformPoint(new Vector3(x1, top, 0f));
+            bl.x -= 5f;
+            tr.x += 5f;
+            tr.y += 4f;
+            return new[] { bl, tr };
+        }
+
+        static void Place(RectTransform rt, Vector3 worldBottomLeft, Vector3 worldTopRight)
+        {
+            Transform p = rt.parent;
+            Vector3 bl = p != null ? p.InverseTransformPoint(worldBottomLeft) : worldBottomLeft;
+            Vector3 tr = p != null ? p.InverseTransformPoint(worldTopRight) : worldTopRight;
+            float w = tr.x - bl.x, h = tr.y - bl.y;
+            if (rt.anchorMin != rt.anchorMax)
+                rt.anchorMax = rt.anchorMin;
+            Vector3 s = rt.localScale;
+            rt.sizeDelta = new Vector2(s.x != 0f ? w / s.x : w, s.y != 0f ? h / s.y : h);
+            rt.localPosition = new Vector3(bl.x + rt.pivot.x * w, bl.y + rt.pivot.y * h, rt.localPosition.z);
+        }
+    }
+}
